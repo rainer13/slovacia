@@ -3,3 +3,7 @@ http://frbridge.ro/index.php?option=com_events&task=view_detail&agid=510&year=20
 http://www.wall-street.ro/articol/Turism/211912/transcarpatic-primul-tren-de-lux-din-romania.html
 http://deeplearning.net/tutorial/rbm.html
 http://deeplearning.net/tutorial/DBN.html
+
+http://www.anosr.ro/documente/pozitii-si-politici/
+http://www.anosr.ro/documente/publicatii/
+https://www.facebook.com/notes/mentorat-bc-comisii-anosr-2017/o-scurt%C4%83-introducere-%C3%AEn-universul-anosr/1419139531512024/
