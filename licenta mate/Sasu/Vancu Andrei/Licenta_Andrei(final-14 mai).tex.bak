@@ -1,0 +1,2826 @@
+\documentclass[ a4paper, 12pt]{report}
+\usepackage[romanian]{babel}
+\usepackage{eucal,amsfonts,amstext}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{graphicx}
+\usepackage{stmaryrd}
+\usepackage{setspace}
+\usepackage{color}
+\usepackage{mathtools}
+\usepackage{enumerate}
+
+
+\newcommand{\B}{\mathcal{B}}
+\newcommand{\E}{\mathcal{E}}
+\newcommand{\F}{\mathcal{F}}
+\newcommand{\C}{\mathbb{C}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\K}{\mathbb{K}}
+\newcommand{\X}{\mathbb{X}}
+
+\newcommand{\defnemph}[1]{\textbf{#1}}
+\newcommand{\thetat}{\ensuremath{\theta_0}}
+\newcommand{\Orb}[2]{\ensuremath{\mathcal{O}_{#1}(#2)}}
+\newcommand{\Ker}{\ensuremath{\mathrm{Ker}\,}}
+\newcommand{\Imag}{\ensuremath{\mathrm{Im}\,}}
+
+
+\newtheorem{theorem}{\bf Teorema}[section]
+\newtheorem{prop}[theorem]{\bf Propozi\c tia }
+\newtheorem{lema}[theorem]{\bf{Lem\u a}}
+\newtheorem{cor}[theorem]{\bf Corolarul}
+
+\theoremstyle{definition}
+\newtheorem{definition}{\bf Defini\c tia}[section]
+
+\theoremstyle{remark}
+\newtheorem{remarc}{\bf Remarca}[section]
+\newtheorem{obs}{\bf Observa\c tia }[section]
+\newtheorem{exemple}{\bf Exemplul}[section]
+\newtheorem{exercise}{\bf Exerci\c tiul}[section]
+\newtheorem{cons}{\bf Consecin\c ta }[section]
+\newtheorem{term}{\bf Terminologie }[section]
+
+\numberwithin{equation}{section}
+\def\bibname{Bibliografie}
+\def\refname{Bibliografie}
+\def\figurename{Figura}
+\def\contentsname{Cuprins}
+\def\chaptername{Capitolul}
+
+\begin{document}
+
+\makeatletter
+\newcommand{\superimpose}[2]{%
+  {\ooalign{$#1\@firstoftwo#2$\cr\hfil$#1\@secondoftwo#2$\hfil\cr}}}
+\makeatother
+
+\newcommand{\mc}{\mathpalette\superimpose{{\nearrow}{=}}}
+\newcommand{\md}{\mathpalette\superimpose{{\searrow}{=}}}
+\newcommand{\smc}{\mathpalette\superimpose{{\,\uparrow}{=}}}
+\newcommand{\smd}{\mathpalette\superimpose{{\,\downarrow}{=}}}
+
+\newcommand{\vertiii}[1]{{\left\vert\kern-0.25ex\left\vert\kern-0.25ex\left\vert #1
+    \right\vert\kern-0.25ex\right\vert\kern-0.25ex\right\vert}}
+
+\newcommand{\ds}{\displaystyle}
+\newcommand{\pound}{\operatornamewithlimits{\longrightarrow}}
+
+
+
+\pagestyle{plain}
+\begin{titlepage}
+\begin{center}
+\textsc{\large Universitatea de Vest Timi\c soara}\\[0.5cm]
+\textsc{\large Facultatea de Matematic\u a \c si Informatic\u a}\\[0.5cm]
+\vspace{25mm}
+{\huge  Lucrare de licen\c t\u a }\\[0.4cm]
+{\huge  Clase de spa\c tii de
+\c siruri  \c si de spa\c tii de
+func\c tii \c si aplica\c tii }\\[0.2cm]
+\vspace{35mm}
+\begin{minipage}{\textwidth}
+\begin{flushleft} \large
+\emph{Candidat:}\\
+Andrei Ioan VANCU \\[0.3cm]
+\end{flushleft}
+\vspace{10mm}
+\begin{flushright}\large
+\emph{Coordonator \c stiin\c tific:}\\
+Lect. Dr. Aurelian CR\u ACIUNESCU
+\end{flushright}
+\end{minipage}
+\newline
+\vspace{10mm}
+\begin{minipage}{\textwidth}
+\end{minipage}
+\vspace{20mm}
+\newline
+{\large Timi\c soara }\\
+{\large 2014}
+\end{center}
+\end{titlepage}
+
+
+
+
+\newpage
+\pagestyle{plain}
+\begin{titlepage}
+\begin{center}
+\textsc{\large Universitatea de Vest Timi\c soara}\\[0.5cm]
+\textsc{\large Facultatea de Matematic\u a \c si Informatic\u a}\\[0.5cm]
+\vspace{15mm}
+Specializarea: \textsc{\large Matematic\u{a} - Informatic\u a}\\[1cm]
+\vspace{20mm}
+{\huge Clase de spa\c tii de
+\c siruri  \c si de spa\c tii de
+func\c tii \c si aplica\c tii }\\[0.2cm]
+\vspace{20mm}
+\begin{minipage}{\textwidth}
+\begin{flushleft} \large
+\emph{Candidat:}\\
+Andrei Ioan VANCU \\[0.3cm]
+\end{flushleft}
+\vspace{10mm}
+\begin{flushright}\large
+\emph{Coordonator \c stiin\c tific:}\\
+Lect. Dr. Aurelian CR\u ACIUNESCU
+\end{flushright}
+\end{minipage}
+\newline
+\vspace{10mm}
+\begin{minipage}{\textwidth}
+\end{minipage}
+\vspace{20mm}
+\newline
+{\large Timi\c soara }\\
+{\large 2014}
+\end{center}
+\end{titlepage}
+\newpage
+\sloppy
+{\large\tableofcontents}
+\vspace{15 mm }
+
+
+
+\newpage
+\section*{Abstract}
+\newpage
+\section*{Introducere}
+\vspace{10 mm}
+\addcontentsline{toc}{section}{Introducere}
+
+\indent\indent Se consider\u a c\u a Analiza Func\c tional\u a s-a n\u ascut \^\i n iunie 1920, deoarece atunci St. Banach a depus la Universitatea Jan Kazimierz din Lvov (pe vremea aceea ora\c s \^\i n Polonia, azi \^\i n Ucraina) teza sa de doctorat "\emph{Sur les operations dans les ensembles abstraits et leur applications aux \' equations int\' egral}". \^ In aceast\u a tez\u a, care a fost publicat\u a \^\i n 1922, Banach a introdus, axiomatic, no\c tiunea de spa\c tiu normat complet, o no\c tiune general\u a \^\i n care, pentru prima dat\u a, au fost \^\i njghebate o structur\u a algebric\u a (cea de spa\c tiu liniar) \c si una topologic\u a (cea de spa\c tiu metric). \^ In 1928, Maurice Fr\' echet (1878 - 1973) a propus ca aceste spa\c tii normate complete s\u a se numeasc\u a spa\c tii Banach.
+
+Ast\u azi, putem spune c\u a, studiul completitudinii spa\c tiilor normate, utilizate sau aflate la un moment dat \^\i n studiu, constituie o etap\u a fundamental a fi parcurs\u a \^\i naintea identific\u arii \c si a altor propriet\u a\c ti particulare ale acestor spa\c tii. Pe de o parte acest lucru se datoreaz\u a  \c si faptului c\u a studiul convergen\c tei unui \c sir, \^\i n prezen\c ta propriet\u a\c tii de completitudine, implic\u a numai utilizarea termenilor \c sirului nu \c si identificarea apriorii a "posibilei" limite a acestuia. Un alt argument ar fi faptul c\u a orice serie absolut convergent\u a (de vectori ai unui spa\c tiu normat complet) este \c si convergent\u a, iar studiul absolut convergen\c tei se reduce la cazul scalar. Nu ar fi lipsit de importan\c t\u a faptul c\u a, \^\i n prezen\c ta  propriet\u a\c tii de completitudine, sunt posibil a fi utilizate principiile de categorie ale Analizei Func\c tionale.
+
+Lucrarea de fa\c t\u a se \^\i ncadreaz\u a \^\i n ideeea descris\u a de paragraful anterior, ea propun\^ andu-\c si a prezenta dou\u a clase speciale de spa\c tii normate complete \c si anume spa\c tiile Banach de func\c tii \c si spa\c tiile Banach de \c siruri. Aceste clase generalizeaz\u a  spa\c tiile de tip $L^p(X, \mathcal{A}, \mu)$, ($1 \leq p \leq \infty$) dar nu se reduc numai la acestea. Aceast\u a lucrare este structurat\u a pe patru capitole.
+
+Primul capitol, "\emph{Spa\c tii normate. Spa\c tii Banach.}", are rolul de a \^\i ncadra tema lucr\u arii dar \c si de introducere a no\c tiunilor \c si rezultatelor generale de utilizate. Se bazeaz\u a \^\i n principal pe cursul de Analiz\u a Func\c tional\u a din anul III \c si a fost introdus aici pentru a-i conferii lucr\u arii un caracter auto-inclus. \^ In acest fel, cititorul poate parcurge lucrarea f\u ar\u a a face apel la surse exterioare.
+
+Cel de-al doilea capitol, "\emph{Spa\c tii Banach de func\c tii}" introduce, \^\i ntr-o manier\u a abordabil\u a, \c si studieaz\u a, o clas\u a de spa\c tii Banach, cunoscute \^\i n Analiza Func\c tional\u a ca spa\c tii de func\c tii. Este strcturat\u a pe \c sapte sec\c tiuni (paragrafe) \c si are \^\i n special rolul de a prezenta spa\c tiile Orlicz \c si proprietatea de completitudine a acestora. Aceste spa\c tii Banach generalizeaz\u a spa\c tiile de tip $L^p$ al func\c tiilor absolut $p$-integrabile Lebesgue. Am folosit aici. \^\i n special, noti\c tele de la cursul sus\c tinut de D-na Conf. Dr. Adina Lumini\c ta Sasu la studen\c tii de la Master din anul \^\i nt\^ ai.
+
+Al treilea capitol ala lucr\u arii, "\emph{Spa\c tii Banach de \c siruri}", este structurat pe dou\u a sec\c tiuni \c si prezint\u a  clasa de spa\c tiilor Banach de \c siruri, clas\u a din care fac parte \c si spa\c tiile de tip $\ell^p$ (spa\c tiul \c sirurilor scalare $p$-absolut sumabile). Sunt prezentate aici \c si spa\c tiile Banach de \c siruri invariante la transla\c tii cunoscute \c si sub de numirea de spa\c tii Sch\" affer.
+
+Ultimul capitol al lucr\u arii, "\emph{Familii de evolu\c tie \^\i n timp discret. Dichotomie exponen\c tial uniform\u a}" este dedicat prezent\u arii unei aplica\c tii a spa\c tiilor Banach studiate \^\i n capitolele anterioare. Este astfel studiat\u a proprietatea de dichotomie a unei familii de evolu\c tie discret\u a \^\i n ipoteze de tip "intrare-ie\c sire" \^\i n care at\^ at spa\c tiul func\c tiilor de intrare c\^ at \c si cel de ie\c sire sunt spa\c tii de tip Sch\' affer.
+
+\^ In \^\i ncheiere doresc s\u a mul\c tumesc d-nului Lect. Dr. Aurelian Craciunescu, coordonatorul \c stiin\c tific al acestei lucr\u ari de licen\c t\u a, pentru sprijinul acordat \^\i n elaborarea acesteia.
+
+
+\chapter{SPA\c TII NORMATE. SPA\c TII BANACH}
+\section{Spa\c tii normate}
+Fie $X$ un spa\c tiu liniar peste corpul $\mathbb{K}$ ($X= SL(\mathbb{K})$).
+\begin{definition}
+O func\c tie $N : X \rightarrow \mathbb{R}_{+}$ se nume\c ste norm\u a pe $X$ dac\u a:
+\begin{enumerate}[($n_1$)]
+\item $N(x) = 0$ dac\u a \c si numai dac\u a $x = \theta$ (vectorul nul al spa\c tiului $X$);
+\item $N(x + y) \leq N(x) + N(y)$, pentru orice $x,y \in X$;
+\item $N(\lambda \cdot x) = \lvert \lambda\rvert \cdot N(x)$, pentru orice $x \in X$ \c si $\lambda \in \mathbb{K}$.
+\end{enumerate}
+\end{definition}
+Exemple:
+\begin{enumerate}
+\item $\lvert \cdot \lvert \;: \; \mathbb{R} \rightarrow \mathbb{R}_{+}$ este o norm\u a (modulul real)
+\item $\lVert \cdot \rVert_p : \mathbb{R}^{n} \rightarrow \mathbb{R}_{+}, \lVert x \rVert_{p} = (\lvert x_1\rvert^{p} + \lvert x_2\rvert^{p} + \cdots + \lvert x_n\rvert^{p})^{\frac{1}{p}},\\
+ x = (x_1,x_2, \cdots, x_n) \in \mathbb{R}^{n}$ (unde $p \geq 1$) sunt norme pe $\mathbb{R}^{n}$
+\item $\lVert \cdot \rVert_p : \mathbb{C}^{n} \rightarrow \mathbb{R}_{+}, \lVert x \rVert_{p} = (\lvert x_1\rvert^{p} + \lvert x_2\rvert^{p} + \cdots + \lvert x_n\rvert^{p})^{\frac{1}{p}},\\
+ x = (x_1,x_2, \cdots x_n) \in \mathbb{C}^{n}$ (unde $p \geq 1$) sunt norme pe $\mathbb{C}^{n}$
+\item $\lVert \cdot \rVert_p : l_{N}^{p}(\mathbb{K}) \rightarrow \mathbb{R}_{+}, \lVert x \rVert_{p} = (\sum\limits_{n=1}^{\infty} \lvert x_n \rvert^p)^{\frac{1}{p}}, x = (x_n) \in l_{N}^{p}(\mathbb{K})$ (unde $p \geq 1$)
+\item $\lVert \cdot \rVert_{\infty} : l_{N}^{\infty}(\mathbb{R}) \rightarrow \mathbb{R}_{+}, \lVert x \rVert_{\infty} = \sup\limits_{n \geq 1} \lvert x_n \rvert, x = (x_n)_{n \geq 1} \in l_{N}^{\infty}(\mathbb{R})$
+\item $\vertiii{\cdot} : \mathcal{C}_{[a,b]} \rightarrow \mathbb{R}_{+}, \vertiii{f} = \sup\limits_{t \in [a,b]} \lvert f(t) \rvert$ (norma Ceb\^ a\c sev)
+\item  $\lVert \cdot \rVert^{'} : \mathcal{C}^{'}_{[a,b]} \rightarrow \mathbb{R}_{+}, \lVert f \rVert^{'} = \lvert f(a) \rvert + \sup\limits_{t \in [a,b]} \lvert f^{'}(t) \rvert$
+\item $\lVert \cdot \rVert_{1} : \mathcal{C}_{[a,b]} \rightarrow \mathbb{R}_{+}, \lVert f \rVert_{1} = \ds\int\limits_a^b \lvert f(t) \rvert dt $
+\item $\Vert \cdot \rVert_{p} : L^{p}(X,\mathcal{A},\mu) \rightarrow \mathbb{R}_{+}, \lVert f \rVert_{p} = \left (  \ds\int\limits_{X}\lvert f \rvert^{p} d\mu \right )^{\frac{1}{p}}$ (unde $1 \leq p < \infty $)
+\item $\lVert \cdot \rVert_{\infty} : L^{\infty}(X, \mathcal{A}, \mu) \rightarrow \mathbb{R}_{+}, \lVert f \rVert_{\infty} = \inf\limits_{\mu(A) = 0} \; \sup\limits_{t \in {\rm C}\, A} \lvert f(t) \rvert$ (unde $(X, \mathcal{A}, \mu)$ este un spa\c tiu cu m\u asur\u a complet\u a)
+\end{enumerate}
+\begin{remarc}
+Dac\u a func\c tia $N : X \rightarrow \mathbb{R}_{+}$ verific\u a doar axiomele ($n_2$) \c si ($n_3$) vom spune c\u a $N$ este o seminorm\u a pe $X$.
+\end{remarc}
+\begin{remarc}
+Dac\u a $N$ este o norm\u a atunci $N(x) > 0$, pentru orice $x \in X\setminus \{\theta\}$.
+\end{remarc}
+\begin{remarc}
+Dac\u a func\c tia $N : X \rightarrow \mathbb{R}_{+}$ este  o norm\u a, atunci
+$$d : X \times X \rightarrow \mathbb{R}_{+}, \quad
+d(x,y) = N(x - y) $$ are urm\u atoarele propriet\u a\c ti:
+\begin{enumerate}[($d_1$)]
+\item $d(x,y) = 0$ dac\u a \c si numai dac\u a $x =y $;
+\item $d(x,y) \leq d(x,z) + d(z,y)$, pentru orice $x,y,z \in X$;
+\item $d(x,y) = d(y,x)$ pentru orice $x, y \in X$.
+\end{enumerate}
+Propriet\u a\c tile $(d_1),(d_2),(d_3)$ arat\u a c\u a func\c tia $d$ de mai sus este o distan\c t\u a pe $X$, numit\u a {\it distan\c ta} ({\it metrica}) generat\u a de norma $N$. Num\u arul real pozitiv
+$d(x,y)$ se va numi distan\c ta de la $x$ la $y$ \c si \^in plus ea mai verific\u a \c si  urm\u atoarea proprietate:
+
+$$d(x+z,y+z) = d(x,y), \hbox{ pentru orice } x,y,z \in X,$$ numit\u a proprietatea de invarian\c t\u a la transla\c tii a metricii $d$.
+\end{remarc}
+
+Din punct de vedere istoric, dar \c si deoarece  generalizeaz\u a modulul pe $\mathbb{R}$ sau $\mathbb{C}$, o norm\u a va fi notat\u a  $\lVert \cdot \rVert$, eventual specific\^and spa\c tiile pe care
+este definit\u a, $\lVert \cdot \rVert_{X}$.
+
+\smallskip
+
+Dac\u a $\lVert \cdot \rVert : X \rightarrow \mathbb{R}_{+}$ o norm\u a pe $X$, $r>0$, iar $x \in X$, not\u am :
+$$\mathcal{B}(x,r) = \{ y \in X \; : \; \lVert y-x \rVert < r\}$$
+numit\u a {\it bila deschis\u a de centru} "$x$" \emph{\c si raz\u a} "$r$" (calculat\u a \^in raport cu norma $\lVert \cdot \rVert$),
+
+$$\mathcal{\bar{B}}(x,r) = \{y \in X \; : \;  \lVert y-x \rVert \leq r\}$$
+numit\u a\emph{ bila \^inchis\u a de centru} "$x$" \emph{\c si raz\u a} "$r$" (calculat\u a \^in raport cu norma $\lVert \cdot \rVert$) \c si
+$$\mathcal{S}(x,r) = \{y \in X \; : \; \lVert y-x \rVert = r\}$$ numit\u a \emph{sfera de centru} "$x$" \emph{\c si raz\u a} "$r$".
+
+
+\begin{prop}\label{top}
+Dac\u a $\lVert \cdot \rVert : X \rightarrow \mathbb{R}_{+}$ atunci familia
+\[\mathcal{T}_{\lVert \cdot \rVert} = \{\emptyset\} \cup \{T \!\!\subset\!\! X / T \!\!\not= \emptyset \hbox{a.\^ i. pentru orice }  x \in T, \hbox{exist\u a } r_x\! > \!0 : \mathcal{B}(x,r_x) \subset T \}\] este o topologie pe $X$ (numit\u a topologia indus\u a de norma $\lVert \cdot \rVert$).
+\end{prop}
+\begin{remarc}
+Pe un spa\c tiu normat $X$ sunt corect definite, \^in sens topologic, no\c tiunile de limit\u a, convergen\c t\u a pentru \c sir, sau continuitate pentru o func\c tie \^intre dou\u a spa\c tii normate.
+Aceste no\c tiuni admit \^ins\u a \c si caracteriz\u ari speciale \^in cadrul spa\c tiilor normate.
+Caracterizarea convergen\c tei \c sirurilor de vectori, dintr-un spa\c tiu normat poate fi formulat\u a astfel:
+
+Fie $(X,\lVert \cdot \rVert)$ un spa\c tiu normat (topologizat cu topologia din Prop. \ref{top}), iar $(x_n)_{n \geq 1} \subset X$ un \c sir de vectori din $X$.
+\^In raport cu topologia $\mathcal{T}_{\lVert \cdot \rVert}$ avem c\u a \c sirul $(x_n)_{n \geq 1}$ este convergent dac\u a \c si numai dac\u a
+exist\u a $x \in X$ astfel \^inc\^at pentru orice $\varepsilon > 0$ rezult\u a c\u  a exist\u a $n_0 \in \mathbb{N}$ astfel ca, pentru orice $n\geq n_0$ s\u a avem c\u a $||x_n - x|| < \varepsilon$.
+\end{remarc}
+
+\begin{proof}
+\^Intr-adev\u ar: {\it Necesitate.} Pentru orice  $\varepsilon >0$ rezult\u a c\u a $\mathcal{B}(x,\varepsilon) \in \mathcal{V}_{\mathcal{T}_{\lVert \cdot \rVert}}(x)$ (deschis\u a). Atunci exist\u a $n_0 \in \mathbb{N}$  cu proprietatea c\u a, pentru orice $ n \geq n_0 $ avem c\u a  $ x_n \in \mathcal{B}(x,\varepsilon)]$. Deci, pentru orice $n \geq n_0$, avem  $\lVert x_n - x\rVert < \varepsilon.$
+
+{\it Suficien\c ta.} Fie $V \in \mathcal{V}_{\mathcal{T}_{\lVert \cdot \rVert}}(x)$. Exist\u a atunci  $T \in \mathcal{T}_{\lVert \cdot \rVert}$ cu  $x \in T \subset V$. Din caracterizarea mul\c timilor deschise \^in topologia normic\u a rezult\u a c\u a exist\u a   $r>0$ astfel \^inc\^at $ \mathcal{B}(x,r) \subset T \subset V.$
+
+Dar exist\u a $ n_0 \in \mathbb{N}$ cu proprietatea c\u a, pentru orice $ n \geq n_0$ avem c\u a $\lVert x_n - x \rVert < r$. Deci $x_n \in \mathcal{B}(x,r) \subset V,$ pentru orice $n \geq n_0.$
+
+\medskip
+
+ Not\u am $\mathcal{C}_{(X,\lVert \cdot \rVert)}$ spa\c tiul liniar al tuturor \c sirurilor convergente de vectori din $X$. Deci
+$$\mathcal{C}_{(X,\lVert \cdot \rVert) } =\{ (x_n)_{n \geq 1} \subset X / \hbox{exist\u a } x \in X: \lim\limits_{n \rightarrow \infty} \lVert x_n - x \rVert = 0\}.$$
+\end{proof}
+\begin{remarc}
+Asem\u an\u ator cazului real (sau al lui $\mathbb{R}^{n}$) vectorul $x$ dat de convergen\c ta \c sirului $(x_n)_{n \geq 1}$ este unic determinat.  Altfel spus, dac\u a $(x_n)_{n \geq 1} \in \mathcal{C}_{(X,\lVert \cdot \rVert)}$ atunci exist\u a unic $ x \in X$ astfel \^inc\^at \[\lim\limits_{n \rightarrow \infty} \lVert x_n - x \rVert = 0.\]
+\end{remarc}
+\begin{proof}
+\^Intr-adev\u ar: Fie $x,x^{'} \in X$ astfel \^inc\^at $\lim\limits_{n \rightarrow \infty} \lVert x_n - x \rVert = \lim\limits_{n \rightarrow \infty} \lVert x_n - x^{'} \rVert = 0.$ Atunci
+
+$$0 \leq \lVert x-x^{'} \rVert = \lVert (x - x_n) + (x_n - x^{'}) \rVert
+ \leq \lVert x_n - x \rVert + \lVert x_n - x^{'} \rVert,$$ pentru orice $n \geq 1$ \c si deci $ \lVert x - x^{'} \rVert = 0 \Rightarrow x - x^{'} = 0 $ sau echivalent  $x = x^{'}.$
+\end{proof}
+
+Unicul vector $x \in X$  pentru care $\lim\limits_{n \rightarrow \infty} \lVert x_n - x \rVert = 0$, unde $\  \Big( (x_n)_{n \geq 1} \in \mathcal{C}_{(X, \lVert \cdot \rVert)}  \Big)$ se nume\c ste \emph{limita \^in} $X$ \emph{a} \emph{\c sirului} $(x_n)_{n \geq 1}$ \c si se noteaz\u a asem\u an\u ator cazului scalar cu :
+
+ $$x = \lim\limits_{n \rightarrow \infty} x_n$$ sau $$x_n \pound\limits_{n \rightarrow \infty}^{\lVert \cdot \rVert} x. $$
+
+\begin{remarc}
+Dac\u a $\lVert \cdot \rVert_{1},\lVert \cdot \rVert_{2} : X \rightarrow \mathbb{R}_{+}$, sunt dou\u a norme pe $X$ astfel \^inc\^at $\mathcal{T}_{\lVert \cdot \rVert_{1}} = \mathcal{T}_{\lVert \cdot \rVert_{2}}$ (adic\u a genereaz\u a aceea\c si topologie) vom spune c\u a cele dou\u a norme sunt \emph{topologic echivalente} \c si vom nota:
+\[ \lVert \cdot \rVert_{1} \sim \lVert \cdot \rVert_{2}. \]
+Dac\u a $\lVert \cdot \rVert_{1} \sim \lVert \cdot \rVert_{2}$ conform celor de mai sus, vom avea c\u a  $\mathcal{C}_{(X,\lVert \cdot \rVert_{1})} = \mathcal{C}_{(X,\lVert \cdot \rVert_{2})}.$
+\end{remarc}
+\begin{remarc}
+Dac\u a $\lVert \cdot \rVert_{1},\lVert \cdot \rVert_{2} : X \rightarrow \mathbb{R}_{+}$, sunt dou\u a norme pe $X$ atunci cele doua norme sunt echivalente dac\u a \c si numai dac\u a
+ exist\u a $ m, M>0$ astfel \^inc\^at $$ m \lVert x \rVert_{1} \leq \lVert x \rVert_{2} \leq M \lVert x \rVert_{1},$$  pentru orice $ x \in X$.Vom spune despre cele dou\u a norme c\u a sunt \emph{complet echivalente.}
+
+\end{remarc}
+\begin{prop}
+Dac\u a $(X, \lVert \cdot \rVert)$ este un spa\c tiu normat, atunci, pentru orice $x \in X$ avem c\u a
+ $\mathcal{B}(x,r) \in \mathcal{T}_{\lVert \cdot \rVert}$.
+\end{prop}
+\begin{proof}
+Fie $x \in X$ \c si $ r>0.$ Pentru orice $y \in \mathcal{B}(x,r)$ rezult\u a c\u a $ \lVert x-y \rVert < r $ \c si deci, pentru $r^{'} = r - \lVert x-y \rVert>0$ avem c\u a $\mathcal{B}(y,r^{'}) \subset \mathcal{B}(x,r).$
+
+\^Intr-adev\u ar: pentru $z \in \mathcal{B}(y,r^{'})$ rezult\u a c\u a
+ $\lVert y-z \rVert < r^{'}$. Dar
+ $$\lVert x-z \rVert \leq \lVert x-y \rVert + \lVert y-z \rVert
+  < r^{'} +\lVert x-y \rVert = r,$$ pentru orice $ z \in \mathcal{B}(x,r)$. Deci $ \mathcal{B}(y,r^{'}) \subset \mathcal{B}(x,r)$ ceea ce implic\u a faptul c\u a $ \mathcal{B}(x,r) \in \mathcal{T}_{\lVert \cdot \rVert}.$
+\end{proof}
+
+\begin{prop}
+Fie $(X,\lVert \cdot \rVert)$ un spa\c tiu normat, iar $X_0 \subset X$ un subspa\c tiu liniar \^inchis al s\u au. $(\bar{X_0} = X_0).$ Aplica\c tia :$$\lVert \cdot \rVert_{X/X_0} : X/X_0 \rightarrow \mathbb{R}_{+}, \quad \lVert \hat{x} \rVert_{X/X_0} = \inf\limits_{y \in \hat{x}} \; \lVert y \rVert_{X} $$ este o norm\u a pe $X/X_0.$
+\end{prop}
+\begin{proof}
+\^Intr-adevar: Dac\u a $\lVert \hat{x} \rVert_{X/X_0} = 0$ atunci $ \inf\limits_{y \in \hat{X}} \lVert y \rVert_{X} = 0$. Rezult\u a c\u a pentru orice $ n \in \mathbb{N^{\ast}}$, exist\u a $ y_n \in \hat{x}$ astfel \^inc\^at $\lVert y_n \rVert < \ds\frac{1}{n}.$
+
+Dar $y_n \in \hat{x} = x + X_0$ \c si deci exist\u a $ x_n \in X_0$ astfel \^inc\^at $y_n = x + x_n$. Atunci
+$$ \lVert x_n - (-x) \rVert_{X} \stackrel{n \rightarrow \infty  }{\longrightarrow}0$$ \c si deci $x_n \pound\limits_{n \rightarrow \infty}^{\lVert \cdot \rVert_{X}} -x$. Deoarece  $X_0$ este \^inchis rezult\u a c\u a $ -x \in \bar{X_0} = X_0 $, sau echivalent $ x \in \bar{X_0} = X_0 $ ceea ce arat\u a c\u a
+ $ \hat{x} = \hat{\theta}$, ceea ce arat\u a c\u a este satisf\u acut\u a axioma $(n_1).$
+
+\smallskip
+
+Fie $\hat{x},\hat{y} \in X/X_0.$ Dac\u a $x^{'} \in \hat{x}, y^{'} \in \hat{y}$ atunci $ x^{'}+y^{'} \in \hat{x}+\hat{y} = \hat{x + y}$ \c si deci
+$$\lVert \hat{x+y} \rVert_{X/X_0} \leq \lVert x^{'}+y^{'} \rVert_{X} \leq \lVert x^{'} \rVert_{X} + \lVert y^{'} \rVert_{X}.$$
+Pentru  $y^{'}$ fixat, prin trecere la $\inf$ pentru $ x^{'}$ din $\hat{x}$ rezult\u a c\u a
+
+$$\lVert \hat{x}+\hat{y} \Vert_{X/X_0} \leq \lVert \hat{x} \rVert_{X/X_0} + \lVert y^{'} \rVert_{X},$$ pentru orice $ y^{'} \in \hat{y}.$
+Prin trecere la $\inf$ dup\u a $y^{'}$ din $\hat{y}$ rezult\u a c\u a $$ \lVert \hat{x}+\hat{y} \rVert_{X/X_{0}} \leq \lVert \hat{x} \rVert_{X/X_0} + \lVert \hat{y} \rVert_{X/X_0}$$ \c si deci este satisf\u acut\u a \c si axioma $(n_2)$
+
+\smallskip
+
+Fie $\hat{x} \in X/X_0$ \c si $\lambda \in \mathbb{K}.$
+Deoarece $\lambda \cdot \hat{x} = \hat{\lambda \cdot x}$ rezult\u a c\u a $ \lambda \cdot \hat{x} = \{ \lambda \cdot x^{'} / x^{'} \in \hat{X} \}$. Atunci
+\begin{eqnarray*}
+\lVert \lambda \cdot \hat{x} \rVert_{X/X_0} &=& \inf\limits_{x^{'} \in \hat{x}} \lVert \lambda \cdot x^{'} \rVert_{X} = \inf\limits_{x^{'} \in \hat{x}} \lvert \lambda \rvert \cdot \lVert x^{'} \rVert_{X} = \lvert \lambda \rvert \cdot \inf\limits_{x^{'} \in \hat{X}} \lVert x^{'} \rVert_{X} = \\
+&=&\lvert \lambda \rvert \cdot \lVert \hat{x} \rVert_{X/X_0}
+\end{eqnarray*}
+ceea ce arat\u a c\u a este verificat\u a \c si axioma  $(n_3).$
+\end{proof}
+
+\begin{obs}
+Spa\c tiul normat $\left(  X/X_0, \lVert \cdot \rVert_{X/X_0} \right)$ se nume\c ste \emph{spa\c tiu normat c\^at}, indus de subspa\c tiul \^inchis $X_0$.
+\end{obs}
+\begin{obs}
+Dac\u a $X_0$ nu este subspa\c tiu \^inchis, atunci aplica\c tia $\lVert \cdot \rVert_{X/X_0}$ definit\u a mai sus este doar o seminorm\u a pe $X/X_0.$
+\end{obs}
+\begin{remarc}
+\^In orice spa\c tiu normat, orice \c sir convergent este m\u arginit. Mai precis,  dac\u a $(x_n)_{n \geq 1} \in \mathcal{C}_{(X, \lVert \cdot \rVert)}$,  atunci exist\u a $ M>0$ astfel \^inc\^at $\lVert x_n \rVert \leq M$, pentru orice $ n \geq 1.$
+\end{remarc}
+
+\begin{proof}
+\^Intr-adev\u ar: Cum $(x_n)_{n \geq 1} \in \mathcal{C}_{(X, \lVert \cdot \rVert)}$ rezult\u a c\u a exist\u a  $x \in X$ \c si $n_0 \in \mathbb{N}$ astfel \^inc\^at $\lVert x_n - x \rVert <1$, pentru orice  $n \geq n_0$. Atunci
+$$ \lVert x_n \rVert \leq \lVert x_n - x \rVert +  \lVert x \rVert \leq 1 +  \lVert x \rVert,$$ pentru orice $ n \geq n_0.$
+
+Not\^and $M = \max\{ \lVert x_1 \rVert, \lVert x_2 \rVert, \lVert x_3 \rVert \cdots \lVert x_{n_{0} -1} \rVert, \lVert x \rVert +1 \} >0$ avem c\u a
+ $$\lVert x_n \rVert \leq M,$$ pentru orice $ n \geq 1.$
+\end{proof}
+
+
+
+
+
+
+
+\section{Spa\c tii Banach. Caracterizare.}
+
+Fie $(X, \lVert \cdot \rVert)$ un $\mathbb{K}$ spa\c tiu  liniar normat \c si $(x_n)_{n \geq 1} \subset X.$\\
+\begin{definition}
+\c Sirul $(x_n)_{n \geq 1} \subset X$ este convergent \^in spa\c tiul normat $(X, \lVert \cdot \rVert)$ \c si vom nota $(x_n)_{n \geq 1} \in \mathcal{C}_{(X, \lVert \cdot \rVert)}$,  dac\u a exist\u a $x \in X$  cu proprietatea c\u a pentru orice $\varepsilon>0$, exist\u a $ n_0 \in \mathbb{N}$ astfel \^inc\^at pentru orice $n \geq n_0$, rezult\u a c\u a $\lVert x_n - x \rVert < \varepsilon$ sau dac\u a exist\u a $x \in X$ cu proprietatea c\u a $\lVert x_n - x \rVert \stackrel{n \rightarrow \infty}{\longrightarrow } 0$.
+\end{definition}
+\begin{remarc}
+\^Inainte de a studia convergen\c ta unui \c sir, cu ajutorul defini\c tiei anterioare, identific\u am  a priori limita sa $x$.\\
+Acest lucru poate genera unele dificult\u a\c ti practice. Exist\u a \^ins\u a spa\c tii normate, pentru care studiul convergen\c tei unui \c sir ia \^in calcul numai termenii acestuia. Aceste spa\c tii se numesc,$\textit{ spa\c tii normate complete}$ sau $\textit{spa\c tii Banach}$ \c si le vom introduce \^in continuare.
+\end{remarc}
+\begin{obs}
+Dac\u a $(x_n)_{n \geq 1} \in \mathcal{C}_{(X, \lVert \cdot \rVert)}$, atunci pentru orice $\varepsilon >0$, exist\u a $n_0 \in \mathbb{N}$ cu proprietatea c\u a pentru orice $m,n \geq n_0$ rezult\u a  c\u a $\lVert x_m - x_n \rVert < \varepsilon $ (adic\u a distan\c ta dintre oricare 2 termeni este oric\^at de mic\u a, \^incep\^and de la un rang suficient de mare).
+\end{obs}
+\begin{proof}
+\^Intr-adev\u ar: Dac\u a  $x = \lim\limits_{n \rightarrow \infty} x_n$ \c si $\varepsilon>0$, rezult\u a c\u a exist\u a $n_0 \in \mathbb{N}$ cu proprietatea c\u a $\lVert x_n - x \rVert < \frac{\varepsilon}{2}$, pentru orice $n \geq n_0.$\\
+Atunci, pentru orice $m,n \geq n_0$ rezult\u a c\u a
+\begin{align*}
+\lVert x_m - x_n \rVert
+&=\lVert x_m - x_0+x_0-x_n \rVert\\ & \leq \lVert x_m - x_0 \rVert +  \lVert x_n - x_0 \rVert \\
+&<\frac{\varepsilon}{2}+\frac{\varepsilon}{2} = \varepsilon
+\end{align*}
+\end{proof}
+
+\begin{definition}
+\c Sirul $(x_n)_{n \geq 1} \subset X$ este fundamental \^in spa\c tiul normat $(X, \lVert \cdot \rVert)$ \c si vom nota $(x_n)_{n \geq 1} \in \mathcal{F}_{(X, \lVert \cdot \rVert)}$ dac\u a pentru orice $\varepsilon >0,$ exist\u a $n_0 \in \mathbb{N}$ cu proprietatea c\u a,  pentru orice $n,m \geq n_0$ rezult\u a $\lVert x_m - x_n \rVert < \varepsilon.$
+\end{definition}
+
+\smallskip
+
+Not\^ and cu $\mathcal{F}_{(X, \lVert \cdot \rVert)}$ spa\c tiul tuturor \c sirurilor fundamentale din spa\c tiul normat $(X, \lVert \cdot \rVert)$, conform remarcii anterioare, rezult\u a
+
+$$\mathcal{C}_{(X, \lVert \cdot \rVert)} \subset \mathcal{F}_{(X, \Vert \cdot \rVert)}$$ (adic\u a orice \c sir convergent este si fundamental).
+\^In general, incluziunea reciproc\u a nu are loc.
+
+
+\begin{definition}
+Un spa\c tiu normat $(X, \lVert \cdot \rVert)$ pentru care $\mathcal{F}_{(X, \lVert \cdot \rVert)} \subset \mathcal{C}_{(X, \Vert \cdot \rVert)}$, se nume\c ste \textit{spa\c tiu normat complet} sau \textit{spa\c tiu Banach}.
+\end{definition}
+
+\begin{remarc}
+$(X, \lVert \cdot \rVert)$ este un spa\c tiu Banach, dac\u a \c si numai dac\u a $\mathcal{F}_{(X, \lVert \cdot \rVert)} = \mathcal{C}_{(X, \Vert \cdot \rVert)}$.
+\end{remarc}
+
+\begin{remarc}
+Pentru un spa\c tiu normat, stabilirea proprieta\c tii de completitudine, se face de obicei individual sau pe clase, \^ins\u a odat\u a stabilit\u a aceast\u a proprietate, studiul convergen\c tei unui \c sir devine mult mai facil de efectuat.
+\end{remarc}
+
+
+Enumer\u am mai jos o list\u a de spa\c tii a c\u aror proprietate de completitudine ne va fi util\u a \^\i n continuare.
+\begin{enumerate}
+\item $(\mathbb{R}, \lvert \cdot \rvert), (\mathbb{C}, \lvert \cdot \rvert);$
+\item $(\mathbb{K}^{n}, N)$ -$N$ o norm\u a arbitrar\u a ;
+\item $\Big(\mathcal{C}_{\mathbb{K}}, \vertiii{\cdot}\Big)$ - unde $\mathbb{K}$ este spa\c tiu topologic compact;
+\item $\Big(\mathcal{C}_{[a,b]}^{1}, \lVert \cdot \rVert^{'}\Big), \lVert f \rVert^{'} = \lvert f(a) \rvert + \vertiii{f^{'}}, f \in \mathcal{C}_{[a,b]};$
+\item $\Big(l_{N}^{p}(\mathbb{K}), \lVert p \rVert\Big);$
+\item $\Big( L^{p}(X,\mathcal{A}, \mu), \lVert \cdot \rVert_{p}  \Big), \lVert f \rVert_{p} = \Big( \ds\int\limits_{X} \lvert f \rvert^{p} d\mu \Big )^{\frac{1}{p}}$, unde $1 \leq p < \infty;$
+\item $\Big(  L^{\infty}(X,\mathcal{A},\mu), \lVert \cdot \rVert_{\infty}\Big), \, \lVert f \rVert_{\infty} = \inf\limits_{\mu(A) = 0} \sup\limits_{x \in \mathbf{C}A}|f(x)|$
+\end{enumerate}
+Ca \c si exemple de spa\c tii normate care nu sunt complete putem reamintii aici $(\mathbb{Q}, \, |\cdot|)$ sau
+$\Big(\mathcal{C}_{[a,b]}, \lVert \cdot \rVert_{1} \Big), \lVert f \rVert_{1} = \ds\int\limits_{a}^{b}\lvert f(x) \rvert dx$.
+
+\begin{prop}\label{apa}
+Fie $(X, \lVert \cdot \rVert)$ un spa\c tiu normat, iar $(x_n)_{n \geq 1} \subset X$.
+\begin{enumerate}[(a)]
+\item Dac\u a $(x_n)_{n \geq 1} \subset \mathcal{F}_{(X, \lVert \cdot \rVert)},$ atunci  exist\u a $M>0$ astfel \^\i nc\^ at $\lVert x \rVert \leq M$, pentru orice $n \geq 1$ (i.e. \c sirul este m\u arginit).
+\item Dac\u a  $(x_n)_{n \geq 1} \subset \mathcal{F}_{(X, \lVert \cdot \rVert)}$ \c si  exist\u a $(x_{k_n})_{n \geq 1} \subset (x_n)_n$, $(x_{k_n})_{n \geq 1} \in \mathcal{C}{(X, \Vert \cdot \rVert)}$, atunci $(x_n)_{n \geq 1} \in \mathcal{C}{(X, \Vert \cdot \rVert)}$ (un \c sir fundamental ce con\c tine un sub\c sir convergent este el \^\i nsu\c si convergent).
+\end{enumerate}
+\end{prop}
+
+\begin{obs}
+$(x_n)_{n \geq 1} \in \mathcal{F}_{(X, \Vert \cdot \rVert)}$ dac\u a \c si numai dac\u a pentru orice $\varepsilon>0$, exist\u a $n_0 \in \mathbb{N}$, cu proprietatea c\u a pentru orice $n \geq n_0$ \c si $p \in \mathbb{N}$ rezult\u a c\u a $\lVert x_{n+p} - x_n \rVert < \varepsilon$ (i.e. $(\lVert x_{n+p} - x_n \rVert)_{n \geq 1}$ converge la $0$ uniform \^in raport cu $p$).
+\end{obs}
+
+Urm\u atorul rezultat este foarte util \^\i n caracterizarea completitudinii unui spa\c tiu normat.
+
+\begin{prop}
+Spa\c tiul normat $(X,\lVert \cdot \rVert)$ este complet dac\u a \c si numai dac\u a orice serie absolut convergent\u a este \c si convergent\u a.
+\end{prop}
+
+\begin{proof}
+"$\supset$"
+Avem c\u a  $(X, \Vert \cdot \rVert)$ - spa\c tiu Banach. Fie $\sum\limits_{n \geq 0} x_n \in \mathcal{A}$ adic\u a, pentru care $\sum\limits_{n \geq 1} \lVert x_n \rVert \in \mathcal{C}_{(\mathbb{R},\lvert \cdot \rvert)}$.
+
+Dac\u a not\u am $s_n = \sum\limits_{k=1}^{n} x_k, n \geq 1$ avem c\u a:
+$$ \Vert s_{n+p} - s_n \rVert =\left\lVert \sum\limits_{k=n+1}^{n+p} x_k \right\rVert
+\leq  \sum\limits_{k=n+1}^{n+p} \lVert x_k \rVert \leq \sum\limits_{k \geq n+1} \lVert x_k \rVert \stackrel{n \rightarrow \infty}{\longrightarrow}0,$$ uniform\u a \^in raport cu $p$, ceea ce arat\u a $(s_n)_{n \geq 1} \in \mathcal{F}_{(X,\lVert \cdot \rVert)} = \mathcal{C}_{(X, \lVert  \cdot\rVert)}.$
+
+"$\subset$" Avem c\u a $(X,\lVert \cdot \rVert)$ este un spa\c tiu normat cu proprietatea c\u a  orice serie absolut convergent\u a este \c si convergent\u a.
+
+Fie $(x_n)_{n \geq 1} \in \mathcal{F}_{(X, \lVert \cdot \rVert)}.$ Vom ar\u ata c\u a \c sirul $(x_n)_{n \geq 1}$ este convergent, ar\u at\^and c\u a el con\c tine un sub\c sir convergent.
+\begin{itemize}
+\item Pentru $\varepsilon\!=\!1$, rezult\u a c\u a exist\u a $n_1 \in \mathbb{N}$ cu proprietatea c\u a $\lVert x_m\! -\! x_n \rVert\! <\! 1,$ pentru orice $m,n \geq n_1$. Deci $\lVert x_m\!-\!x_{n_1}\rVert\!<\!\ds\frac{1}{2^0}$, pentru orice  $m \geq n_1$.
+\item Pentru $\varepsilon\!\!=\!\!\ds\frac{1}{2}$,  rezult\u a c\u a exist\u a $n_2 > n_1$ cu proprietatea c\u a $\lVert x_m\! -\! x_n \rVert\! <\! \ds\frac{1}{2}$, pentru orice $m,n \geq n_2$. Rezult\u a c\u  a $\lVert x_{n_2}-x_{n_1}\rVert\!<\!\ds\frac{1}{2^1}$.
+\item Pentru $\varepsilon\!\!=\!\!\ds\frac{1}{2^2}$,  rezult\u a c\u a exist\u a $n_3\!\!>\!\!n_2$ cu proprietatea c\u a $\lVert x_m \!-\! x_n \rVert\! <\! \ds\frac{1}{2^2},$ pentru orice $m,n \geq n_3$. Atunci $\lVert x_{n_3}-x_{n_2}\rVert\! \leq\! \ds\frac{1}{2^2}$.
+\end{itemize}
+Construim inductiv sub\c sirul $(x_{n_k})_{k \geq 1}$ cu proprietatea c\u a
+$$ \lVert x_{n_k} - x_{n_{k-1}} \rVert \leq \frac{1}{2^{k-1}},$$ pentru orice $k \geq 2$. Atunci
+$$\sum\limits_{k \geq 2} \lVert x_{n_k} - x_{n_{k-1}} \rVert \leq \sum\limits_{k \geq 1}\frac{1}{2^{k-1}} = 1 < \infty,$$ ceea ce arat\u a c\u a seria
+$\sum\limits_{k \geq 2} (x_{n_k} - x_{n_{k-1}})$ este absolut convergent\u a, deci \c si convergent\u a. Dar
+
+\begin{eqnarray*}
+s_m &=& \sum\limits_{k=2}^{m}(x_{n_k}-x_{n_{k-1}}) = x_{n_2}-x_{n_1}+x_{n_3}-x_{n_2}+ \cdots+x_{n_m}-x_{n_{m-1}}= \\
+&=&x_{n_m}-x_{n_1}
+\end{eqnarray*}
+\c si deci \c sirul
+$(s_m + x_{n_1})_{m \geq 2} \in \mathcal{C}_{(X, \Vert \cdot \rVert)}$ sau echivalent  $(x_{n_m})_{m \geq 2} \in \mathcal{C}_{(X, \lVert \cdot \rVert)}$. Conform Propozi\c tiei \ref{apa} rezult\u a c\u a \c si \c sirul  $(x_n)_{n \geq 1} \in \mathcal{C}_{(X, \Vert \cdot \rVert)}$.
+\end{proof}
+
+\newpage
+
+\section{Operatori liniari \c si continui pe spa\c tii Banach}
+
+Vom trece \^\i n continuare \^\i n revist\u a c\^ ateva proprieta\u a\c ti ale operatorilor m\u argini\c ti pe spa\c tii Banach.
+
+
+\begin{definition}
+Fie $(X,\lVert \cdot \rVert_{X}), (Y,\lVert \cdot \rVert_{Y})$, dou\u a $\mathbb{K}$ spa\c tii normate.
+O func\c tie
+$$T : X \rightarrow Y$$ se nume\c ste {\it aplica\c tie liniar\u a} de la $X$ \^in $Y$ ({\it morfism de spa\c tii liniare} sau {\it operator liniar}), dac\u a:
+\begin{enumerate}[(i)]
+\item $T(x+y) = T(x) + T(y),$ pentru orice $x,y \in X$ (proprietatea de aditivitate)
+\item $T(\alpha \cdot x) = \alpha \cdot T(x),$ pentru orice $x \in X,$ \c si $\alpha \in \mathbb{K}$ (proprietatea de omogenitate)
+\end{enumerate}
+ceea ce este echivalent cu faptul c\u a $$T(\alpha x + \beta y) = \alpha T(x) + \beta T(y),$$ pentru orice $x,y \in X$, \c si $\alpha, \beta \in \mathbb{K}.$
+\end{definition}
+
+Vom nota \^in continuare cu
+$$\mathcal{L}(X,Y) = \{ T: X \rightarrow Y\; : \; T \hbox{- liniar\u a} \}.$$
+
+\begin{remarc}
+\^In raport cu opera\c tiile
+\begin{enumerate}
+\item $(T+S)_{(x)} = T(x) + S(x)$
+\item $(\alpha T)_{(x)} = \alpha \cdot T(x)$
+\end{enumerate}
+avem c\u a $\Big( \mathcal{L}(X,Y), + , \cdot\Big)$ este un $\mathbb{K}$ spa\c tiu liniar.
+\end{remarc}
+
+\begin{remarc}
+Dac\u a $T \in \mathcal{L}(X,Y)$ rezult\u a c\u a $T(\theta_{X}) = \theta_{Y}$.
+\end{remarc}
+
+\begin{remarc}
+Dac\u a $T \in \mathcal{L}(X,Y)$,  $n \in \mathbb{N}^{\ast}$, $x_1,x_2,\cdots,x_n \in X$, iar $\alpha_1,\alpha_2, \cdots, \alpha_n \in \mathbb{K}$, atunci
+$$T\Big( \sum\limits_{k=1}^{n} \alpha_k \cdot x_k \Big) = \sum\limits_{k=1}^{n} \alpha_k \cdot T(x_k).$$
+\end{remarc}
+
+\begin{remarc}
+Dac\u a $X = \mathbb{K}^{m}, Y = \mathbb{K}^{n}$ (unde $\mathbb{K} = \mathbb{C}$ sau $\mathbb{R}$), atunci $T \in \mathcal{L}\Big( \mathbb{K}^{m}, \mathbb{K}^{n} \Big)$ dac\u a \c si numai dac\u a exist\u a o matrice $A \in \mathcal{M}_{n \times m}(\mathbb{K})$ astfel \^inc\^at
+$$ T(x)^{t} = A \cdot x^{t} = \begin{pmatrix}
+  a_{11} & a_{12} & \cdots & a_{1m} \\
+  a_{21} & a_{22} & \cdots & a_{2m} \\
+  \vdots  & \vdots  & \ddots & \vdots  \\
+  a_{n1} & a_{n2} & \cdots & a_{nm}
+ \end{pmatrix} \cdot \begin{pmatrix}
+ x_1\\
+ x_2\\
+ \vdots\\
+ x_m
+ \end{pmatrix}$$
+%\end{remarc}
+
+\medskip
+Remarca de mai sus este motivul pentru care, pentru $T \in \mathcal{L}(X,Y)$, convenim s\u a not\u am $T{x}$ \^in loc de $T(x)$.
+\medskip
+
+\begin{remarc}
+Dac\u a $Y = \mathbb{K}$, se noteaz\u a $\mathcal{L}(X,\mathbb{K}) = X^{\#} ( \mbox{sau}\ X^{a})$ spa\c tiu ce se nume\c ste {\it dualul algebric} al lui $X$, iar elementele sale, $f \in X^{\#}$, se  numesc {\it func\c tionale liniare}.
+\end{remarc}
+
+Urm\u atoarea propozi\c tie caracterizeaz\u a continuitatea operatorilor liniari \^\i ntre spa\c tii normate.
+
+\begin{prop}
+Fie $X, Y$ dou\u a spa\c tii normate,  iar $T \in \mathcal{L}(X,Y)$. Urm\u atoarele afirma\c tii sunt echivalente:
+\begin{enumerate}[(a)]
+\item $T$ este continu\u a \^in $x_0 = \theta_{X}$;
+\item Pentru orice $\varepsilon>0,$ exist\u a $\delta>0$ cu proprietatea c\u a $\lVert T_x \rVert_Y<\varepsilon,$ pentru orice $\lVert x \rVert<\delta;$
+\item Exist\u a $M>0$ cu proprietatea c\u a $\lVert T_x \rVert_Y \leq M \Vert x \rVert_X,$ pentru orice $x \in X;$
+\item $T$ este continu\u a pe $X$
+\end{enumerate}
+\end{prop}
+
+\begin{proof}
+$"(a) \Rightarrow  (b)"$ Cum $T \in \mathcal{C}_{\theta_{X}}$ rezult\u a c\u a pentru orice vecin\u atate $V$ a lui $T{\theta_{X}} = \theta_{Y},$ exist\u a $U$ o vecin\u atate a lui $\theta_{X}$ astfel ca $T \cdot U \subset V.$
+
+Aleg\^and $ V = \mathcal{B}_{Y}(\theta_{Y}, \varepsilon)$, rezult\u a c\u a exist\u a  $U \in \mathcal{V}_{\theta_{X}}$ cu proprietatea c\u a $T U \subset \mathcal{B}_{Y}(\theta_{Y}, \varepsilon)$. Cum $U \in \mathcal{V}_{\theta_{X}}$, rezult\u a c\u a exist\u a  $\delta>0$ astfel \^\i nc\^ at $\mathcal{B}_{X}(\theta_{X}, \delta) \subset U$. Pentru orice $\varepsilon > 0$ exist\u a deci $\delta > 0$ astfel ca
+
+$$T  \mathcal{B}_{X}(\theta_{X}, \delta) \subset \mathcal{B}_{Y}(\theta_{Y}, \varepsilon),$$ sau echivalent, pentru orice $x \in X$ cu $\lVert x \rVert < \delta$ avem c\u a $\lVert Tx \rVert_{Y}< \varepsilon.$
+
+$"(b) \Rightarrow (c)"$
+Pentru $\varepsilon =1$, exist\u a $\delta > 0$ cu proprietatea c\u a $\lVert T_x \rVert_{Y}<1$, pentru orice $\lVert x \rVert_{X} < \delta.$
+
+Dac\u a $x \in X$ atunci $\left\lVert \ds\frac{\delta}{\lVert x \rVert_{X}+\ds\frac{1}{n}}\cdot x \right\rVert_{X} < \delta$ \c si deci
+$$\left\lVert T \Big(  \ds\frac{\delta}{\lVert x \rVert_{X}+\ds\frac{1}{n}} \Big) \right\rVert_{Y} < 1,$$ pentru orice $n \geq 1$. Atunci
+$$\ds\frac{\delta}{\lVert x \rVert_{X}+\ds\frac{1}{n}} \cdot \lVert T_x \rVert_{Y} < 1,$$ pentru orice $n \geq 1$ sau echivalent
+$$\lVert T_x \rVert_{Y} < \frac{1}{\delta} \left( \lVert x \rVert_{X} + \frac{1}{n} \right),$$ pentru orice $n \geq 1$.  F\u ac\^ and $n$ s\u a tind\u a c\u atre $+ \infty$ rezult\u a c\u a
+$$\lVert T_x \rVert_{Y} \leq \frac{1}{\delta}   \lVert x \rVert_{X},$$ pentru orice  $x \in X$, ceea ce demonstraz\u a $(c)$ cu $M = \ds\frac{1}{\delta}$.
+
+$"(c) \Rightarrow (d)"$ Din liniaritate operatorului $T$ ob\c tinem c\u a
+$$||Tx - Tx_0|| \leq M ||x - x_0||,$$ pentru orice $x, x_0 \in X$. Fix\^ and $x_0 \in X$, pentru orice $\varepsilon > 0$ avem c\u a:
+$$T B_X\big(x_0, \frac{\varepsilon}{M}\big) \subset B_Y\big( Tx_0, \varepsilon\big),$$ ceea ce demonstraz\u a  continuitatea operatorului $T$ \^\i n orice $x_0 \in X$.
+
+$"(d)\Rightarrow  (a)"$ Evident.
+\end{proof}
+
+\end{remarc}
+Not\u am prin $\mathcal{B}(X,Y)$ mul\c timea acelor operatori $T \in \mathcal{L}(X,Y)$ cu proprietatea c\u a  exist\u a  un $M>0$ astfel \^inc\^at $\lVert T_x \rVert_{Y} \leq M \cdot \lVert x \rVert_{X}$, pentru orice $x \in X$ (numit\u a {\it spa\c tiul operatorilor liniari \c si m\u argini\c ti de la $X$ \^\i n $Y$}).
+
+\begin{remarc}
+$T \in \mathcal{B}(X,Y) $ dac\u a \c si numai dac\u a $T \in \mathcal{L}(X,Y)$ \c si continuu pe $X$.
+\end{remarc}
+\vspace{2cm}
+\begin{prop} Fie $X, Y$ dou\u a spa\c tii normate peste acela\c si corp $\mathbb{K}$.
+\begin{itemize}
+\item[{\rm (a)}] $\Big(\mathcal{B}(X,Y), +, \cdot\Big)$ este un subspa\c tiu liniar \^in $\mathcal{L}(X,Y)$.
+
+\item[{\rm (b)}] Dac\u a pentru $T \in \mathcal{B}(X,Y)$ not\u am
+$$\lVert T \rVert_{\mbox{op}} = \inf \{ M \geq 0\; \hbox{ cu proprietatea c\u a }  \lVert T_x \rVert \leq M \cdot \lVert x \rVert_{X}, x \in X\},$$ atunci aplica\c tia
+$$\mathcal{B}(X,Y) \ni T \longrightarrow \lVert T \rVert_{\mbox{op}} \in \mathbb{R}_+$$ este o norm\u a pe $\mathcal{B}(X,Y)$ av\^and proprietatea $\lVert T_x \rVert_{Y} \leq \lVert T \rVert_{\mbox{op}} \cdot \lVert x \rVert_{X}$, pentru orice $x \in X$.
+
+\^In plus, dac\u a $T \in \mathcal{B}(X,Y)$ \c si $S \in \mathcal{B}(Y,Z)$, atunci $S \circ T \in \mathcal{B}(X,Z)$ \c si $\lVert S \circ T \rVert_{\mbox{op}} \leq \lVert S \rVert_{\mbox{op}} \cdot \lVert T \rVert_{\mbox{op}}.$
+\end{itemize}
+\end{prop}
+
+\begin{proof}
+Pentru $T \in \mathcal{B}(X,Y) $ vom nota \^\i n continuare
+$$\mathcal{A}_T = \{M \geq 0 \; : \; \lVert  T_x \rVert_{Y} \leq M \cdot \lVert x \rVert_{X},x \in X\}.$$
+
+(a) Este imediat \c tin\^ and cont de faptul c\u a suma a dou\u a func\c tii continue \c si produsul cu un scalar al unei func\c tii continue sunt func\c tii continue.
+
+(b) Pentru $T \in \mathcal{B}(X,Y)$ avem c\u a $\mathcal{A}_T$ este nevid\u a \c si inclus\u a \^in $\mathbb{R}_{+}$, de unde rezult\u a c\u a exist\u a
+$\lVert T \rVert_{\mbox{op}} = \inf \mathcal{A}_T \in \mathbb{R}_{+}$.
+Fie $x \in X$ fixat.
+Deoarece $\lVert T \rVert_{\mbox{op}} = \inf\mathcal{A}_T$ rezult\u a c\u a exist\u a $(M_n)_{n \geq 1} \subset \mathcal{A}_{T}$ cu proprietatea c\u a $\lim\limits_{n \rightarrow \infty} M_n = \lVert T \rVert_{\mbox{op}}$. Cum $\lVert Tx \rVert \leq M_n \cdot \lVert x\rVert_{X}$, pentru $n \longrightarrow \infty$ rezult\u a\  c\u a
+$$\lVert T_x \rVert_{Y} \leq \lVert T \rVert_{\mbox{op}} \cdot \lVert x  \rVert_{X},$$ pentru orice $x \in X$
+
+Pentru $T \in \mathcal{B}(X,Y)$ astfel \^inc\^at $\lVert T \rVert_{\mbox{op}} = 0$ rezult\u a c\u a $\lVert Tx \rVert_{Y} = 0$, pentru orice $x \in X$. Deci $Tx = \theta$, pentru orice $x \in X$, sau echivalent $T = 0$.
+
+Pentru $S, T \in \mathcal{B}(X,Y)$, avem c\u a:
+\begin{eqnarray*}
+\lVert (S+T){x} \rVert_{Y} &=& \lVert S{x}+T{x}  \rVert_{Y} \leq \lVert Sx \rVert_{Y} + \lVert Tx \rVert_{Y} \leq\\
+&\leq& \lVert S  \rVert_{\mbox{op}} \cdot \lVert x \rVert_{X} + \lVert T \rVert_{\mbox{op}} \cdot \lVert x  \rVert_{X} =\\
+&=& (\lVert S \rVert_{\mbox{op}} + \lVert T \rVert_{\mbox{op}})||x||_X,
+\end{eqnarray*}
+pentru orice $x \in X$, ceea ce arat\u a c\u a $\lVert S \rVert_{\mbox{op}} + \lVert T \rVert_{\mbox{op}} \in \mathcal{A}_{S+T}$ \c si deci
+$$\lVert S+T  \rVert_{\mbox{op}} \leq \lVert S \rVert_{\mbox{op}} + \lVert T \rVert_{\mbox{op}}.$$
+
+Fix\u am $T \in \mathcal{B}(X,Y)$ \c si  $\alpha \in \mathbb{K}.$ Avem
+$$\lVert (\alpha \cdot T )_x\rVert_{Y} = \lVert \alpha \cdot T_x  \rVert_{Y} = \lvert \alpha \rvert \cdot \lVert T_x \rVert_{Y} \leq \lvert \alpha \rvert \cdot \lVert T \rVert_{\mbox{op}} \cdot \lVert x \rVert_{X},$$ pentru orice $x \in X$. Deci $|\alpha| ||T||_{op} \in \mathcal{A}_{\alpha T}$ \c si atunci
+
+$$\lVert \alpha \cdot T  \rVert_{\mbox{op}} \leq \lvert \alpha \rvert \cdot \lVert T \rVert_{\mbox{op}},$$ pentru orice $T \in \mathcal{B}(X,Y)$ \c si $\alpha \in \mathbb{K}$.
+
+Dac\u a $\alpha = 0$ rezult\u a c\u a$\lVert  \alpha \cdot T \rVert_{\mbox{op}} = \lvert \alpha \rvert \cdot \lVert T \rVert_{\mbox{op}}$ ( $\lVert 0 \rVert_{\mbox{op}} = 0$).
+
+Dac\u a $\alpha \neq 0$, pun\^ and \^\i n inegalitatea de mai sus $\ds\frac{1}{\alpha}$ \^\i n loc de scalarul $\alpha$ \c si operatorul $\alpha T$ \^\i n loc de $T$, ob\c tinem
+
+$$\left\lVert \ds\frac{1}{\alpha} \cdot (\alpha \cdot T) \right\rVert_{\mbox{op}} \leq \left\lvert  \frac{1}{\alpha} \right\rvert \cdot \lVert \alpha \cdot T \rVert_{\mbox{op}}$$ sau echivalent
+$$\lVert T \rVert_{\mbox{op}} \leq \frac{1}{\lvert \alpha \rvert} \lVert \alpha \cdot T \rVert_{\mbox{op}}.$$ Rezult\u a deci \c si c\u a
+$\lVert \alpha \cdot T \rVert_{\mbox{op}} \geq \lvert \alpha \rvert \cdot \lVert T \rVert_{\mbox{op}}$ \c si atunci se ob\c tine c\u a
+
+$$\lVert\! \alpha\! \cdot\! T \rVert_{\mbox{op}}\! =\! \lvert \alpha \rvert \cdot \lVert T \rVert_{\mbox{op}},$$ pentru orice $T\!\! \in\!\! \mathcal{B}(X,Y)$ \c si  $\alpha \in \mathbb{K}$.
+
+
+Am ob\c tinut astfel c\u a $\lVert \cdot  \rVert_{\mbox{op}}$ este o norm\u a pe $\mathcal{B}(X,Y)$.
+
+Datorit\u a faptului c\u a, compusa a dou\u a func\c tii continue este \^intotdeauna continu\u a rezult\u a c\u a $S \circ T \in \mathcal{B}(X,Z)$, pentru orice $S \in \mathcal{B}(Y,Z)$ \c si $T \in \mathcal{B}(X,Y)$.
+Mai mult,
+\[ \lVert (S \circ T)(x) \rVert_{Z} = \lVert S(Tx)  \rVert_{Z} \leq \lVert S \rVert_{\mbox{op}} \cdot \lVert Tx \rVert_{Y} \leq \lVert S \rVert_{\mbox{op}} \cdot \lVert T \rVert_{\mbox{op}} \cdot \lVert x \rVert_{X} ,\] pentru orice $x \in X$, rezult\u a c\u a $\lVert S \rVert_{\mbox{op}} \cdot \lVert T \rVert_{\mbox{op}} \in \mathcal{A}_{S \circ T}$ \c si atunci
+ $\lVert S \circ T \rVert_{\mbox{op}} \leq \lVert S \rVert_{\mbox{op}} \cdot \lVert T \rVert_{\mbox{op}}.$
+
+\end{proof}
+
+\begin{obs}
+Pentru $Y = X$ not\u am $\mathcal{B}(X) = \mathcal{B}(X,X)$, iar pentru $Y = \mathbb{K}$ , atunci not\u am $X^{'}= \mathcal{B}(X,\mathbb{K})$, numit {\it dualul topologic} al spa\c tiului normat $X$.
+Elementele sale poart\u a numele de func\c tionale liniare \c si continue, iar pentru $f \in X^{'}$ avem deci c\u a
+$$\lVert f \rVert_{\mbox{op}} = \inf \{ M >0 \; : \; \lvert f(x) \rvert \leq M \cdot \Vert x \rVert_{X},  x \in X\}.$$
+ \end{obs}
+
+\begin{obs} Pentru $T \in \mathcal{B}(X,Y)$ avem c\u a
+\[ \lVert  T \rVert_{\mbox{op}} = \sup\limits_{\Vert x \rVert \leq 1} \Vert T_x \rVert_{Y} = \sup\limits_{\lVert x \rVert = 1} \lVert T_x \rVert_{Y} = \sup\limits_{x \neq \theta} \frac{\lVert T_x \rVert_{Y}}{\lVert x \rVert_{X}} \]
+\end{obs}
+
+\begin{obs}
+Convenim \^in continuare s\u a not\u am fiecare din normele ce apar far\u a indicele aferent (deoarece nu exist\u a pericol de confuzie).
+\begin{eqnarray*}
+x \in X&,& ||x|| =\lVert x \rVert_{X}\\
+y \in Y&,& ||y|| = \lVert y \rVert_{Y}\\
+T \in \mathcal{B}(X,Y)&,& ||T|| = \lVert T \rVert_{\mbox{op}}
+\end{eqnarray*}
+\end{obs}
+
+\begin{prop}\label{p125}
+Fie $(X, \lVert \cdot \rVert)$ un spa\c tiu normat, $X \neq (0),$ iar $x_0 \in X\setminus \{ 0 \}$. Atunci exist\u a $f \in X^{'}$, $\lVert f \rVert = 1$ (deci nenul\u a), astfel \^inc\^at $f(x_0) = \lVert x_0 \rVert.$
+\end{prop}
+
+\begin{proof}
+Fix\u am $x_0 \in X$ cu $x_0 \neq \theta$ \c si definim aplica\c tia
+$$f_0 : Sp\{ x_0\} = \{ \lambda  x \; : \; \lambda \in \mathbb{K} \} \rightarrow \mathbb{K},\quad  f_0(\lambda  x_0) = \lambda  \lVert x_0 \rVert. $$
+Este imediat c\u a $f_0$ este o aplica\c tie liniar\u a pe $Sp\{ x_0 \}$. Mai mult,
+$$\lvert f_0(\lambda \cdot x_0) \rvert = \lvert \lambda \cdot \lVert x_0 \rVert \rvert = \lvert \lambda \rvert \cdot \lVert x_0  \rVert = \lVert \lambda \cdot x_0 \rVert,$$ de unde rezult\u a c\u a $$\lvert f_0(x) \rvert \leq \lVert x \rVert,$$ pentru orice $x \in Sp\{x_0\}$. Din Teorema de prelungire a lui Hahn Banach, rezult\u a c\u a  exist\u a  $f : X \rightarrow \mathbb{R}$ o aplicatie liniar\u a astfel \^inc\^at $f_{|_{Sp\{x_0\}}} = f_0$ \c si $\lvert f(x) \rvert \leq \lVert x \rVert$, pentru orice $x \in X$. Deci $f \in X^{'}$, iar
+$$f(x_0) = f_0(x_0) = f_0(1 \cdot x_0) = 1 \cdot \lVert x_0 \rVert = \lVert x_0 \rVert.$$
+Pentru orice $x \in X$ avem c\u a $\lvert f(x) \rvert < \lVert x \rVert$ ceea ce arat\u a c\u a $1 \in \mathcal{A}_{f}$ \c si deci $\lVert f \rVert \leq 1$. Dar
+$$\Vert x_0 \rVert = \lvert f(x_0) \rvert \leq \lVert f \rVert \cdot \lVert x_0 \rVert$$ ceea ce arat\u a c\u a $1 \leq \lVert f \rVert$ \c si deci $\lVert f \rVert = 1.$
+
+Orice func\c tional\u a $f$ construit\u a ca mai sus pentru un vector nenul, verific\u a pentru un $x_0 = 0$ condi\c tiile cerute.
+\end{proof}
+
+\begin{cons}\label{c121}
+Fie $(X,\lVert \cdot \rVert)$ un spa\c tiu normat, $X \neq (0)$. Atunci:
+\begin{enumerate}[(a)]
+\item $X^{'} \neq (0)$
+\item Pentru orice $x \in X$, rezult\u a c\u a $\lVert x \rVert = \sup\limits_{\lVert f \rVert = 1}\lvert f(x) \rvert$.
+\end{enumerate}
+\end{cons}
+
+\begin{proof}
+(a) Este o consecin\c t\u a  direct\u a a propozi\c tiei anterioare.
+
+(b) Pentru $x \in X$ cu $x \neq \theta$ fixat (dac\u a $x = \theta$ egalitatea este evident\u a), avem c\u a
+$$\lvert f(x) \rvert \leq \lVert f \rVert \cdot \lVert x \rVert,$$ pentru orice $f \in X^{'}$, cu $\lVert f \rVert = 1$. Rezult\u a c\u a
+$$\sup\limits_{\lVert f \rVert = 1} \lvert f(x) \rvert \leq \lVert x \rVert.$$
+Din Propozi\c tia \ref{p125}, rezult\u a c\u a exist\u a $f_x \in X^{'}$ cu $\lVert f_x \rVert = 1$ astfel \^inc\^at $f_x(x) = \lVert  x \rVert$. Atunci
+$$\lVert x \rVert = f_x(x) = \lvert f_x(x) \rvert \leq \sup\limits_{\lVert f \rVert = 1}\lvert f(x) \rvert.$$
+Rezult\u a c\u a $\lVert x \rVert = \sup\limits_{\lVert f \rVert = 1}\lvert f(x) \rvert.$
+\end{proof}
+
+\begin{cons}\label{c122}
+Fie $(X, \lVert \cdot \rVert)$ \c si $(Y,\lVert \cdot  \rVert)$ dou\u a spa\c tii normate nenule. Atunci $\mathcal{B}(X,Y) \neq (0),$ adic\u a exist\u a operatori liniari \c si continui, nenuli, de la $X$ la $Y$.
+\end{cons}
+
+\begin{proof}
+Fix\u am $x_0 \in X\setminus \{ 0 \}$ \c si $y_0 \in Y \setminus \{ 0 \}$. Din Propozi\c tia. \ref{p125}, rezult\u a c\u a exist\u a $f \in X^{'}$ cu $f \neq 0.$
+Aplica\c tia
+$$T : X \rightarrow Y,\quad  Tx = f(x)  y_0,$$ este liniar\u a \c si nenul\u a ($y_0 \neq 0$) \c si
+$$\lVert T_x \rVert = \lVert f(x) \cdot y_0 \rVert = \lvert f(x) \rvert \cdot \lVert y_0 \rVert \leq \lVert f  \rVert \cdot \lVert y_0 \rVert \cdot \lVert x \rVert,$$ pentru orice $x \in X$. Rezult\u a c\u a $T \in \mathcal{B}(X,Y) $ cu $T \neq 0.$
+\end{proof}
+
+\begin{prop}\label{p126}
+Fie $(X,\lVert \cdot \rVert)$ un spa\c tiu normat, $X_0 \subset X$ un subspa\c tiu liniar \^inchis \c si $x_0 \in X \setminus X_0$.
+Atunci exist\u a $f \in X^{'}$ cu $f(x_0) = 1$ \c si $f_{|_{X_0}} = 0$.
+\^In plus, $\lVert f \rVert = \ds\frac{1}{d(x_0,X_0)}.$
+\end{prop}
+
+\begin{proof}
+Not\u am $r = d(x_0,X_0) = \inf\limits_{y \in X_0} \lVert x_0 - y \rVert$. Cum $\bar{X_0} = X_0$ \c si $x_0 \notin X_0$ rezult\u a c\u a exist\u a $r>0$ cu proprietatea c\u a
+$$\mathcal{B}(x_0,r) \cap X_0 = \emptyset.$$
+Definim
+$$f_0 : X_0 \oplus Sp\{x_0\} \rightarrow \mathbb{K},\quad  f_0(y + \lambda \cdot x_0) = \lambda, \, \lambda \in \mathbb{K}.$$
+
+Avem c\u a $f_0$ este liniar\u a, iar pentru $y \in X_0$ \c si $\lambda \in \mathbb{K}^{\ast}$ avem:
+$$\lVert  y + \lambda \cdot x_0 \rVert = \lvert \lambda \rvert \cdot \lVert \underbrace{ x_0 - \Big(\underbrace{-\ds\frac{y}{\lambda}}_{\in X_0}\Big)}_{\geq r} \rVert \geq \lvert \lambda \rvert \cdot r.$$
+Rezult\u a c\u a $\lvert \lambda \rvert \leq \ds\frac{1}{r} \cdot \lVert y+\lambda \cdot x_0 \rVert$ \c si deci
+$$\lvert f_0(y + \lambda \cdot x_0) \rvert = \lvert \lambda \rvert \leq \ds\frac{1}{r}\lVert y + \lambda \cdot x_0  \rVert,$$ pentru orice $y \in X_0$ \c si $\lambda \in \mathbb{K}$, sau echivalent  $$\lvert f_0(z) \rvert \leq \ds\frac{1}{r} \cdot \lVert z \rVert,$$ pentru orice $z \in X_0 \oplus Sp\{x_0\}$. Conform Teoremei de prelungire Hahn-Banach, rezult\u a c\u a exist\u a  $f : X \rightarrow \mathbb{K},$ liniar\u a astfel \^inc\^at
+
+$$f_{|_{X_0 \oplus Sp\{ x_0 \}}} = f_0$$ \c si
+$$\lvert f(x) \rvert \leq \frac{1}{r} \cdot \lVert x \rVert,$$ pentru orice $x \in X$. Deci $f \in X^{'}$ \c si $\lVert f  \rVert \leq \ds\frac{1}{r}$.
+
+Dac\u a $y \in X_0$ rezult\u a c\u a $f(y) = f_0(y) = f_0(y + 0 \cdot x_0) = 0$. Deci $f_{|_{X_0}} = 0$.
+
+Cum $f(x_0) = f_0(x_0) = f_0(0 + 1 \cdot x_0) = 1$, rezult\u a  c\u a $f(x_0) = 1$.
+
+Deoarece $r = \inf\limits_{y \in X_0} \lVert x_0 - y  \rVert$, rezult\u a c\u a exist\u a $(y_n)_{n \geq 1} \subset X_0$ astfel \^inc\^at $\lim\limits_{n \to \infty}\lVert x_0 - y_n \rVert = r$. Cum  $\lvert f(x_0 - y_n)  \rvert \leq \lVert f  \rVert \cdot \lVert x_0 - y_n \rVert$, rezult\u a c\u a
+$$1 \leq \lVert f \rVert \cdot \lVert x_0 - y_n \rVert \stackrel{n \rightarrow \infty}{\longrightarrow} \lVert f  \rVert \cdot r,$$ iar din $\lVert f \rVert \cdot r \geq 1$, rezult\u a c\u a $\lVert f \rVert \geq \ds\frac{1}{r}$ \c si deci $\lVert f \rVert = \ds\frac{1}{r}$.
+\end{proof}
+
+\begin{obs}
+Propozi\c tia \ref{p125}, Consecin\c ta \ref{c121}, Consecin\c ta \ref{c122} \c si Propozi\c tia \ref{p126}, se numesc consecin\c te ale Teoremei lui Hahn-Banach, \^in cazul spa\c tiilor normate.
+\end{obs}
+
+Urm\u atorul rezultat caracterizeaz\u a completitudinea spa\c tiului normat  $(\mathcal{B}(X,Y)$.
+
+\begin{prop}
+Date $X$,$Y$ dou\u a spa\c tii normate nenule, avem c\u a $(\mathcal{B}(X,Y), \lVert \cdot \rVert_{\mbox{op}}) $ este spa\c tiu Banach dac\u a \c si numai dac\u a $(Y, \lVert \cdot \rVert)$ este spa\c tiu Banach.
+\end{prop}
+
+\begin{proof}
+"$\supset$": Avem c\u a $\mathcal{B}(X,Y)$ este complet. Fie $(y_n)_{n \geq 1} \subset \mathcal{F}_{(Y,\lVert \cdot \rVert)}.$
+Fix\u am $f \in X^{'}$, cu $\lVert f \rVert = 1$ \c si definim
+\[ T_n : X \rightarrow Y,\  T_n(x) = f(x) \cdot y_n,\  n \geq 1.\]
+Este imediat c\u a $T_n \in \mathcal{L}(X,Y).$ \^In plus,
+$$\lVert T_n x \rVert = \lVert f(x) \cdot y_n  \rVert = \lvert f(x) \rvert \cdot \lVert y_n \rVert \leq \lVert y_n \rVert \cdot \lVert f \rVert \cdot \lVert x \rVert = \lVert y_n  \rVert \cdot \lVert x \rVert,$$ pentru orice $x \in X$, ceea ce arat\u a c\u a $T_n \in \mathcal{B}(X,Y)$ \c si
+ $\lVert T_n \rVert_{\mbox{op}} \leq \lVert y_n \rVert.
+ $
+Aleg\^and un $x \in X \setminus\{0\}$ astfel \^inc\^at $f(x) = \lVert x \rVert$, ob\c tinem c\u a:
+$$\lVert T_n x \rVert = \lvert f(x) \rvert \cdot \lVert y_n \rVert = \lVert x \rVert \cdot \lVert y_n \rVert \leq \lVert T_n  \rVert \cdot \lVert x \rVert,$$ de unde rezult\u a c\u a
+$\lVert y_n \rVert \leq \lVert T_n \rVert$ \c si deci $\lVert T_n \rVert = \lVert y_n \rVert$.
+Dar
+$$\lVert T_n -T_m  \rVert_{\mbox{op}} = \lVert y_n - y_m \rVert,$$ pentru orice $n, m \in \mathbb{N}$, ceea ce arat\u a c\u a $(T_n)_{n \geq 1} \in \mathcal{F}_{\left(\mathcal{B}(X,Y), \lVert \cdot  \rVert_{\mbox{op}}\right)}$. Deci $(T_n)_{n \geq 1} \in \mathcal{C}_{\left( \mathcal{B}(X,Y), \lVert \cdot  \rVert_{\mbox{op}} \right)}$, adic\u a exist\u a $T \in \mathcal{B}(X,Y) $ astfel \^inc\^at $$\lVert T_n - T  \rVert \stackrel{n \rightarrow \infty}{\longrightarrow} 0.$$
+Cum $\lVert T_n x - T_x \rVert \leq \lVert T_n - T  \rVert_{\mbox{op}} \cdot \lVert x \rVert$, rezult\u a c\u a $\lim\limits_{n \to \infty} T_n x = T_x$, pentru orice $x \in X$.
+
+
+Aleg\^and $x \in X$ astfel \^inc\^at $f(x) = 1$, rezult\u a c\u a $y_n = T_n x \longrightarrow Tx$ \c si deci $(y_n)_{n \geq 1} \in \mathcal{C}_{(Y,\lVert \cdot \rVert)}$. Deci $\mathcal{F}_{(Y,\lVert \cdot \rVert)} \subset \mathcal{C}_{(Y,\lVert \cdot \rVert)}$ ceea ce arat\u a c\u a $(Y,\lVert \cdot \rVert)$ este un spa\c tiu Banach.
+
+"$\subset$":
+Avem c\u a $(Y,\lVert \cdot \rVert)$ este spa\c tiu Banach $(\mathcal{F}_{(Y,\lVert \cdot \rVert)}= \mathcal{C}_{(Y,\lVert \cdot \rVert)})$.
+Fie $(T_n)_{n \geq 1} \in \mathcal{F}_{\left( \mathcal{B}(X,Y),\lVert \cdot \rVert_{\mbox{op}}\right)}$.
+Pentru  $x \in X$ avem c\u a
+$$0 \leq \lVert T_m x - T_n x \rVert_{Y} = \lVert (T_m - T_n )x \rVert_{Y} \leq \lVert T_m-T_n  \rVert_{\mbox{op}} \cdot \lVert x \rVert \stackrel{m,n \rightarrow \infty}{\longrightarrow} 0, $$
+ de unde rezult\u a  c\u a $(T_n x)_{n \geq 1} \in \mathcal{F}_{(Y,\lVert \cdot \rVert)} = \mathcal{C}_{(Y,\lVert \cdot \rVert)}$, pentru orice $x \in X.$
+Definim
+$$T : X \rightarrow Y,\;  T_x = \lim\limits_{n \rightarrow \infty}T_n x.$$
+Datorit\u a propriet\u a\c tilor  de liniaritate ale operatorului "$\lim$", rezult\u a c\u a $T$ este un operator liniar. \^ Intr-adev\u ar
+\begin{eqnarray*}
+T(\alpha x+\beta y) &=& \lim\limits_{n \to \infty}T_n(\alpha x + \beta y) = \lim\limits_{n \to \infty}(\alpha T_n x + \beta T_n y) = \\
+&=&\lim\limits_{n \to \infty}\alpha T_nx + \lim\limits_{n \to \infty} \beta T_n y = \\
+&=& \alpha \lim\limits_{n \to \infty} T_nx + \beta \lim\limits_{n \to \infty} T_n y =   \alpha Tx + \beta Ty.
+\end{eqnarray*}
+
+Pentru $\varepsilon = 1$, rezult\u a c\u a exist\u a $n_0 \in \mathbb{N}$ astfel \^inc\^at $\lVert T_m-T_n \rVert \leq 1$, pentru orice $m,n \geq n_0$ . Deci $\lVert T_m x - T_n x \rVert \leq \lVert x \rVert$, pentru orice $m,n \geq n_0$, iar c\^and $m \longrightarrow \infty$, avem c\u a  $\lVert T_x - T_n x \rVert \leq \lVert x \rVert$, pentru orice $n \geq n_0$ \c si $x \in X$. Rezult\u a c\u a
+$T - T_{n_0} \in \mathcal{B}(X,Y)$ \c si cum $T_{n_0} \in \mathcal{B}(X,Y)$ ob\c tinem c\u a $T = (T - T_{n_0}) + T_{n_0} \in \mathcal{B}(X,Y)$.
+
+Pentru $\varepsilon >0$, avem c\u a exist\u a $n_0 \in \mathbb{N}$, cu proprietatea c\u a $\lVert T_m - T_n \rVert \leq \varepsilon$ pentru orice $m,n \geq n_0$, sau echivalent, $\lVert T_m x - T_n x \rVert \leq \varepsilon \cdot  \lVert x \rVert$, pentru orice $m,n \geq 0$ \c si $x \in X$.
+
+Pentru $x \in X$ fixat, atunci c\^and $m \longrightarrow \infty$ avem c\u a $\lVert Tx - T_n x \rVert \leq \varepsilon \cdot  \lVert x \rVert$, pentru orice $n \geq n_0$ \c si $x \in X$. Rezult\u a c\u a $\lVert T_n - T \rVert_{\mbox{op}} \leq \varepsilon$, pentru orice $n \geq n_0$ ceea ce arat\u a c\u a $T_n \pound\limits_{n \rightarrow \infty}^{\mathcal{B}(X,Y)} T$. Deci $(T_n)_{n \geq 1} \in \mathcal{C}_{\left( \mathcal{B}(X,Y),  \lVert \cdot \rVert_{\mbox{op}}\right)}$ ob\c tin\^ andu-se astfel c\u a
+
+
+
+\end{proof}
+\begin{cons}
+Dac\u a $X$ este un spa\c tiu normat, atunci $X^{'} = \mathcal{B}(X,\mathbb{K})$ este un spa\c tiu Banach.
+\end{cons}
+
+
+
+
+
+
+
+
+\newpage
+\chapter{SPA\c TII BANACH DE FUNC\c TII}
+\vspace{5mm}
+
+\section{Norm\u a generalizat\u a de func\c tii}
+
+ \^ In continuarea vom nota prin "$m$" m\u asur\u a Lebesque de pe axa real\u a, iar prin  $\mathcal{M}$, spa\c tiu liniar al func\c tiilor $f:\mathbb{R}_+\rightarrow \mathbb{R}$ m\u asurabile Lebesque \^in care identific\u am func\c tiile egale a.p.t.
+
+\begin{definition}\label{defnormeigen}
+O aplica\c tie $N:\mathcal{M}\rightarrow[0,\; \infty]$ se nume\c ste \emph{norm\u a generalizat\u a de func\c tii} dac\u a:
+\begin{enumerate}
+\item $N(f)=0$ dac\u a \c si numai dac\u a $f=0$ a.p.t;
+\item dac\u a $ \lvert f(t) \rvert\leqslant \lvert g(t) \rvert$ a.p.t, $t\in \mathbb{R}_+$ atunci $N(f)\leqslant N(g)$;
+\item $N(\alpha f)=\lvert \alpha \rvert \cdot N(f)$, pentru orice $\alpha\in \mathbb{R}$, $f\in \mathcal{M}$ cu $N(f)<\infty$ ;
+\item $N(f+g)\leqslant N(f)+N(g) $, pentru orice $f,g\in \mathcal{M}$;
+\end{enumerate}
+\end{definition}
+
+\begin{definition}
+Dac\u a $N$ este o norm\u a generalizat\u a atunci
+$$B_N=\{f \in \mathcal{M}\; : \; N(f)<\infty\}$$ se nume\c ste \emph{spa\c tiu de func\c tii asociat normei} $N$.
+\end{definition}
+
+\begin{remarc} Pentru orice norm\u a generalizat\u a $N$ avem c\u a
+$B$  este un spa\c tiu liniar.
+\end{remarc}
+
+\begin{proof}
+Dac\u a $f,g\in B_N$, $\alpha,\beta \in \mathbb{R}$ atunci $N(\alpha f + \beta g)\leqslant N(\alpha f)+N(\beta g)=\lvert \alpha \rvert \cdot N(f)+\lvert \beta \rvert \cdot N(g)<\infty$ ceea ce arat\u a c\u a $\alpha f + \beta g \in B_N$
+\end{proof}
+
+\begin{remarc}
+ Dac\u a $N$ este o norm\u a generalizat\u a atunci $B_N$ este un ideal \^\i n $\mathcal{M}$ \^\i n sensul c\u a dac\u a $f \in \mathcal{M}$, $g \in B_N$  \c si $\lvert f(t) \rvert \leqslant \lvert g(t) \rvert$ a.p.t. $t \in \mathbb{R}_+$, atunci $f \in B$.
+\end{remarc}
+
+\begin{prop}
+Dac\u a $N$ este o norm\u a generalizat\u a \c si $B=B_N$, aplica\c tia
+$$||\cdot||_B : B \to \mathbb{R}_+, \; \lVert  f \rVert_B := N(f),$$
+este o norm\u a pe $B$ numit\u a \emph{norm\u a de func\c tie}.
+\end{prop}
+
+\begin{proof} Axiomele normei rezult\u a imediat din propieta\c tiile $(1), (3)$ \c si $(4)$ din Defini\c tia \ref{defnormeigen}
+\end{proof}
+
+\begin{remarc}
+Dac\u a $N$ este o norm\u a generalizat\u a \c si $B=B_N$, atunci ($B,\lVert \cdot \rVert_B$) este spa\c tiu vectorial normat.
+\end{remarc}
+
+\begin{definition}
+Vom numi {\it spa\c tiu Banach de func\c tii} orice spa\c tiu Banach de forma ($B,\lVert \cdot \rVert_B$) unde $B = B_N$, iar $N$ este o norm\u a generalizat\u a.
+\end{definition}
+
+\begin{remarc}
+Fie $B$ un spa\c tiu Banach de func\c tii \c si $f \in \mathcal{M}$, $g \in B$, iar $\lvert f(t)\rvert \leqslant \lvert g(t)\rvert$ a.p.t $t \in \mathbb{R}_+$ atunci $f \in B$ \c si $\Vert f \rVert_B \leqslant \lVert g \rVert_B$.
+\end{remarc}
+
+\medskip
+
+\noindent Not\u am $Q(\mathbb{R}_+)$ clasa spa\c tiilor Banach de func\c tii $B$ cu proprietatea c\u a $\lambda_{[0,t)} \in B$, pentru orice $t>0$ , unde
+pentru $ A \subset \mathbb{R}_+ $, $\lambda_A$ noteaz\u a func\c tia caracteristic\u a a mul\c timii $A$, adic\u a
+$$ \lambda_A : \mathbb{R}_+ \rightarrow \mathbb{R} \quad \lambda_A (t) =
+\begin{cases}
+1 &, t \in A \\
+0 &, t \notin A
+\end{cases}$$
+(deci acele spa\c tii Banach de func\c tii ce con\c tin func\c tia caracteristic\u a a oric\u arui interval de forma $[0, \, t)$)
+
+\begin{exemple}
+Dac\u a $N(f) = \lVert f \rVert_p$, $B = L^p(\mathbb{R}_+ , \mathbb{R})$, $p \in [1,\infty]$ atunci:
+\smallskip
+Dac\u a $ p \in [1,\infty)$ atunci:
+$$N(\lambda_{[0,t)}) = \left(\int\limits_{0}^{\infty} \lambda_{[0,t)}^p (s)  ds\right)^ \frac{1}{p} = t^\frac{1}{p}<\infty$$ ceea ce arat\u a c\u a  $\lambda_{[0,t)}\in B$ , pentru orice $t>0$ \c si deci $L^p (\mathbb{R}_+,\mathbb{R}) \in Q(\mathbb{R}_+)$.
+\smallskip
+Dac\u a $p = \infty $ atunci $N(f) = \lVert f \rVert_{\infty}$ deci
+$$N(\lambda_{[0,t)}) = 1,$$ pentru orice $t> 0$ \c si deci $\lambda_{[0,t)} \in B$, pentru orice $t>0$ ceea ce arat\u a c\u a $L^{\infty}(\mathbb{R}_+ , \mathbb{R}) \in Q(\mathbb{R})$.
+\end{exemple}
+
+\begin{definition}
+Dac\u a $B\in \mathbb{Q}(\mathbb{R}_+)$, atunci func\c tia
+$$F_B : (0,\; \infty) \rightarrow (0,\; \infty), \quad F_B(t) = \lVert \lambda_ {[0,\, t)} \rVert_B,$$ se nume\c ste {\it func\c tia fundamental\u a} a spa\c tiului $B$.
+\end{definition}
+
+\begin{prop}
+Pentru orice spa\c tiu Banach de func\c tii $B\in \mathbb{Q}(\mathbb{R}_+)$ avem c\u a func\c tia sa fundamental\u a $F_B$ este o func\c tie monoton\u a.
+\end{prop}
+
+\begin{proof}
+Dac\u a $0< t_1 < t_2$ atunci $\lambda_{[0,\, t_1]} \leqslant \lambda_{[0,\, t_2]}$ \c si deci $F_B{(t_1)}\leqslant F_B{(t_2)}$.
+\end{proof}
+
+\begin{exemple}
+Pentru $N(\cdot) = \lVert \cdot \rVert_p$ cu $B = L^p(\mathbb{R}_+ , \mathbb{R})$ avem
+
+$$F_B{(t)}= \begin{cases}
+t^{\frac{1}{p}} \text{,dac\u a $p \in [1,\infty)$} \\
+1 ,\text{dac\u a $p = \infty$}
+\end{cases}, $$ pentru orice $t \in \mathbb{R}_+^{*}$.
+\end{exemple}
+
+
+\section{Clase de spa\c tii de func\c tii}
+
+Vom nota cu:
+\begin{itemize}
+\item $\mathcal{B}(\mathbb{R}_+) =$ clasa spa\c tiilor Banach de func\c tii $B \in Q(\mathbb{R}_+)$ cu proprietatea c\u a
+\[ \lim_{t \to \infty} F_B{(t)} = +\infty \]
+\item $\mathcal{E}(\mathbb{R}_+) = $ clasa spa\c tiilor Banach de func\c tii $B \in \mathcal{B}(\mathbb{R}_+)$ cu proprietatea c\u a \[ \inf_{n \in \mathbb{N}} \lVert \lambda_{[n,n+1)} \rVert_B >0\]
+\end{itemize}
+
+\begin{exemple}
+Pentru $N(\cdot) = \lVert \cdot \rVert_p$, $B = L^p(\mathbb{R}_+ , \mathbb{R})$, din Exemplul 2.1.1., rezult\u a c\u a $B \in \mathcal{B}(\mathbb{R}_+)$ dac\u a \c si numai dac\u a $p \in [1, \infty)$.
+\end{exemple}
+\begin{remarc} Evident $\mathcal{E}(\mathbb{R}_+) \subset \mathcal{B}(\mathbb{R}_+)$.
+\end{remarc}
+\begin{exemple} Exemplul urm\u ator va ar\u ata c\u a inlcuziunea reciproc\u a de mai sus nu este adev\u arat\u a. Aplica\c tia
+\[ N : \mathcal{M} \to [0, \, \infty], \quad
+N(f) = \sum\limits_{n=0}^{\infty} {\frac{1}{n+1} \cdot \int\limits_{n}^{n+1}{\lvert f(t) \rvert dt}}\]
+este o norm\u a generalizat\u a, iar spa\c tiul $B = B_N$ este din $\mathcal{Q}(\mathbb{R}_+)$.
+\end{exemple}
+\^ Intr-adev\u ar: Pentru a ar\u ata c\u a $N$ este o norm\u a  generalizat\u a vom verifica fiecare din axiomele din Defini\c tia \ref{defnormeigen}.
+
+Fie $f \in \mathcal{M}$ astfel ca $N(f) = 0$. Atunci
+$$\int\limits_{n}^{n+1}\lvert f(t) \rvert dt = 0,$$ pentru orice $n \in \mathbb{N}$ \c si deci $f = 0$ a.p.t. pe $[n,\, n+1]$, pentru orice $n \in \mathbb{N}$ ceea ce arat\u a c\u a $f = 0$ a.p.t.
+
+\smallskip
+
+Fie $\alpha \in \mathbb{R}$ \c si $f \in \mathcal{M}$ cu $N(f) < \infty$. Avem:
+\begin{eqnarray*}
+N(\alpha f)&=&\sum\limits_{n=0}^{\infty}{\frac{1}{n+1} \cdot \int\limits_{n}^{n+1}{\lvert \alpha \cdot f(t) \rvert} dt} = \\
+&=&\sum\limits_{n=0}^{\infty}{\frac{1}{n+1} \cdot |\alpha| \int\limits_{n}^{n+1}{\lvert \cdot f(t) \rvert} dt} = |\alpha| N(f)
+\end{eqnarray*}
+
+\smallskip
+Fie $f, g \in \mathcal{M}$, cu $\lvert f(t) \rvert\leq \lvert g(t) \rvert $ a.p.t , $ t \in \mathbb{R}_+$. Cum
+ $$\frac{1}{n+1} \cdot \int\limits_{n}^{n+1}{\lvert f(t) \rvert dt} \leq \frac{1}{n+1} \cdot \int\limits_{n}^{n+1}{\lvert g(t) \rvert dt},$$
+ pentru orice $n \in \mathbb{N}$, prin \^\i nsumare rezult\u a c\u a $N(f) \leq N(g)$.
+
+\smallskip
+
+Fie $f, g \in \mathcal{M}$. Cum $\lvert f(t) + g(t)\rvert \leq \lvert f(t)\rvert + \lvert g(t)\rvert$, pentru orice $t \in \mathbb{R}_+$ rezult\u a c\u a:
+
+$$\frac{1}{n+1} \cdot \int\limits_{n}^{n+1}{\lvert f(t) + g(t) \rvert dt} \leq \frac{1}{n+1} \cdot \int\limits_{n}^{n+1}{\lvert f(t) \rvert dt} + \frac{1}{n+1} \cdot\int\limits_{n}^{n+1}{\lvert g(t) \rvert dt},$$ pentru orice $n \in \mathbb{N}$. \^ Insum\^ and, rezult\u a c\u a $N(f+g) \leq N(f) + N(g)$.
+
+Am ob\c tinut astfel c\u a $N$ este o norm\u a generalizat\u a. S\u a remarc\u am faptul c\u a $ L(\mathbb{R}_+ , \mathbb{R}) \subset B_N$ dar incluziunea este strict\u a c\u aci func\c tia
+
+$$f(t) = \sum\limits_{n = 0}^\infty \ds\frac{1}{n + 1}\lambda_{[n, \\, n + 1)}(t),$$ este din $B_N$ dar nu \c si din $L(\mathbb{R}_+ , \mathbb{R})$.
+
+\medskip
+
+\^ In continuare vom ar\u ata c\u a spa\c tiul liniar
+$B = B_N = \{f \in \mathcal{M} : N(f) \leq \infty\}$, normat de $\lVert f \rVert_B = N(f)$, este complet.
+
+Fie $(f_n)_n \in \mathcal{F}_{(B, \lVert \cdot \rVert_B)}$. Atunci, pentru orice $\varepsilon > 0$, exist\u a $m_0 \in \mathbb{N}$ astfel \^\i nc\^ at
+$$\lVert f_n - f_p \rVert_B < \varepsilon,$$  pentru orice $n,p \geq m_o$, sau echivalent
+
+$$\sum\limits_{n=0}^{\infty}{ \frac{1}{n+1} \cdot\int\limits_{n}^{n+1}{\lvert f_n {(t)} - f_p{(t)} \rvert dt }} < \varepsilon,$$ pentru orice$n,p \geq m_0$. Dac\u a $k \in \mathbb{N}$ fixat \c si $\delta>0$ rezult\u a c\u a exist\u a $m_\delta \in \mathbb{N}$ astfel \^inc\^ at
+
+$$\frac{1}{k+1}\cdot\int\limits_{k}^{k+1}{\lvert f_n {(t)} - f_p{(t)} \rvert dt}
+\leq\sum\limits_{n=0}^{\infty}\frac{1}{n+1}\cdot\int\limits_{n}^{n+1}\lvert f_n{(t)}-f_p{(t)}\rvert dt < \frac{\delta}{k+1},$$ pentru orice $n,p \geq m_0$ \c si deci
+$$\int\limits_{k}^{k+1}\lvert f_n({t})-f_p({t})\rvert dt<\delta,$$ pentru orice $n, p\geq m_\delta$. Atunci $(f_n)_n \in \mathcal{F}_{(L^1_{[k,\, k+1]}, \lVert \cdot \rVert_1)}$ deci \c si convergent \^\i n acest spa\c tiu, Exist\u a atunci $\varphi^k \in L^1_{[k,\, k+1]}$ astfel \^inc\^ at $f_n\xrightarrow{L^1_{[k,k+1]}} \varphi^k$ de unde ob\c tinem c\u a exist\u a $({f_{n_j}})_j\subset (f_n)_n$ cu $f_{n_j}\xrightarrow{}\varphi^k$ a.p.t. pe $[k,\, k+1]$.
+
+
+Definim aplica\c tia
+$$f:{\mathbb{R}}_+ \xrightarrow{}  \mathbb{R} , f(t)={ \varphi^k}(t) , t \in[k,k+1), k \in \mathbb{N}.$$
+Rezult\u a c\u a exist\u a ${({f_{n_i}})_i}_{i \in \mathbb{N}} \subset (f_n)_n$ cu ${f_n}_i\xrightarrow{}f$ a.p.t, $t \in \mathbb{R}_+.$
+
+Atunci
+$$\sum\limits_{n=0}^{\infty}\frac{1}{n+1}\cdot \int\limits_{n}^{n+1}\lvert f_n(t)-f(t)\rvert dt < \varepsilon,$$ pentru orice $n,i\geq m_0.$
+Pentru $m_i\xrightarrow{}\infty$ rezult\u a  c\u a
+$$\sum\limits_{n=0}^{\infty}\frac{1}{n+1}\cdot \int\limits_{n}^{n+1}
+\lvert f_n(t)-f(t) \rvert < \varepsilon,$$ pentru orice $n\geq m_0$.
+De aici deducem c\u a $f_n-f \in B$, pentru orice $n\geq m_0$ \c si cum $f_n \in B$ rezult\u a c\u a $f = - (f_n - f) + f_n \in B$. De asemenea
+avem c\u a
+$$\lvert f_n-f\rvert_B<\varepsilon,$$ pentru orice $n\geq m_0$ de unde rezult\u a c\u a $f_n\xrightarrow{B}f$ ceea ce arat\u a c\u a spa\c tiul normat $B$ este complet. Deci $(B,\lVert \cdot \rVert_B)$ este un spa\c tiu Banach de func\c tii.
+
+\^ In plus
+$$N(\lambda_{[0,t)})=\sum\limits_{n=0}^{\infty}\frac{1}{n+1}\cdot \int\limits_{n}^{n+1}\lambda_{[0,t)}(s) ds \leq \sum\limits_{n=0}^{[t]+1}\frac{1}{n+1}<\infty,$$ pentru orice $t > 0$ ceea ce arat\u a c\u a $\lambda_{[0,t)}\in B$, pentru orice $t > 0$, sau echivalent $B\in Q(\mathbb{R}_+)$.
+
+Mai mult,
+$$F_B(n+1)=\sum\limits_{k=0}^{\infty}\frac{1}{k+1}\cdot\int\limits_{k}^{k+1}\lambda_{[0,n+1)}(s) ds = \sum\limits_{h=0}^{n}\frac{1}{h+1},$$ ceea ce arat\u a c\u a
+$\lim\limits_{t \to \infty} F_B(t) = \infty$ \c si deci $B\in\mathcal{B}(\mathbb{R}_+)$.
+
+De asemenea,
+$$\lVert\lambda_{[n,n+1)}\rVert_B = \sum\limits_{h=0}^{\infty}\frac{1}{h+1}\cdot\int\limits_{h}^{h+1}\lambda_{[n,n+1)}(s) ds = \frac{1}{n+1},$$ pentru orice $n \in \mathbb{N}$ ceea ce arat\u a c\u a $\inf\limits_{n \in \mathbb{N}} \lVert \lambda_{[n,n+1)} \rVert = 0$, ceea ce arat\u a faptul c\u a $B \notin \mathcal{E}(\mathbb{R}_+)$.
+
+\newpage
+
+
+\section{Func\c tii Young}
+
+O clas\u a special\u a de spa\c tii Banach de func\c tii (spa\c tiile Orlicz) poate fi introdus\u a cu ajutorul func\c tiilor Young. Prezentarea acestor func\c tii constituie obiectul acestei sec\c tiuni.
+
+S\u a presupunem c\u a am fixat o func\c tie
+$$\varphi : [0,\infty) \rightarrow [0,\infty],$$
+monoton cresc\u atoare pe $(0, \, \infty)$, continu\u a la st\^ anga pe $(0, \, \infty)$ \c si neidentic nul\u a sau $+\infty$ pe intervalul $(0,\, \infty)$ (i.e. $\varphi_{|_{(0,\, \infty)}} \not= 0$ \c si $\varphi_{|_{(0,\, \infty)}}\not= \infty$).
+\begin{definition}
+Func\c tia
+$$Y_\varphi : [0,\infty) \rightarrow [0,\infty], \quad Y_\varphi(t) = \int\limits_{0}^{t}\varphi(\tau) d\tau,$$
+se nume\c ste \emph{func\c tia Young} asociat\u a lui $\varphi$.
+\end{definition}
+
+\begin{remarc} Este imediat (din propriet\u a\c tiile integralei Riemann) c\u a $Y_\varphi (0) = 0$ \c si $Y_\varphi$ este o func\c tie monoton cresc\u atoare pe intervalul $[0,\, \infty)$.
+\end{remarc}
+
+\begin{theorem}
+Func\c tia $Y_\varphi$ este o func\c tie convex\u a pe $[0,\, \infty)$.
+\end{theorem}
+
+\begin{proof} Deoarece $Y_\varphi$ este o func\c tie continu\u a pe $[0,\, \infty)$ este suficient s\u a ar\u at\u am c\u a aceasta este convex\u a \^\i n sens Jensen, adic\u a
+
+$$Y_\varphi\Big(\frac{t+s}{2}\Big)\leq \frac{Y_\varphi(t) + Y_\varphi (s)}{2},$$  poentru orice $t,s\geq 0$.
+
+Fie deci $t, s \in [0, \, \infty)$ \c si, pentru a fixa ideile, s\u a convenim c\u a $s < t$.
+
+Dac\u a $Y_\varphi (t) = \infty$ sau $Y_\varphi (s) = \infty$ atunci inegalitatea anterioar\u a este evident\u a.
+
+Presupunem \^\i n continuare c\u a $Y_\varphi (t),Y_\varphi (s) < \infty$. Cum $s\leq \ds\frac{s+t}{2} \leq t$ rezult\u a c\u a
+$$Y_\varphi \left(\frac{s+t}{2}\right) \leq Y_\varphi (t)<\infty.$$
+Deoarece func\c tia $\varphi$ este pozitiv\u a \c si cresc\u atoare, vom avea:
+\begin{eqnarray*}
+Y_\varphi (t) &+& Y_\varphi (s) - 2 \cdot Y_\varphi \left(\frac{t+s}{2}\right)=\\
+&=&\int\limits_{0}^{t} \varphi(\tau)d\tau + \int\limits_{0}^{s} \varphi(\tau)d\tau - \\
+&-&2 \cdot \left(\int\limits_{0}^{s} \varphi(\tau)d\tau + \int\limits_{s}^{\frac{t+s}{2}} \varphi(\tau)d\tau\right)=\\
+&=&\int\limits_{0}^{t} \varphi(\tau)d\tau - \int\limits_{0}^{s} \varphi(\tau)d\tau - 2 \cdot \int\limits_{s}^{\frac{s+t}{2}} \varphi(\tau)d\tau =\\
+&=&\int\limits_{s}^{t} \varphi(\tau)d\tau - 2 \cdot\int\limits_{s}^{\frac{s+t}{2}} \varphi(\tau)d\tau=\\
+&=&\int\limits_{s}^{\frac{t+s}{2}} \varphi(\tau)d\tau + \int\limits_{\frac{t+s}{2}}^{t} \varphi(\tau)d\tau - 2 \cdot \int\limits_{s}^{\frac{t+s}{2}}\varphi(\tau)d\tau=\\
+&=&\int\limits_{\frac{t+s}{2}}^{t} \varphi(\tau)d\tau - \int\limits_{s}^{\frac{t+s}{2}} \varphi(\tau)d\tau \geq 0
+\end{eqnarray*}
+
+\end{proof}
+
+
+\newpage
+
+
+\section{Spa\c tii Orlicz}
+
+S\u a fix\u am o func\c tie $\varphi : [0,\infty) \rightarrow [0,\infty]$, ca \^\i n paragraful anterior \c si fie
+$$Y_\varphi (t)=\int\limits_{0}^{t} \varphi (\tau) d\tau, \; t \geq 0,$$ func\c tia Young asociat\u a acesteia.
+
+Dac\u a $f \in \mathcal{M}$, definim:
+$$M_\varphi (f) = \int\limits_{0}^{\infty} Y_\varphi (\lvert f(t) \rvert)dt$$ \c si
+$$O_\varphi = \{f \in \mathcal{M} : \hbox{ exist\u a } c>0 \hbox{ astfel \^\i nc\^ at } M_\varphi (c \cdot f) < \infty\}.$$
+
+\begin{theorem}
+$O_\varphi$ este un subspa\c tiu liniar \^in $\mathcal{M}.$
+\end{theorem}
+
+\begin{proof}
+Fie $f,g \in O_\varphi$. Atunci exist\u a $ c_1,c_2>0$ cu proprietatea c\u a $M_\varphi(c_1 \cdot f)<\infty, M_\varphi(c_2 \cdot f)<\infty.$
+Vom nota: $c = \ds\frac{1}{2}\min\{c_1,c_2\}$. Atunci
+$$c \cdot \lvert f(t)+g(t) \rvert \leq c\lvert f(t)\rvert + c\lvert g(t) \rvert\leq \begin{cases}
+c_1 \lvert f(t) \rvert, \text{ dac\u a } \;\lvert f(t) \rvert \geq \lvert g(t) \rvert \\
+c_2 \lvert g(t) \rvert, \text{ dac\u a } \;\lvert f(t) \rvert<\lvert g(t) \rvert
+\end{cases}$$
+ceea ce implic\u a
+$$Y_\varphi (c\lvert f(t)+g(t) \rvert) \leq \begin{cases}
+Y_\varphi (c_1 \lvert f(t) \rvert), \text{ dac\u a } \; \lvert f(t)\rvert \geq \lvert g(t) \rvert\\
+Y_\varphi (c_2 \lvert g(t) \rvert), \text{ dac\u a } \; \lvert f(t)\rvert < \lvert g(t) \rvert
+\end{cases}$$
+\c si deci
+$$Y_\varphi (c \lvert f(t)+g(t) \rvert)\leq Y_\varphi(c_1 \lvert f(t)\rvert)+ Y_\varphi(c_2 \lvert g(t)\rvert),$$ pentru orice $t \geq 0$. Rezult\u a c\u a
+ $$ M_\varphi \Big(c (f+g)\Big) \leq M_\varphi(c_1 f) + M_\varphi(c_2 g) < \infty$$ ceea ce arat\u a c\u a $f+g \in O_\varphi$.
+
+Fie $f \in O_\varphi$ \c si $\lambda \in \mathbb{R}$.
+
+Dac\u a $\lambda = 0$ atunci $\lambda f = 0$, deci $Y_\varphi(\lambda f) = 0$ ceea ce arat\u a c\u a $M_\varphi (\lambda f) = 0.$
+
+Dac\u a $\lambda \neq 0$, cum $f \in O_\varphi$ rezult\u a c\u a exist\u a $c >0 $ astfel \^inc\^at $M_\varphi (cf)< \infty$. Atunci $\lambda f \in O_\varphi$.
+\end{proof}
+
+Pentru $f \in \mathcal{M}$ definim
+$$A_f = \left\{ c>0 \; : \; M_\varphi \Big( \frac{1}{c} \cdot f\Big) \leq 1\right\}.$$
+
+\begin{remarc}
+Dac\u a $c \in A_f$ atunci $[c,\; \infty) \subset A_f$.
+\end{remarc}
+
+\begin{proof}
+Pentru $\tilde{c} > c$ rezult\u a c\u a
+ $$M_\varphi \Big(\frac{1}{\tilde{c}}f\Big) = \int\limits_{0}^{\infty}Y_\varphi \Big(\frac{1}{\tilde{c}} \lvert f(t) \rvert\Big) dt \leq M_\varphi \Big(\frac{1}{c} f\Big)\leq 1.$$
+\end{proof}
+
+\medskip
+
+\^ In nota\c tiile de mai sus definim aplica\c tia
+$$N : \mathcal{M} \rightarrow [0,\, \infty], \quad N(f) = \begin{cases}
+\inf A_f, \text{ dac\u a } \; A_f \neq \varnothing\\
++\infty, \text{ dac\u a } \; A_f = \varnothing
+\end{cases}$$
+
+\begin{theorem}
+$N$ este o norm\u a generalizat\u a de func\c tii.
+\end{theorem}
+\begin{proof} Vom verifica pe r\^ and fiecare din cele 4 axiome ce definesc norma generalizat\u a (Defini\c tia \ref{defnormeigen}).
+
+\smallskip
+
+($1$) {\it $N(f) = 0$ dac\u a \c si numai dac\u a $f = 0$ a.p.t.}
+
+\smallskip
+
+Dac\u a $f \in \mathcal{M}$ astfel ca $N(f) = 0$, atunci $A_f \neq \varnothing$ \c si $\inf A_f = 0$. Exist\u a deci un \c sir $(c_n) \subset A_f$ cu
+$$N(f) < c_n < N(f)+ \frac{1}{n}$$ \c si $$M_\varphi \Big(\frac{1}{c_n}f\Big) \leq 1.$$
+
+"$\subset$": Dac\u a $f = 0$ a.p.t. $Y_\varphi \Big(\ds\frac{1}{c} \lvert f(t) \rvert\Big) = 0$ a.p.t. pentru orice $c > 0$ \c si deci rezult\u a c\u a $ M_\varphi \Big(\ds\frac{1}{c}f\Big) = 0 \leq 1$ pentru orice $c > 0$ ceea ce arat\u a c\u a $A_f = (0,\, \infty)$ \c si deci $N(f) = 0$.
+
+"$\supset$": Fie $f \in \mathcal{M}$ astfel ca $N(f) = 0$. Vom presupune prin reducere la absurd c\u a $f \neq 0$ a.p.t. Rezult\u a c\u a exist\u a o mul\c time m\u asurabil\u a $A \subset (0, \, \infty)$ cu $m(A) > 0$ \c si $\delta>0$ astfel \^inc\^at $\lvert f(t)\rvert \geq \delta$ pentru orice $t \in A$. Conform remarcii anterioare avem c\u a $A_f = (0,\, \infty)$ \c si deci, pentru orice $c > 0$ avem c\u a $M_\varphi \Big(\ds\frac{1}{c}f\Big)\leq 1$. Atunci
+
+$$1\geq M_\varphi \Big(\ds\frac{1}{c}f\Big) = \int\limits_{0}^{\infty}Y_\varphi \Big(\ds\frac{1}{c}\lvert f(t) \rvert\Big)dt \geq \int\limits_A Y_\varphi\Big(\ds\frac{\delta}{c}\Big)dt = Y_\varphi \Big(\ds\frac{\delta}{c}\Big)\cdot m(A),$$
+ceea ce arat\u a c\u a $Y_\varphi\Big (\ds\frac{\delta}{c}\Big)\leq \ds\frac{1}{m(A)}$. \^Ins\u a
+$$Y_\varphi = \int\limits_{0}^{\frac{\delta}{c}} \varphi(\tau) d\tau \leq \frac{1}{m(A)},$$
+pentru orice $c>0$, de unde rezult\u a (f\u ac\^ and $c \searrow 0$) c\u a
+$$ \int\limits_{0}^{\infty}\varphi(\tau)d\tau \leq \frac{1}{m(A)}.$$
+Cum \^\i ns\u a $\varphi$ este pozitiv\u  a \c si monoton cresc\u atoare pe $[0, \, \infty)$ rezult\u a c\u a $ \varphi_{|_{(0,\infty)}} = 0$ a.p.t. Contradic\c tie.
+
+Presupunerea fiind fals\u a  rezult\u a c\u a $f =0$ a.p.t.
+
+\smallskip
+
+($2$) {\it Pentru $\lvert f(t) \rvert \leq \lvert g(t) \rvert$ a.p.t. $t \geq 0$ rezult\u a c\u a $N(f) \leq N(g)$.}
+
+\smallskip
+
+Fie deci $f, g \in \mathcal{M}$ astfel ca $\lvert f(t) \rvert \leq \lvert g(t) \rvert$ a.p.t. $t \geq 0$.
+
+Dac\u a $N(g) = \infty$ atunci afirma\c tia este evident\u a.
+
+Dac\u a $N(g) < \infty$ rezult\u a c\u a exist\u a $c >0$ astfel \^inc\^at
+$$M_\varphi \Big(\ds\frac{1}{c} g\Big) \leq 1.$$
+Este suficient s\u a ar\u at\u am c\u a $A_g \subset A_f$.\\
+ \^ Intr-adev\u ar: dac\u a $c_1 \in A_g$, atunci
+$$M_\varphi\Big(\ds\frac{1}{c_1}f\Big) \leq M_\varphi\Big(\ds\frac{1}{c_1}g\Big) \leq 1,$$ ceea ce arat\u a c\u a $A_f \neq \varnothing$ \c si $A_g \subset A_f$.
+
+\smallskip
+
+($3$) {\it Pentru $\lambda \in \mathbb{R}$ \c si $f \in \mathcal{M}$ cu $N(f) < \infty$, rezult\u a c\u a $N(\lambda f) = \lvert \lambda \rvert\cdot N(f)$.}
+
+\smallskip
+
+Pentru $\lambda = 0$ afirma\c tia este adev\u arat\u a conform primei axiome mai sus verificat\u a.
+
+Fie acum $\lambda \neq 0$. Ar\u at\u am c\u a $A_{\lambda f} = \lvert \lambda \rvert A_f$.
+
+"$\supset$": Dac\u a $c \in A_{\lambda_f}$ rezult\u a c\u a $M_\varphi\Big(\ds\frac{\lambda}{c}f \Big) \leq 1$.
+Fie $c_1 = \ds\frac{c}{\lvert \lambda \rvert}$. Atunci
+
+$$M_\varphi\left (\frac{1}{c_1}f \right ) = M_\varphi \left (\frac{\lvert \lambda \rvert}{c} \right ) = M_\varphi \left (\frac{\lambda}{c} f \right ) \leq 1,$$
+ceea ce arat\u a c\u a $c_1 \in A_f$ \c si deci $ c = c_1 \lvert \lambda \rvert \in \lvert \lambda \rvert A_f$ sau, echivalent, $A_{\lambda f} \subset \lvert \lambda \rvert A_f$.
+
+"$\subset$": Fie $c \in A_f$. Avem c\u a $\lvert \lambda \rvert\cdot c \in A_{\lambda_f}$. \^ Intr-adev\u ar:
+
+$$M_\varphi \left (\frac{1}{\lvert \lambda\rvert c} \lambda f \right ) = M_\varphi \left (\frac{1}{\lvert \lambda\rvert c}\lvert\lambda\rvert f \right ) = M_\varphi \left (\frac{1}{c} f \right ) \leq 1$$ de unde rezult\u a c\u a  $\lvert \lambda \rvert c \in A_{\lambda_f}$. Atunci $\lvert\lambda \rvert A_f \subset A_{\lambda_f}$ \c si deci $A_{\lambda_f} \neq \varnothing$ \c si $\inf A_{\lambda_f} = \lvert \lambda \rvert \inf A_f$ sau echivalent $N(\lambda f) = \lvert  \lambda \rvert N(f)$.
+
+\smallskip
+
+($4)$  {\it Dac\u a $f,g \in \mathcal{M}$ atunci $N(f+g) \leq N(f) + N(g)$.}
+
+\smallskip
+
+Fie $f,g \in \mathcal{M}$.
+
+Dac\u a $N(f) = \infty$ sau $N(g) = \infty$ atunci proprietatea este evident satisf\u acut\u a.
+
+Dac\u a $N(f),N(g)<\infty$ atunci $A_f,A_g \neq \varnothing$. Ar\u at\u am c\u a $A_f + A_g \subset A_{f+g}$.
+
+Fie $c_1 \in A_f$ \c si $c_2 \in A_g$. Atunci $M_\varphi\Big(\ds\frac{1}{c_1}f \Big), \,  M_\varphi\Big(\ds\frac{1}{c_2}g \Big) \leq 1$. Pentru orice  $t\geq 0$ vom avea:
+\begin{eqnarray*}
+\frac{1}{c_1+c_2}\lvert f(t)+g(t) \rvert &\leq& \frac{1}{c_1+c_2}\lvert f(t) \rvert + \frac{1}{c_1+c_2} \lvert g(t) \rvert = \\ &=&\frac{c_1}{c_1+c_2} \frac{\lvert f(t) \rvert}{c_1} + \frac{c_1}{c_1+c_2} \frac{\lvert g(t) \rvert}{c_2}
+\end{eqnarray*}
+\c si cum $Y_\varphi$ este o func\c tie monoton cresc\u atoare, rezult\u a c\u a
+
+
+\begin{eqnarray*}
+Y_\varphi \left (\frac{1}{c_1+c_2}\lvert f(t)+g(t) \rvert \right ) &\leq& Y_\varphi \left (\frac{c_1}{c_1+c_2} \frac{\lvert f(t) \rvert}{c_1} + \frac{c_2}{c_1+c_2} \frac{\lvert g(t) \rvert}{c_2}\right ) \leq \\
+&\leq&\frac{c_1}{c_1+c_2} \cdot Y_\varphi \left (\frac{\lvert f(t) \rvert}{c_1}\right ) +  \frac{c_2}{c_1+c_2} \cdot Y_\varphi \left (\frac{\lvert g(t) \rvert}{c_2}\right )
+ \end{eqnarray*}
+ ceea ce implic\u a
+$$M_\varphi \left(\frac{1}{c_1+c_2}(f+g)\right) \!\leq\! \frac{c_1}{c_1+c_2} M_\varphi \left (\frac{1}{c_1}f\right )+\! \frac{c_2}{c_1+c_2} M_\varphi\! \left(\frac{1}{c_2}g\right )\leq \frac{c_1+c_2}{c_1+c_2}=1.$$ Deci $c_1+c_2 \in A_{f+g}$ \c si astfel implica\c tia de mai sus este verificat\u a. Dar atunci vom avea $A_{f+g} \neq \varnothing$ \c si $\inf A_{f+g} \leq \inf A_f + \inf A_g$ ceea ce arat\u a c\u a are loc ($4)$.
+
+\smallskip
+
+Din ($1$)-($4$) rezult\u a c\u a $ N$ este norm\u a generalizat\u a.
+\end{proof}
+
+\medskip
+
+Deoarece $N$ este o norm\u a generalizat\u a, putem considera spa\c tiul de func\c tii asociat acesteia:
+
+$$B_N = \{ f \in \mathcal{M}\; : \; N(f) < \infty\} = \{f \in \mathcal{M}: A_f \neq \varnothing\}.$$
+
+\begin{theorem} \^ In nota\c tiile de mai sus avem c\u a:
+$$O_\varphi =\{ f \in \mathcal{M}: N(f) < \infty\} = B_N.$$
+\end{theorem}
+
+\begin{proof}
+"$\supset$": Pentru $f \in \mathcal{M}$ cu $N(f) < \infty$ rezult\u a c\u a $A_f \neq \varnothing$ \c si exist\u a $c>0$ astfel \^\i nc\^ at  $M_\varphi \left(\ds\frac{1}{c}f \right) \leq 1 < \infty$ sau, echivalent $f \in O_\varphi$.
+
+"$\subset$": Pentru $f \in O_\varphi$ rezult\u a c\u a exsit\u a $c >0$ cu $M_\varphi (cf) < \infty$. Deosebim dou\u a cazuri:
+
+Dac\u a $M_\varphi (cf) = 0 \leq 1$ atunci $\ds\frac{1}{c} \in A_f$ \c si deci $A_f \neq \varnothing$ ceea ce arat\u a  c\u a $N(f)<\infty$
+
+Dac\u a $M_\varphi (cf) > 0$ atunci exist\u a $n_0 \in \mathbb{N}$ cu
+$$n_0\geq M_\varphi (cf) = \int\limits_{0}^{\infty} Y_\varphi (c \lvert f(t) \rvert) dt.$$
+Dar
+\begin{eqnarray*}
+Y_\varphi (c \lvert f(t) \rvert) &=& \int\limits_{0}^{c\lvert f(t) \rvert} \varphi(\tau) d\tau = \\
+&=&\sum\limits_{j=1}^{n_0} \int\limits_{\frac{(j-1)^c}{n_0} \lvert f(t) \rvert}^{\frac{j^c}{n_0}\lvert f(t) \rvert} \varphi (\tau) d\tau \geq n_0 \int\limits_{0}^{\frac{c}{n_0} \lvert f(t) \rvert}  \varphi(\tau) d\tau = \\
+&=& n_0 Y_\varphi\left (\frac{c}{n_0}\lvert f(t) \rvert \right) \Rightarrow n_0 M_\varphi \left (\frac{c}{n_0}f \right ) \leq M_\varphi (cf) \leq n_0,
+ \end{eqnarray*}
+ceea ce arat\u a c\u a $M_\varphi \left(\ds\frac{c}{n_0}f \right ) \leq 1$ \c si deci ${\left(\ds\frac{c}{n_0}\right)}^{-1} \in A_f$ adic\u a $A_f \neq \varnothing$ sau echivalent, $N(f) < \infty$.
+\end{proof}
+
+\smallskip
+
+Din Teorema 2.4.2 rezult\u a c\u a aplica\c tia
+
+$$\lVert \cdot \rVert _\varphi : O_\varphi \to \mathbb{R}_+, \quad \lVert f \rVert _\varphi = \inf \left\{ c > 0 \; : \; M_\varphi \left(\ds\frac{1}{c}f \right)\leq 1 \right\},$$
+este o norm\u a pe spa\c tiul liniar (real) $O_\varphi$. Aceast\u a norm\u a poart\u a numele de {\it norma Orlicz asociat\u a func\c tiei $\varphi$}, iar spa\c tiul normat $(O_\varphi, \lVert \cdot \rVert_\varphi)$ se nume\c ste {\it spa\c tiul Orlicz asociat func\c tiei $\varphi$}. Cele de mai sus arat\u a c\u a spa\c tiul normat $(O_\varphi, \lVert \cdot \rVert_\varphi)$ este un spa\c tiu de func\c tii.
+
+
+\begin{remarc} Mai sus avem c\u a
+$$O_\varphi = \left\{ f \in \mathcal{M} : \hbox{ exist\u a } c > 0 \hbox{ cu } M_\varphi\Big(\frac{1}{c}f\Big)<\infty\right\}.$$
+
+Definind \c si  $$Q_\varphi = \left\{ f \in \mathcal{M} \; : \; M_\varphi(f)<\infty\right\}$$
+\^\i n general avem c\u a $Q_\varphi \subsetneqq O_\varphi$.
+\end{remarc}
+ \^ Intr-adev\u ar: consider\^ and func\c tia
+$$\varphi : [0,\, \infty) \rightarrow [0, \, \infty], \quad \varphi(t) = \left\{\begin{array}{lcl}
+0&,& \hbox{ dac\u a } t \in [0,1]\\
+\infty&,& \hbox{ dac\u a } t>1 \end{array} \right.$$
+rezult\u a c\u a
+$$Y_\varphi(t) =\int\limits_{0}^{t} \varphi(\tau)d\tau=\left\{\begin{array}{lcl}
+0&,& \hbox{ dac\u a } t \in [0,1]\\
+\infty&,& \hbox{ dac\u a } t>1 \end{array} \right.$$
+Dar pentru func\c tia
+$$f : \mathbb{R}_+ \rightarrow \mathbb{R}, \quad f(t) = 2$$
+avem c\u a
+$M_\varphi(f) = \infty$, dar $M_\varphi\left(\ds\frac{1}{2} f\right) = 0 < \infty.$
+
+
+
+\newpage
+
+
+
+
+\section{Propriet\u a\c ti de completitudine ale spa\c tiilor de func\c tii}
+
+$\,$
+
+\vspace{1cm}
+
+Scopul acestei sec\c tiuni este de a prezenta c\^ ateva condi\c tii suficiente pentru completitudinea spa\c tiilor de func\c tii.
+
+\smallskip
+
+Vom presupune \^\i n continuare fixat\u a
+$$N : \mathcal{M} \rightarrow [0,\infty]$$ ca o norm\u a generalizat\u a de func\c tii \c si vom nota
+$$B=B_N=\{f \in \mathcal{M} : N(f) < \infty\},$$ spa\c tiu de func\c tii asociat, iar cu $\lVert f \rVert_B = N(f), f \in B$, norma asociat\u a.
+
+\begin{remarc}
+$(B,{\lVert \cdot \rVert}_B)$ este un spa\c tiu vectorial (real) normat
+\end{remarc}
+
+\begin{remarc}
+Avem c\u a $f \in B$ dac\u a \c si numai dac\u a $\lvert f \rvert \in B$. \^In plus, ${\lVert f \rVert}_B = {\lVert\, |f| \, \rVert}_B.$
+\end{remarc}
+\begin{proof} {\it Necesitatea}: Dac\u a $f \in B$, conform axiomei ($2$) din Defini\c tia \ref{defnormeigen} (c\u aci $\big|\, |f|\, \big| \leq |f|$), rezult\u a c\u a $\lvert f \rvert \in B$ \c si $N(\lvert f \rvert) \leq N(f)$.
+
+{\it Suficien\c ta}: Dac\u a $f \in \mathcal{M}$ cu $|f| \in B$, tot din Defini\c tia \ref{defnormeigen}, axioma ($2$) (c\u aci $|f| \leq \big|\, |f|\, \big|$) , rezult\u a c\u a $f \in B$ \c si $N(f) \leq N(|f|)$.
+
+Astfel $\lVert f \rVert_B = N(f) = N(|f|) = \lVert\, |f| \, \rVert_B$.
+\end{proof}
+
+\begin{definition}
+Spunem c\u a $N$ satisface:
+\begin{itemize}
+\item[-] proprietatea ($P_1$), sau proprietatea Beppo-Levi dac\u a pentru orice \c sir cresc\u ator de func\c tii pozitive $(f_n)_n \subset \mathcal{M}$, cu $f_n \nearrow f$ a.p.t., rezult\u a c\u a  $N(f_n) \nearrow N(f)$.
+
+\item[-] proprietatea ($P_2$), dac\u a pentru orice mul\c time m\u asurabil\u a Lebesque, $A \subset [0, \infty)$, cu $m(A)<\infty$  rezult\u a c\u a $N(\lambda_A)<\infty$ (sau echivalent $\lambda_A \in B$).
+
+\item[-] proprietatea ($P_3$), dac\u a pentru orice mul\c time m\u asurabil\u a Lebesque $A \subset [0, \infty)$, cu $m(A)<\infty$  exist\u a o constant\u a $K_A \in (0,\infty)$ astfel \^inc\^at:
+$$\int\limits_{A} \lvert f \rvert dm \leq K_A \cdot N(f),$$ pentru orice $f \in \mathcal{M}$.
+\end{itemize}
+\end{definition}
+
+\begin{remarc}
+Dac\u a $N$ satisface ($P_2$), atunci pentru orice $A \subset [0, \, \infty)$ m\u asurabil\u a Lebesque, rezult\u a c\u a $\lambda_A \in B$. Rezult\u a atunci c\u a $B \in \mathcal{Q}(\mathbb{R}_+)$.
+\end{remarc}
+
+\begin{remarc}
+Inegalitatea ce define\c ste proprietatea ($P_3$) este evident\u a pentru $f \in \mathcal{M}$ cu $N(f)=\infty$. De aceea sintagma "pentru orice $f \in \mathcal{M}$" poate fi \^\i nlocuit\u a cu "pentru orice $f \in B$".
+\end{remarc}
+
+\begin{remarc}
+Dac\u a $N$ satisface proprietatea ($P_3$) atunci pentru orice $f \in B$ \c si orice mul\c time m\u asurabil\u a $A \subset [0, \, \infty)$, de m\u asur\u a finit\u a,rezult\u  a c\u a $f\lambda_A \in L(\mathbb{R}_+, \mathbb{R})$.
+\end{remarc}
+
+\begin{remarc}
+Not\^ and cu $\mathcal{E}$ spa\c tiul tuturor func\c tiilor m\u asurabile, finit etajate, $s:\mathbb{R_+} \rightarrow \mathbb{R}$, cu etaje de masur\u a finit\u a, dac\u a $N$ satisface proprietatea ($P_3$), atunci $\mathcal{E} \subset B$.
+\end{remarc}
+
+\begin{proof}
+Pentru $s \in \mathcal{E}$ avem c\u a
+$$s=\sum\limits_{k=1}^{n}{a_k \cdot {\lambda_A}_k},$$ unde $A_k \subset [0, \, \infty)$ sunt m\u asurabile Lebesque $m(A_k)<\infty$, pentru orice $k=\overline{1, n}$.
+Deoarece $\lambda_{A_k} \in B$ \c si $B$ este un spa\c tiu liniar, rezult\u a c\u a $s \in B$.
+\end{proof}
+
+
+\begin{exemple} S\u a consider\u am spa\c tiile de func\c tii  $B = L^p(\mathbb{R_+,\mathbb{R}})$ cu  norma ${\lVert \cdot \rVert}_B = {\lVert \cdot \rVert}_p$, $p \in [1, \, \infty]$.
+
+Pentru $p=1$,
+proprietatea ($P_3$) este satisf\u acut\u a cu $K_A = 1$.
+
+Pentru $p \in (1,\infty)$ \c si $A \subset [0, \, \infty)$ finit m\u asurabil\u a Lebesque, conform inegalit\u a\c tii lui Cauchy-Buniakovsky-Schwartz, avem:
+
+$$\int\limits_{A}^{}{\lvert f \rvert} dm = \int\limits_{\mathbb{R_+}}^{}{\lvert f \rvert \cdot \lambda_A} d m \leq {(\int\limits_{\mathbb{R_+}}^{}{{\lvert f \rvert}^p}dm)}^{\frac{1}{p}} \cdot {(\int\limits_{\mathbb{R_+}}^{}{{\lambda_A}^q}dm)}^{\frac{1}{q}}={(m(A))}^{\frac{1}{q}}\lVert f\rVert_p,$$
+pentru orice $f \in L^p(\mathbb{R_+,\mathbb{R}})$, unde $\ds\frac{1}{p} + \ds\frac{1}{q} = 1$.
+
+Pentru $p=\infty$, dac\u a $ A \subset [0, \, \infty)$ este m\u asurabil\u a Lebesque cu $m(A)<\infty$ rezult\u a c\u a
+
+$$ \int\limits_{A}^{}{\lvert f \rvert} dm \leq K_A \cdot {\lVert f \rVert}_\infty,$$ pentru orice $f \in L^\infty(\mathbb{R}_+,\mathbb{R})$, unde
+$$K_A = \left\{ \begin{array}{lcl} m(A)&,& m(A) > 0 \\
+  1 &,& m(A)=0 \end{array} \right.$$
+
+\^In concluzie, toate spa\c tiile de func\c tii $L^p(\mathbb{R_+,\mathbb{R}})$ au propriet\u a\c tile ($P_1$), ($P_2$) \c si ($P_3$).
+\end{exemple}
+
+\begin{prop}\label{aptA}
+Dac\u a norma generalizat\u a $N$ verific\u a proprietatea ($P_3$) \c si $f_n \rightarrow f$ \^in B, atunci pentru orice mul\c time m\u asurabil\u a Lebesque $A \subset [0, \, \infty)$ cu $m(A)<\infty$, exist\u a un sub\c sir $(f_{n_k})_k \subset (f_n)_n$ cu proprietatea c\u a $f_{n_k} \rightarrow f$ a.p.t. pe $A$.
+\end{prop}
+
+\begin{proof}
+Fie $(f_n)_n \subset B$ cu proprietatea c\u a exist\u a $f \in B$ astfel ca  $f_n \xrightarrow{B} f$, adic\u a $\lim\limits_{n \to \infty} \lVert f_n-f \rVert_B = 0$.
+Fix\u am $A \subset [0, \, \infty)$ m\u asurabil\u a Lebesque cu $m(A)<\infty$ \c si $\varepsilon>0$. Pentru fiecare $n \in \mathbb{N}$ consider\u am mul\c timile
+$$A_n=\left\{ t \in A \; : \; \lvert f_n(t)-f(t) \rvert \geq \varepsilon \right\}.$$
+Atunci
+$$\frac{1}{\varepsilon} \int\limits_{A}^{}{\lvert f_n-f \rvert} dm \geq  \int\limits_{A_n}^{}{\frac{1}{\varepsilon} \lvert f_n-f \rvert} dm \geq \int\limits_{A_n}{}{1 dm} = m(A_n),$$
+ ceea ce arat\u a c\u a
+ $$m(A_n) \leq \frac{1}{\varepsilon} \int\limits_{A}^{}{\lvert f_n-f \rvert} dm \leq \frac{1}{\varepsilon} K_A N(f_n-f)=\frac{1}{\varepsilon} K_A {\lVert f_n-f \rVert}_B \xrightarrow[n \rightarrow \infty]{} 0.$$
+Deci \c sirul $(f_n)_n$ converge \^\i n m\u asur\u a la $f$ pe mul\c timea $A$, ceea ce arat\u a c\u a exist\u a un sub\c sir $(f_{n_k})_k \subset (f_n)_n$ convergent $a.p.t.$ la $f$ pe $A$.
+\end{proof}
+
+\begin{cor}
+Dac\u a norma generalizat\u a $N$ are proprietatea ($P_3$), atunci pentru orice $f_n \rightarrow f$ \^in B exist\u a $(f_{n_k})_k \subset (f_n)_n$ cu $f_{n_k} \rightarrow f$ a.p.t.
+\end{cor}
+
+\begin{proof}
+Rezult\u a din Propozi\c tia \ref{aptA}, folosind descompunerea
+$$\mathbb{R_+}=\bigcup\limits_{n \in \mathbb{N}}^{}{[n,n+1)}$$ \c si un procedeu de diagonalizare.
+\end{proof}
+
+\begin{prop}
+Dac\u a norma generalizat\u a $N$ are proprietatea ($P_3$) \c si $N(f)<\infty$, atunci $f$ este finit\u a a.p.t. (altfel spus, orice $f \in B$ este finit\u a a.p.t.).
+\end{prop}
+
+\begin{proof} Pentru $f \in \mathcal{M}$ cu $N(f)<\infty$, vom nota
+\begin{eqnarray*}
+A&=&\{t \in \mathbb{R_+}\; : \; \lvert f(t) \rvert = \infty\}\\
+A_n&=&\{t \in [n,\, n+1) \, : \; \lvert f(t) \rvert = \infty\}.
+\end{eqnarray*}
+Atunci $A=\bigcup\limits_{n \in \mathbb{N}}^{}{A_n}$. Dac\u a $t \in A_n$ \c si $k \in \mathbb{N^*}$ arbitrar atunci
+$\lvert f(t) \rvert \geq k$ \c si deci
+$$k \cdot m(A_n) \leq \int\limits_{A_n}^{}{\lvert f \rvert} dm \leq \int\limits_{[n,\, n+1)}^{}{\lvert f \rvert} dm \leq K_n \cdot N(f).$$
+Rezult\u a c\u a $k \cdot m(A_n) \leq K_n \cdot N(f)$, pentru orice $k \in \mathbb{N^*}$. F\u ac\^ and $k \rightarrow \infty$ rezult\u a c\u a $m(A_n)=0$, pentru orice $n \in \mathbb{N}$ ceea ce arat\u a c\u a $m(A)=0$ adic\u a $f$ este finit\u a a.p.t.
+\end{proof}
+
+\begin{prop}
+Dac\u a norma generalizat\u a $N$ are proprietatea ($P_1$) atunci pentru orice \c sir cresc\u ator de func\c tii pozitive $(f_n)_n \subset \mathcal{M}$, cu $f_n \nearrow f$ a.p.t.,
+una din afirma\c tiile de mai jos este adev\u arat\u a:
+\begin{itemize}
+\item[(a)] $f \notin B$ \c si $\lim\limits_{n \to \infty}{\lVert f_n \rVert}_B = \infty$
+
+\item[(b)] $f \in B$ \c si $\lim\limits_{n \to \infty}{\lVert f_n \rVert}_B = {\lVert f \rVert}_B$.
+\end{itemize}
+\end{prop}
+
+\begin{proof}
+Din proprietatea ($P_1$) rezult\u a c\u a $\lim\limits_{n \to \infty} N(f_n) = N(f)$. Atunci $f \in B$ dac\u a \c si numai dac\u a $N(f)<\infty$.
+\end{proof}
+
+\begin{lema}
+Fie $(x_n)_n$ un \c sir de numere reale pozitive, $\alpha_n =\inf\limits_{k \geq n} x_k$ , $\beta_n = \sup\limits_{k \geq n} x_k$, ($n \in \mathbb{N}$),
+$l = \varliminf\limits_{n \rightarrow \infty} x_n$ \c si $L= \varlimsup\limits_{n \to \infty} x_n$. Atunci:
+\begin{itemize}
+\item[(i)] exist\u a $\lim\limits_{n \rightarrow \infty}\alpha_n = l$
+\item[(ii)] exist\u a $\lim\limits_{n \rightarrow \infty}\beta_n = L$.
+\end{itemize}
+\end{lema}
+
+\begin{proof} ($i$) Cum $\{ x_k \; : \; k \geq n + 1\} \subset \{ x_k \; : \; k \geq n \}$, rezult\u a c\u a $\inf\limits_{k \geq n} x_k \leq \inf\limits_{k \geq n + 1} x_k$ sau echivalent $\alpha_n \leq \alpha_{n + 1}$, pentru orice $n \in \mathbb{N}$.
+Rezult\u a deci c\u a exist\u a $\lim\limits_{n \rightarrow \infty} \alpha_n \stackrel{not}{=} \alpha \in [0,\infty]$.
+
+Cum $l$ este un punct limit\u a al \c sirului $(x_n)_n$, rezult\u a c\u a exist\u a un sub\c sir $(x_{k_n})_n \subset (x_n)_n$ astfel ca $\lim\limits_{n \to \infty} x_{k_n} = l$.
+Dar $\alpha_{k_n} \leq x_{k_n}$, pentu orice $n \in \mathbb{N}$ \c si deci $\alpha \leq l$.
+
+Vom ar\u ata c\u a are loc \c si inegalitatea invers\u a.
+
+Pentru $n \in \mathbb{N}^\ast$ exist\u a $k_n \geq n $ astfel \^inc\^at
+$$\alpha_{k_n} \leq x_{k_n} \leq \alpha_{k_n} + \frac{1}{n}.$$
+
+Cum $(x_{k_n})_n \subset (x_n)_n$, iar $\lim\limits_{n \to \infty} x_{k_n} = \alpha$ rezult\u a c\u a $\alpha$ este un punct limit\u a al \c sirului $(x_n)_n$ \c si deci $\alpha \geq l$ ($l$ este cel mai mic punct limit\u a al \c sirului $(x_n)_n$), ceea ce \^\i ncheie demonstra\c tia.
+
+\smallskip
+
+($ii$) Cum $\{ x_k \; : \; k \geq n + 1\} \subset \{ x_k \; : \; k \geq n \}$, rezult\u a c\u a $\inf\limits_{k \geq n + 1} x_k \leq \inf\limits_{k \geq n} x_k$ sau echivalent $\beta_n \geq \beta_{n + 1}$, pentru orice $n \in \mathbb{N}$, ceea ce arat\u a c\u a \c sirul $(\beta_n)_n$ este descresc\u ator.
+Rezult\u a deci c\u a exist\u a $\lim\limits_{n \rightarrow \infty} \beta_n \stackrel{not}{=} \beta \in [0,\infty]$.
+
+Dar $L$ este un punct limit\u a al \c sirului $(x_n)_n$ \c si deci exist\u a un sub\c sir $(x_{k_n})_n \subset (x_n)_n$ astfel ca $\lim\limits_{n \to \infty} x_{k_n} = L$.
+Dar $\beta_{k_n} \geq x_{k_n}$, pentru orice $n \in \mathbb{N}$ \c si deci $\beta \geq L$.
+
+Ar\u at\u am c\u a are loc \c si inegalitatea invers\u a.
+
+Pentru $n \in \mathbb{N}^\ast$ exist\u a $k_n \geq n $ astfel \^inc\^at
+$$\beta_{k_n} - \frac{1}{n} \leq x_{k_n} \leq \beta_{k_n}.$$
+
+Cum $(x_{k_n})_n \subset (x_n)_n$, iar, de mai sus, $\lim\limits_{n \to \infty} x_{k_n} = \beta$, rezult\u a c\u a $\beta$ este un punct limit\u a al \c sirului $(x_n)_n$ \c si deci $\beta \leq L$ ($L$ este cel mai mare punct limit\u a al \c sirului $(x_n)_n$), ceea ce \^\i ncheie demonstra\c tia.
+\end{proof}
+
+\begin{theorem}[Fatou]\label{Fatou}
+Dac\u a norma generalizat\u a $N$ are proprietatea ($P_1$), $(f_n)_n \subset B$, $f_n \rightarrow f$ a.p.t. \c si $\varliminf\limits_{n \rightarrow \infty}\lVert f_n \rVert_B < \infty$, atunci $f \in B$ \c si avem c\u a $\lVert f\rVert_B \leq \varliminf\limits_{n \rightarrow \infty} \lVert f_n \rVert_B$.
+\end{theorem}
+
+\begin{proof} Fie $(f_n)_n \subset B$ ca \^\i n enun\c t. Definim
+$$h_n : \mathbb{R}_+ \rightarrow \mathbb{R}, \quad  h_n(t) = \inf\limits_{m \geq n} \lvert f_m(t) \rvert.$$
+Atunci $0 \leq h_n \leq h_{n+1}$.
+
+Demonstr\u am  \^\i n continuare c\u a $h_n \rightarrow \lvert f \rvert$ a.p.t.
+
+\smallskip
+
+Cum $f_n \rightarrow f$ a.p.t. rezult\u a c\u a $\lvert f_n \rvert \rightarrow \lvert f \rvert$ a.p.t.. Fie
+$$A = \{t \in \mathbb{R}_+ : (\lvert f_n(t) \rvert)_n \hbox{ convergent }\}$$
+Atunci $m(\mathbf{C}A) = 0$, iar pentru $t \in A$ \c si $n \in \mathbb{N}^\ast$, din defini\c tia lui $h_n(t)$, avem c\u a exist\u a $m_n > n$ astfel \^inc\^at
+$$h_n(t)\leq \lvert f_{m_n}(t) \rvert \leq h_n(t) + \frac{1}{n}.$$
+Rezult\u a c\u a $h_n(t) \rightarrow \lvert f(t)\rvert$ \c si deci $h_n \rightarrow \lvert f\rvert$ pe $A$ (deci a.p.t.).
+
+Dar $0 \leq h_n$, pentru orice $n \in \mathbb{N}$, \c si $h_n \nearrow \lvert f\rvert$. Conform propriet\u a\c tii ($P_1$) rezult\u a c\u a $N(h_n) \nearrow N(\lvert f\rvert)$.
+
+Cum $h_n \leq \lvert f_m \rvert$, pentru orice $n \leq m$, rezult\u a c\u a $N(h_n) \leq N(\lvert f_m \rvert)$, pentru orice $m \geq n$. Atunci $N(h_n) \leq \inf\limits_{m \geq n} N(\lvert f_m \rvert)$ \c si deci, conform lemei anterioare
+$$\lim\limits_{n \rightarrow \infty} N(h_n) \leq \lim\limits_{n \rightarrow \infty} \Big(\inf\limits_{m \geq n} N(\lvert f_n \rvert)\Big) = \varliminf\limits_{n \rightarrow \infty} N(\lvert f_n \rvert).$$
+
+\^Ins\u a $f_n \in B$ \c si atunci
+$$N(\lvert f_n \rvert) = N(f_n) = \lVert f_n \rVert_B \rightarrow \lVert f\rVert_B \leq \varliminf\limits_{n \rightarrow \infty}\lVert f_n\rVert_B < \infty,$$
+ceea ce \^\i ncheie demonstra\c tia.
+\end{proof}
+
+\begin{theorem} {\rm (Teorema Riesz-Fischer)} Fie $N$ o norm\u  a generalizat\u a cu propriet\u a\c tile ($P_1$) \c si ($P_3$). Dac\u a $(f_n)_n \subset B$ astfel \^\i nc\^ at $\sum\limits_{n = 0}^\infty \lVert f_n \rVert_{B} < \infty$ atunci \c sirul $(F_n)_n$, unde $F_n = \sum \limits_{k = 0}^n f_k$, $n \geq 0$, este convergent \^\i n $B$.
+\end{theorem}
+
+\begin{proof} Fie $(f_n)_n \subset B$ ca \^\i n enun\c t, $S_n = \sum\limits_{k = 0}^n \lVert f_k \rVert$, ($n \geq 0$), \c si $S = \sum\limits_{n = 0}^\infty \lVert f_n \rVert$. Deoarece $f_n \in B$ rezult\u a c\u a $\lvert f_n \rvert \in B$, pentru orice $n \geq 0$ \c si deci $S_n \in B$, pentru orice $n \geq 0$. Atunci $(S_n)_n$ este un \c sir cresc\u ator de func\c tii pozitive din $B$, convergent (\^\i n $B$)  la $S$. Conform propriet\u a\c tii ($P_1$), rezult\u  a c\u a
+$$\lim\limits_{ n \to \infty} \lVert S_n \rVert_B =  \lVert S \rVert_B.$$ Dar
+
+$$\lVert S_n \rVert_B =\left \lVert \sum\limits_{k = 0}^n \lVert f_n \rVert \right\rVert_B \leq \sum\limits_{k = 0}^n \lVert f_k \rVert_B.$$ Atunci
+$$\lim\limits_{n \to \infty}\lVert S_n \rVert_B  \leq \sum\limits_{n = 0}^\infty \lVert f_n \rVert_B < \infty.$$ Conform teoremei anterioare, rezult\u a c\u a $S \in B$ \c si
+$$\lVert S \rVert_B \sum\limits_{n = 0}^\infty \lVert f_n \rVert_B.$$ Conform proriet\u a\c tii ($P_3$) \c si Propozi\c tiei 2.5.3, rezult\u a  c\u a $S$ este finit\u a a.p.t.. Este corect definit\u a  (ca element din $\mathcal{M}$) func\c tia
+$$F = \sum\limits_{n = 0}^\infty f_n.$$
+Cum $|F_n| \leq \sum\limits_{k = 0}^n |f_k|$, pentru orice $n \in \mathbb{N}$, rezult\u a c\u a
+$$|F(t)| \leq \sum\limits_{n = 0}^\infty |f_n(t)| = S(t),\, \hbox{ a.p.t. } t \in \mathbb{R}_+.$$
+Dar $S \in B$ \c si deci $F \in B$ cu $\lVert F\rVert_B \leq \sum\limits_{n = 0}^\infty \lVert f_n \rVert_B$.
+\end{proof}
+
+\begin{cor}
+Fie $N$ o norm\u a generalizat\u a cu propriet\u a\c tile ($P_1$) \c si ($P_3$). Atunci spa\c tiul normat $(B, \lVert\cdot \rVert_B)$ este complet.
+\end{cor}
+
+\begin{proof}
+Conform teoremei anterioare, \^\i n spa\c tiul normat $(B, \lVert\cdot \rVert_B)$ avem c\u a orice serie absolult convergent\u a este \c si convergent\u a. Conform Propozi\c tiei 1.2.2, rezult\u a completitudinea acestui spa\c tiu
+\end{proof}
+
+
+\newpage
+
+\section{Completitudinea spa\c tiilor Orlicz}
+
+$\,$
+
+Vom ar\u ata \^\i n aceast\u a sec\c tiune c\u a orice spa\c tiu Orlicz este complet. Mai \^\i nt\^ ai s\u a specific\u am nota\c tiile utilizate (de fapt acelea\c si ca \^\i n sec\c tiunea 2.4.
+
+Fie aplica\c tia $\varphi : [0,\infty) \rightarrow [0,\infty]$ monoton cresc\u atoare \c si continu\u a la st\^ anga pe $[0, \, \infty)$, neidentic nul\u a sau infinit pe $(0, \, \infty)$. Reamintim c\u a func\c tia Young asociat\u a func\c tie $\varphi$ este
+
+$$Y_\varphi : [0,\infty) \rightarrow [0,\infty], Y_\varphi(t) = \int\limits_{0}^{t} \varphi(\tau) d \tau.$$
+Pentru orice $f \in \mathcal{M}$ am notat
+$$M_\varphi(f) = \int\limits_{0}^{\infty} Y_\varphi(\lvert f \rvert) dm,$$
+\c si s-a definit spa\c tiul Orlicz
+$$O_\varphi = \{f \in \mathcal{M} \; : \; \hbox{ exist\u a } c>0  \hbox{ cu } \mathcal{M}_\varphi(cf)<\infty\}$$
+\^\i nzestrat cu norma
+$$\lVert f \rVert_\varphi = \inf\Big\{ c>0 \; : \; \mathcal{M}_\varphi\Big(\frac{1}{c}f\Big) \leq 1\Big \}.$$
+
+\begin{remarc} Dup\u a cum am v\u azut \^\i n Sec\c tiunea 2.5, dac\u a pentru $f \in \mathcal{M}$ consider\u am mul\c timea
+$$A_f = \left\{ c>0 \; : \;  \mathcal{M}_\varphi\Big(\ds\frac{1}{c}f\Big) \leq 1 \right\},$$ atunci
+$$N : \mathcal{M} \rightarrow [0,\, \infty], \quad N_f = \left\{ \begin{array}{lcl} \inf A_f&,& \hbox{ dac\u a } A_f \neq \varnothing\\
+\infty &,& \hbox{ dac\u a } A_f = \varnothing \end{array} \right.,$$ este o norm\u a generalizat\u a, iar
+$$O_\varphi = B_N = \left\{ f \in \mathcal{M} \; : \;  N(f) < \infty \right\}$$ \c si $\lVert f \rVert_\varphi = N(f)$, pentru orice $f \in O_\varphi.$
+\end{remarc}
+
+\^ Incepem studiul completitudinii spa\c tiilor Orlicz prin:
+
+\begin{prop}
+Dac\u a $f \in O_\varphi$ \c si $\lVert f \rVert_\varphi >0$ atunci $ M_\varphi\left (\ds\frac{1}{\lVert f \rVert_\varphi}f\right )\leq 1$.
+\end{prop}
+
+\begin{proof} Pentru $f \in O_\varphi$ ca \^ in enun\c t, rezult\u a c\u a $\lVert f\rVert_\varphi = N(f) \in (0,\, \infty)$. Dar $N(f) = \inf A_f$ \c si deci exist\u a $c_n \in (0,\, \infty)$
+cu $c_n \searrow N(f)$.
+Atunci
+$$\frac{1}{c_n}\lvert f(t) \rvert \nearrow \frac{1}{N(f)} \lvert f(t) \rvert$$ \c si cum func\c tia Young $Y_\varphi$ este cresc\u atoare, rezult\u a c\u a
+$$Y_\varphi \left(\frac{1}{c_n}\lvert f(t) \rvert \right ) \nearrow Y_\varphi \left (\frac{1}{N(f)} \lvert f(t)\rvert \right).$$
+Conform Teoremei convergen\c tei monotone, rezult\u a
+$$\lim\limits_{n \to \infty}M_\varphi\left (\frac{1}{c_n}f\right ) =  M_\varphi\left (\frac{1}{N(f)}f\right ).$$
+
+Dar $c_n \in A_f$, pentru orice $n \in \mathbb{N}$ \c si deci $M_\varphi\left(\ds\frac{1}{c_n}f\right ) \leq 1$, pentru orice $n \in \mathbb{N}$. F\u ac\^ and $n \to \infty$, rezult\u a c\u a  $$M_\varphi\left (\frac{1}{N(f)}f\right) \leq 1,$$ sau echivalent
+$$M_\varphi\left(\frac{1}{\lVert f\rVert_\varphi}f\right)  \leq 1.$$
+\end{proof}
+
+\begin{remarc}
+Fie $f \in O_\varphi$ cu $\lVert f \rVert_\varphi >0$. Atunci $\lVert f \rVert _\varphi \in A_f$.
+\end{remarc}
+
+\begin{theorem}
+Norma $N = \lVert \cdot \rVert_\varphi$ verific\u a propriet\u a\c tile ($P_1$), ($P_1$) \c si ($P_3$).
+\end{theorem}
+
+\begin{proof} \emph{Verific\u am proprietatea} ($P_1$). Fie $(f_n)_n \subset \mathcal{M}$ cu propriet\u a\c tile
+$$0 \leq f_n \leq f_{n+1}, \; f_n \nearrow f \hbox{ a.p.t. }$$
+
+Conform celei de-a doua axiom\u a a normei generalizate rezult\u a c\u  a
+$$N(f_n) \leq N(f_{n+1}),$$ \c si
+$$N(f_n) \leq N(f),$$  pentru orice $n \in \mathbb{N}$.
+Fie $\alpha = \sup\limits_{n \in \mathbb{N}}N(f_n) = \lim\limits_{n \to \infty} N(f_n)$.
+Atunci $ \alpha \leq N(f)$
+
+Dac\u a $\alpha = \infty$ rezult\u a c\u a $N(f) = \infty$ \c si deci $N(f) = \lim\limits_{n \to \infty} N(f_n)$.
+
+Dac\u a $\alpha = 0$ atunci $N(f_n) = 0$, pentru orice $n \in \mathbb{N}$, deci $f_n = 0$ a.p.t, pentru orice $n \in \mathbb{N}$ ceea ce arat\u a c\u  a  $f = 0$ a.p.t.  \c si deci $N(f) = 0 = \lim\limits_{n \to \infty} N(f_n)$.
+
+Dac\u a $\alpha \in (0, \, \infty)$, elimin\^ and eventual un num\u ar finit din termenii \c sirului $(f_n)_n$ vom putea presupune c\u  a $0 < N(f_n) \leq \alpha < \infty$, pentru orice $n \in \mathbb{N}$. Avem:
+\begin{eqnarray*}
+M_\varphi\left (\frac{1}{\alpha}f_n\right ) &=& \int\limits_{0}^{\infty} Y_\varphi\left(\frac{1}{\alpha} f_n(t)\right) dt \leq \int\limits_{0}^{\infty}Y_\varphi\left (\frac{1}{N(f_n)}f_n(t)\right ) dt = \\
+&=& M_\varphi\left(\frac{1}{N(f_n)} f_n\right).
+\end{eqnarray*}
+
+Dar $N(f_n) < \infty$, sau echivalent $f_n \in O_\varphi$ \c si, conform propozi\c tiei anterioare, rezult\u a c\u a
+$$M_\varphi\left (\frac{1}{N(f_n)}f_n\right ) \leq 1$$ \c si deci
+$$ M_\varphi\left (\frac{1}{\alpha} f_n  \right ) \leq 1,$$ pentru orice $n \in \mathbb{N}$. Dar $f_n \nearrow f$ a.p.t.  \c si deci
+$$Y_\varphi\left (\frac{1}{\alpha}f_n \right ) \nearrow Y_\varphi\left (\frac{1}{\alpha}f \right ) \hbox{ a.p.t. }$$
+
+Din teorema convergen\c tei monotone rezult\u a c\u a:
+$$M_\varphi\left (\frac{1}{\alpha}f_n\right ) = \int\limits_{0}^{\infty}Y_\varphi\Big(\frac{1}{\alpha}f_n(t)\Big) dt \rightarrow \int\limits_{0}^{\infty} Y_\varphi\Big(\frac{1}{\alpha}f(t)\Big) dt = M_\varphi\left (\frac{1}{\alpha}f\right ).$$ ceea ce arat\u a c\u a
+$M_\varphi\Big(\ds\frac{1}{\alpha}f\Big)\leq 1 $, deci $\ds\frac{1}{\alpha} \in A_f$ de unde rezult\u a c\u  a $N(f) \leq \alpha$ \c si deci $N(f) = \alpha$. Rezult\u a c\u a $\lim\limits_{n \rightarrow \infty} N(f_n) = N(f)$.
+
+\medskip
+
+\emph{Verific\u am proprietatea} ($P_2$). Pentru $A \subset [0, \, \infty)$ m\u asurabil\u a Lebesque, cu $m(A) < \infty$, ar\u at\u am c\u a $\lambda_A \in O_\varphi$ (sau echivalent, $\mathcal{A}_{\lambda_A} \neq \varnothing)$.
+
+Deoarece $Y_\varphi(0) = 0$ \c si $Y_\varphi$ este continu\u a pe $[0,\, \infty)$, rezult\u a c\u a exist\u a $c > 0$ astfel \^inc\^at
+$$Y_\varphi (c) \leq \ds\frac{1}{m(A)}.$$ Atunci
+
+$$M_\varphi(c \cdot \lambda_A) = \int\limits_{0}^{\infty} Y_\varphi \left (c \cdot \lambda_A(t)\right ) dt = \int\limits_{A}Y_\varphi (c)\cdot m(A) \leq 1 < \infty$$ \c si deci $\lambda_A \in O_\varphi.$
+
+\medskip
+
+\emph{Verific\u am proprietatea} ($P_3$). Trebuie s\u a ar\u at\u am c\u a pentru $A \subset [0, \, \infty)$ m\u asurabil\u a Lebesque, cu $m(A) < \infty$, exist\u a $K_A>0$,
+cu proprietatea c\u a
+$$\int_A \lvert f  \rvert dm \leq K_A \cdot N(f),\leqno(1)$$ pentru orice $f \in \mathcal{M}$.
+
+Fie atunci $A\subset [0, \, \infty)$ ca mai sus.
+
+Dac\u a $N(f) = \infty$ atunci ($1$) este adev\u arat\u a pentru orice $K_A > 0$.
+
+Dac\u a $N(f) = 0$ atunci $f = 0$ a.p.t, sau echivalent, $\ds\int\limits_{A} \lvert f \rvert dm = 0$ \c si deci inegalitatea ($1$) este adev\u arat\u a pentru orice $K_A > 0$.
+
+Dac\u a $0< N(f) < \infty$, not\u am $c = \ds\frac{1}{N(f)} > 0$. Deoarece func\c tia Young $Y_\varphi$ este convex\u a, avem:
+\begin{eqnarray*}
+Y_\varphi \left (\frac{1}{m(A)} \int\limits_{A} c \lvert f \rvert dm \right ) \!\!&\leq& \!\!\frac{1}{m(A)} \cdot \int\limits_{A} Y_\varphi(c\lvert f \rvert) dm \leq \frac{1}{m(A)} \cdot \int\limits_{0}^{\infty} Y_\varphi (c \lvert f \rvert) dm  = \\
+&=&\frac{M_\varphi(c\lvert f \rvert)}{m(A)} = \frac{1}{m(A)} \cdot M_\varphi\Big(\frac{1}{N(f)}f\Big) \leq \frac{1}{m(A)} < \infty.
+\end{eqnarray*}
+A\c sadar
+$$Y_\varphi \left(\frac{1}{m(A)} \cdot \int\limits_{A} c \lvert f \rvert dm\right ) \leq \frac{1}{m(A)}. \leqno(2)$$
+
+Cum \^\i ns\u a $\varphi_{|_{(0,\, \infty)}} \not= 0$ \c si $\varphi_{|_{(0,\, \infty)}} \not= \infty$ rezult\u a c\u a exist\u a $t_0 \in (0,\, \infty)$ cu $\varphi(t_0) \in (0,\, \infty)$.
+Atunci, pentru $t>t_0$ avem:
+$$Y_\varphi(t) = \int\limits_{0}^{t} \varphi(\tau)d \tau \geq \int\limits_{t_0}^{t} \varphi(\tau)d \tau \geq \varphi(t_0)(t-t_0),$$ ceea ce arat\u a c\u a  $\lim\limits_{t \rightarrow \infty} Y_\varphi (t) = \infty$. A\c sadar $Y_\varphi$ este continu\u a \c si cresc\u atoare pe $[0,\, \infty)$ \c si $\lim\limits_{t \rightarrow \infty} Y_\varphi(t) = \infty$.
+
+Din ($2$) rezult\u a c\u  a exist\u a $\tilde{c}>0$ astfel \^inc\^at
+$$\frac{1}{m(A)} \cdot \int\limits_{A} c \lvert f \rvert dm \leq \tilde{c}.$$ Atunci
+$$\int\limits_{A} \lvert f \rvert dm \leq \frac{\tilde{c}}{c} m(A),$$ ceea ce demonstreaz\u a concluzia anun\c tat\u a pun\^ and $K_A  = \ds\frac{\tilde{c}}{c}$.
+\end{proof}
+
+
+\begin{cor}
+Spa\c tiul Orlicz $(O_\varphi,\lVert \cdot \rVert)$ este complet.
+\end{cor}
+
+\begin{proof}
+Din Teorema 2.6.2 \c si Corolarul Teoremei Riesz-Fischer.
+\end{proof}
+
+
+\newpage
+
+
+
+\section{C\^ ateva propriet\u a\c ti ale spa\c tiilor Orlicz}
+
+$\, $
+
+\vspace{1cm}
+
+Fie $\varphi$ ca \^in paragraful anterior. \^ Incepem prin dou\u a observa\c tii imediate (dar importante pentru studiul nostru ulterior).
+\begin{obs}
+Dac\u a $\varphi(t)>0$, pentru orice $t \in (0,\, \infty)$, atunci func\c tia sa Young $Y_\varphi$ este strict cresc\u atoare pe $[0, \, \infty)$ deci \c si injectiv\u a.
+\end{obs}
+
+\begin{obs}
+Dac\u a $0< \varphi(t) < \infty$, pentru orice $t\in (0, \, \infty)$ atunci func\c tia sa Young
+$$Y_\varphi : [0,\, \infty) \rightarrow [0, \, \infty)$$ este bijectiv\u a. Aceast\u a proprietate este adev\u arat\u a deoarece
+$Y_\varphi(0) = 0$, $\lim\limits_{t \rightarrow \infty} Y_\varphi(t) = \infty$ \c si $Y_\varphi$ este continu\u a.
+\end{obs}
+
+\begin{exemple}
+\emph{Pentru orice $p \in [1,\infty)$ spa\c tiile  $L^p(\mathbb{R}_+, \mathbb{R})$ sunt spa\c tii Orlicz}. \^ Intr-adev\u ar, fix\^ and $p \in [1, \, \infty)$, consider\u am func\c tia cresc\u atoare \c si continu\u a
+$$\varphi : [0,\, \infty) \rightarrow [0, \, \infty), \quad \varphi(t) = p \cdot t^{p-1}.$$ Func\c tia Young asociat\u a acesteia este
+$$Y_\varphi(t) = t^p, \; t \geq 0,$$ iar
+$$ M_\varphi(f) = \int\limits_{0}^{\infty}\lvert f(t) \rvert^p dt.$$ Atunci
+$$M_\varphi(c \cdot f) = c^p \cdot M_\varphi(f)$$ \c si deci
+$$M_\varphi(c \cdot f) < \infty \hbox{ dac\u a \c si numai dac\u a } M_\varphi(f) < \infty.$$
+Deci
+$(O_\varphi, \lVert \cdot \rVert_\varphi) = (L^p(\mathbb{R}_+, \mathbb{R}), \lVert \cdot \rVert_p)$
+\end{exemple}
+
+\begin{exemple} {\it Spa\c tiul $L^\infty(\mathbb{R}_+, \mathbb{R})$ este un spa\c tiu Orlicz.} \^ Intr-adev\u ar, consider\^ and func\c tia cresc\u atoare \c si continu\u a la st\^ anga
+$$\varphi : [0,\, \infty) \rightarrow [0, \, \infty], \quad \varphi(t) = \left\{ \begin{array}{lcl} 0 &,& \hbox { dac\u a } t \in [0,1]\\
+\infty &,& \hbox{ dac\u a } t>1 \end{array}\right. $$
+ob\c tinem c\u a func\c tia sa Young este
+$$Y_\varphi(t) = \left\{ \begin{array}{lcl} 0 &,& \hbox{ dac\u a } t \in [0,1]\\
+\infty &,& \hbox{ dac\u a } t>1 \end{array} \right. $$
+Atunci
+\begin{eqnarray*}
+M_\varphi(c \cdot f) = \int\limits_{0}^{\infty} Y_\varphi\Big(c \cdot \lvert f(t) \rvert\Big) dt < \infty \!\!&\hbox{d.n.d}& \!\! c \cdot \lvert f(t) \rvert \leq 1 \hbox{ a.p.t. } t \in \mathbb{R}_+ \! \hbox{ d.n.d. }\\
+&\hbox{ d.n.d }& \lvert f(t) \rvert \leq \frac{1}{c} \hbox{ a.p.t. } t \geq 0, \hbox{ d.n.d. } \\
+&\hbox{d.n.d.}& f \in L^{\infty}(\mathbb{R}_+,\mathbb{R}).
+\end{eqnarray*}
+\^ In plus, cum $\lVert f \rVert_\varphi = \inf\left\{ c > 0 \; :\; M_\varphi\Big( \ds\frac{1}{c}f \Big) \leq 1\right\},$ avem
+
+$$M_\varphi\Big(\ds\frac{1}{c}f\Big) \leq 1 \hbox{ d.n.d. } \lvert f(t) \rvert \leq c \hbox{ a.p.t.}  t \geq 0 $$
+\c si deci $\Vert f \rVert_{\infty} \leq c$ ceea ce arat\u a  c\u  a $\lVert f\rVert_\varphi = \lVert f \rVert_{\infty}$.
+
+A\c sadar $ (O_\varphi, \lVert \cdot \rVert_\varphi) = (L^\infty(\mathbb{R}_+, \mathbb{R}),\lVert \cdot \rVert_\infty).$
+\end{exemple}
+
+\bigskip
+
+\noindent Consider\u am clasele:\\
+\begin{itemize}
+\item[-] $\mathcal{Q}(\mathbb{R}_+)-$ clasa spa\c tiilor Banach de func\c tii $(B, \lVert \cdot \rVert_B)$ cu proprietatea c\u a $\lambda_{[0,\, t)} \in B$, pentru orice $t > 0$.
+
+\item[-] $\mathcal{B}(\mathcal{R}_+)-$ clasa spa\c tiilor Banach de func\c tii $(B,\lVert \cdot \rVert_B)$ cu $B \in \mathcal{Q}(\mathbb{R_+})$ \c si $\lim\limits_{t \rightarrow \infty} F_B(t) = \infty.$
+\item[-] $\mathcal{E}(\mathbb{R}_+)-$ clasa spa\c tiilor Banach de func\c tii $(B, \lVert \cdot \rVert_B)$ cu proprietatea c\u a $B \in \mathcal{B}(\mathbb{R}_+)$ \c si $\inf\limits_{n \in \mathbb
+N} \lVert \lambda_ {[n,\, n+1)}\rVert_B > 0.$
+\end{itemize}
+unde, pentru un spa\c tiu Banach de func\c tii $(B, \, \lVert \cdot \rVert_B)$ din $\mathcal{Q}(\mathbb{R}_+)$ func\c tia $F_B$ noteaz\u a func\c tia sa fundamental\u a, adic\u a aplica\c tia
+$$F_B : (0, \; \infty) \to (0, \; \infty), \quad F_B(t) = \lVert \lambda_{[0, \, t)} \rVert_B.$$
+
+\begin{remarc}
+$L^\infty(\mathbb{R}_+,\mathbb{R}) \in \mathcal{Q}(\mathbb{R}_+)$ \c si $L^\infty(\mathbb{R}_+,\mathbb{R}) \notin \mathcal{B}(\mathbb{R}_+).$
+\end{remarc}
+
+\begin{remarc}
+$L^p(\mathbb{R}_+,\mathbb{R}) \in \mathcal{E}(\mathbb{R}_+)$, pentru orice $p \in [1,\, \infty).$
+\end{remarc}
+
+\begin{prop}
+$O_\varphi \in \mathcal{Q}(\mathbb{R}_+).$
+\end{prop}
+
+\begin{proof} Pentru orice $t > 0$ avem:
+$$M_\varphi(c \cdot \lambda_{[0,\, t)}) = \int\limits_{0}^{\infty}Y_\varphi(c \cdot \lambda_{[0,\, t)}(\tau)) d\tau = \int\limits_{0}^{t} Y_\varphi(c) d\tau = t \cdot Y_\varphi (c) = t\int\limits_{0}^{c}\varphi(\tau)d \tau.$$
+Deoarece $\varphi_{|_{(0,\infty)}} \not= \infty$ rezult\u a c\u a  exist\u a $c > 0$ cu $\varphi(c) \in (0,\infty)$. Atunci
+
+$$Y_\varphi(c) \leq c \cdot \varphi(c) < \infty$$ de unde rezult\u a c\u a $M_\varphi(c \cdot \lambda_{[0,t)}) < \infty$ sau echivalent, $\lambda_{[0,t)} \in O_\varphi$, pentru orice $t > 0$.
+\end{proof}
+
+\begin{prop}{\rm (Func\c tia fundamental\u a a spa\c tiului Orlicz.)}
+Dac\u a $0 < \varphi(t) < \infty$, pentru orice $t > 0$, atunci
+$$F_{O_\varphi}(t) = \ds\frac{1}{Y_\varphi^{-1}\Big(\ds\frac{1}{t}\Big)},$$ pentru orice $t > 0$.
+\end{prop}
+
+\begin{proof} Pentru orice $t > 0$ avem:
+$$F_{O_\varphi}(t) = \lVert \lambda_{[0,\, t)}\rVert_\varphi = \inf\left\{ c > 0 \; : \; M_\varphi\Big( \frac{1}{c} \cdot \lambda_{[0,\, t)}\Big) \leq 1 \right\}.$$
+
+\^Ins\u a $M_\varphi\Big(\ds\frac{1}{c} \cdot \lambda_{[0,\, t)}\Big) = t \cdot Y_\varphi \Big(\ds\frac{1}{c}\Big)$ \c si atunci
+$$M_\varphi\Big(\ds\frac{1}{c} \cdot \lambda_{[0,\, t)}\Big) \leq 1 $$ dac\u a \c si numai dac\u a
+$$t \cdot Y_\varphi\Big (\ds\frac{1}{c}\Big) \leq 1$$ ceee ce este echivalent cu
+$$Y_\varphi\Big(\ds\frac{1}{c}\Big) \leq \ds\frac{1}{t}.$$ Deoarece func\c tia Young $Y_\varphi$ este cresc\u atoare, rezult\u a c\u a
+$$\ds\frac{1}{c} \leq Y_\varphi^{-1}\Big(\ds\frac{1}{t}\Big)$$ sau echivalent
+$$\ds\frac{1}{Y_\varphi^{-1}\Big(\ds\frac{1}{t}\Big)} \leq c.$$ deci $F_{O_\varphi}(t) = \ds\frac{1}{Y_\varphi^{-1}\Big(\ds\frac{1}{t}\Big)}$, pentru orice $t > 0$.
+\end{proof}
+
+\begin{prop}
+Dac\u a $0 < \varphi(t) < \infty$, pentru orice $t \in (0,\infty)$, atunci $O_\varphi \in \mathcal{E}(\mathbb{R}_+)$.
+\end{prop}
+
+\begin{proof} \^ In primul r\^ and s\u a observ\u am c\u a $O_\varphi \in \mathcal{B}(\mathbb{R}_+)$. \^ Intr-adev\u ar:
+$$\lim\limits_{t \rightarrow \infty}F_{O_\varphi}(t) = \lim\limits_{t \rightarrow \infty} \frac{1}{Y_\varphi^{-1}\Big(\ds\frac{1}{t}\Big)} =
+\lim\limits_{s \rightarrow 0}  \ds\frac{1}{Y_\varphi^{-1}(s)} = \infty,$$ ceea ce arat\u a c\u a \^\i ntr-adev\u ar $O_\varphi \in \mathcal{B}(\mathbb{R}_+).$
+
+\smallskip
+
+Vom ar\u ata \^\i n continuare c\u a $\inf\limits_{n \in \mathbb{N}} \lVert \lambda_{[n,\, n+1)} \rVert_\varphi > 0$.
+
+Pentru $n \in \mathbb{N}$ avem
+$$ \lVert \lambda_{[n,\, n+1)}\rVert_\varphi = \inf\left\{ c>0 \; : \; M_\varphi\Big(\ds\frac{1}{c} \cdot \lambda_{[n,\, n+1)}\Big) \leq 1\right\}.$$ Dar
+$$M_\varphi\Big(\ds\frac{1}{c} \cdot \lambda_{[n,\, n+1)}\Big) = \int\limits_{0}^{\infty}Y_\varphi\Big(\ds\frac{1}{c}\cdot \lambda_{[n,\, n+1)}(\tau)\Big)d\tau = \int\limits_{n}^{n+1}Y_\varphi\Big(\ds\frac{1}{c}\Big) d\tau = Y_\varphi\Big(\ds\frac{1}{c}\Big).$$ Rezult\u a c\u a
+$$M_\varphi\Big(\ds\frac{1}{c}\cdot \lambda_{[n,n+1)}\Big)\leq 1 $$ ceea ce implic\u a faptul c\u a $Y_\varphi\Big(\ds\frac{1}{c}\Big) \leq 1$ sau echivalent $\ds\frac{1}{c} \leq Y_\varphi^{-1}(1)$. Atunci $\ds\frac{1}{Y_\varphi^{-1}(1)} \leq c$ \c si deci
+$$\lVert \lambda_{[n,\, n+1)} \rVert_\varphi = \ds\frac{1}{Y_\varphi^{-1}(1)},$$ pentru orice $n \in \mathbb{N}$. Atunci
+$$ \inf\limits_{n \in \mathbb{N}}\lVert \lambda_{[n,\, n+1)}\rVert_\varphi = \frac{1}{Y_\varphi^{-1}(1)} > 0$$ de unde rezult\u a  c\u a \^\i ntr-adev\u ar $O_\varphi \in \mathcal{E}(\mathbb{R}_+)$.
+\end{proof}
+
+
+
+
+\chapter{SPA\c TII BANACH DE \c SIRURI}
+\section{Spa\c tii Banach de \c siruri}
+
+\^ In continuare prin $\mathbb{N}$, $R$, respectiv $\mathbb{C}$ vom nota mul\c timea numerelor naturale, corpul numerelr reale, respectiv, corpul numerelor complexe. Not\u am deasemenea cu $S$ spa\c tiul $\mathbb{C}-$liniar al tuturor \c sirurilor $s:\mathbb{N} \rightarrow \mathbb{C}$ ($S = {\mathbb{C}}^{\mathbb{N}}$).
+
+Dac\u a $s, u \in S$ cu $s_n, u_n \in \mathbb{R}$, pentru orice $n \in \mathbb{N}$, vom scrie c\u a $u \leq s$ dac\u a $u_n \leq s_n$, pentru orice $n \in \mathbb{N}$.
+
+\begin{definition}
+Numim {\it norm\u a generalizat\u a de \c siruri} o func\c tie
+$$N:S \rightarrow [0,\, \infty]$$ cu urm\u atoarele propriet\u a\c ti:
+\begin{enumerate}[(i)]
+\item $N(s)=0$ dac\u a \c si numai dac\u a $s=0$;
+\item dac\u a $\lvert s \rvert \leq \lvert u \rvert$ atunci $N(s) \leq N(u)$;
+\item $N(\alpha \cdot s)=\lvert \alpha \rvert \cdot N(s)$, pentru orice $\alpha \in \mathbb{C}$ \c si $s \in S$ cu $N(s)<\infty$;
+\item $N(s+u) \leq N(s)+N(u)$, pentru orice  $s,u \in S$.
+\end{enumerate}
+\end{definition}
+Dac\u a $N$ este o norm\u a generalizat\u a de \c siruri pe $S$ definim mul\c timea
+$$B_N = \{s \in S\; : \; {\lvert s \rvert}_B := N(s) <\infty \}.$$
+Este u\c sor de observat (\c tin\^ and cont de propriet\u a\c tile ($iii$) \c si ($iv$)) faptul c\u a $(B_N,\, {\lvert \cdot \rvert}_N)$ este un spa\c tiu liniar normat.
+Dac\u a $B_N$ este complet atunci $B_N$ se nume\c ste spa\c tiu Banach de \c siruri.
+
+Fixat\u a norma generalizat\u a $N$ vom nota, f\u ar\u a a exista pericol de confuzie, $B$ \^\i n loc de $B_N$.
+
+\begin{remarc}
+$B$ este un ideal \^in $S$ \^\i n sensul c\u a dac\u a $\lvert s \rvert \leq \lvert u \rvert$ \c si $u \in B$ atunci de asemenea $s \in B$ \c si ${\lvert s \rvert}_B \leq {\lvert u \rvert}_B$ (de aceea proprietatea (axioma) ($ii$) se mai nume\c ste \c si proprietatea de ideal a normei generalizate $N$).
+\end{remarc}
+\begin{remarc}
+Dac\u a $s_n \longrightarrow s$ \^in raport cu norma lui $B$ , atunci exist\u a un sub\c sir $(s_{n_k})_k$ convergent la $s$ punctual.
+\end{remarc}
+
+\medskip
+
+Pentru o submul\c time $A \subset \mathbb{N}$, prin $\lambda_A$ vom nota func\c tia caracteristic\u a a mul\c timii $A$, adic\u a \c sirul
+$$\lambda_A(n) = \left\{ \begin{array}{lcl} 1&,& \hbox{ dac\u a } n \in A \\ 0&,& \hbox{ dac\u a } n \notin A \end{array}\right. .$$
+
+Dac\u a $B$ este un spa\c tiu Banach de \c siruri definim:
+$$F_B : \mathbb{N}^* \rightarrow \overline{{\mathbb{R}}}_+, \qquad
+F_B(n):= \lvert \lambda_{\{ 0, 1, \ldots, n - 1\}} \rvert_N $$
+
+\noindent Func\c tia $F_B$ se nume\c ste {\it func\c tia fundamental\u a} a spa\c tiului Banach de \c siruri B.
+
+\begin{remarc}
+Conform propriet\u a\c tii ($ii$) rezult\u  a c\u a func\c tia fundamental\u a  a spa\c tiului $B$ este cresc\u atoare \c si deci exist\u a
+$$\lim\limits_{n \rightarrow \infty} F_B(n) = \sup\limits_{n \in \mathbb{N}^*} F_B(n) = \sup\limits_{n \in \mathbb{N}} \lvert \lambda_{\{ 0, 1, \ldots, n\}} \rvert_N.$$
+\end{remarc}
+
+\medskip
+
+Consider\u am urm\u atoarele clase de spa\c tii Banach de \c siruri:
+\begin{enumerate}[(i)]
+\item $\mathcal{B}(\mathbb{N})$ mul\c timea tuturor spa\c tiilor Banach de \c siruri $B$ cu proprietatea c\u a $$\lim\limits_{n \rightarrow \infty} F_B(n)=\infty;$$
+\item $\mathcal{E}(\mathbb{N})$ mul\c timea tuturor spa\c tiilor Banach de \c siruri $B$ cu $B \in \mathcal{B}(\mathbb{N})$ \c si $$\inf\limits_{n \in \mathbb{N}}{\lvert \lambda_{\{n\}} \rvert}_N>0;$$
+\item $\mathcal{L}(\mathbb{N})$ mul\c timea tuturor spa\c tiilor Banach de \c siruri cu proprietatea c\u a
+pentru orice $\varepsilon>0$, exist\u a $n_0 \in \mathbb{N}$ astfel \^inc\^at
+$${\lvert \lambda_{\{j-n_0,...,j\}} \rvert}_N \geq \varepsilon,$$ pentru orice $j \in \mathbb{N} , j \geq n_0$.
+\end{enumerate}
+\begin{remarc}\label{rer}
+Este u\c sor de observat c\u a $\mathcal{L}(\mathbb{N})\subset \mathcal{B}(\mathbb{N})$.
+\end{remarc}
+
+\noindent {\it \^ Intr-adev\u ar}: presupun\^ and, prin absurd, c\u a exist\u a $B \in \mathcal{L}(\mathbb{N}) \setminus \mathcal{B}(\mathbb{N})$, vom avea c\u a
+$$\sup\limits_{n \in \mathbb{N}^*} F_B(n) =  \sup\limits_{n \in \mathbb{N}} \lvert \lambda_{\{ 0, 1, \ldots, n\}}\rvert_N = M \in (0, \, \infty). \leqno(1)$$
+Cum $B \in \mathcal{L}(\mathbb{N})$, exist\u a \^\i ns\u a $n_0 \in \mathbb{N}$ astfel ca
+$${\lvert \lambda_{\{j-n_0,...,j\}} \rvert}_B \geq M + 1,$$ pentru orice $j \in \mathbb{N} , j \geq n_0$. Pentru $j = n_0$ rezult\u a c\u a
+$${\lvert \lambda_{\{0, 1,...,n_0\}} \rvert}_B \geq M + 1,$$ ceea ce contrazice inegalitatea ($1$) de mai sus.
+
+\begin{exemple}
+Consider\u am $\alpha_n=\ds\frac{1}{n+1}$, pentru orice $n \in \mathbb{N}$ \c si norma generalizat\u a
+$$N(s)=\sum\limits_{n=0}^{\infty}{\alpha_n \cdot \lvert s_n \rvert}, \; s = (s_n)_n \in S.$$
+Este u\c sor de observat c\u a spa\c tiul Banach de \c siruri $B$ \^in coresponden\c t\u a cu norma de mai sus are proprietatea c\u a $B \in \mathcal{B}(\mathbb{N})$, dar $B \notin \mathcal{E}(\mathbb{N})$ \c si $B \notin \mathcal{L}(\mathbb{N})$.
+\end{exemple}
+
+{\it \^ Intr-adev\u ar}: Pentru orice $n \in \mathbb{N}^*$ avem c\u a:
+$$F_B(n) = \lvert \lambda_{\{ 0, 1, \ldots, n - 1\}}\rvert_N = \sum\limits_{k = 1}^{n} \frac{1}{k}$$ \c si deci $\lim\limits_{n \to \infty}F_B(n) = \infty$, ceea ce arat\u a c\u a $B \in \mathcal{B}(\mathbb{N})$.
+
+Cum $\lvert \lambda_{\{ n\}}\rvert_N = \ds\frac{1}{n + 1}$, pentru orice $n \in \mathbb{N}$, rezult\u a c\u a $\inf\limits_{n \in \mathbb{N}}\lvert \lambda_{\{ n\}}\rvert_N = 0$ \c si deci
+$B \notin \mathcal{E}(\mathbb{N})$.
+
+De asemenea, pentru orice $n \in \mathbb{N}$ avem c\u a
+$$\lvert \lambda_{\{ n, n + 1, \ldots, 2n\}} \rvert_N = \frac{1}{n + 1} + \frac{1}{n + 2} + \ldots + \frac{1}{2n + 1} \leq \frac{n + 1}{2n + 1} \leq 1.$$
+
+Aceasta arat\u a c\u a $B \notin \mathcal{L}(\mathbb{N})$.
+
+
+\begin{exemple}
+Consider\u am $\alpha_n = \left\{ \begin{array}{lcl} 1&,& \hbox{ dac\u a } n=2k\\ \ds\frac{1}{n} &,& \hbox{ dac\u a } n = 2k + 1 \end{array}\right.$ \c si norma generalizat\u a:
+$$N(s) = \sum\limits_{n=0}^{\infty} {\alpha_n \cdot \lvert s_n \rvert}, \quad s = (s_n)_n \in S.$$
+Spa\c tiul Banach de \c siruri $B$ \^in coresponden\c ta cu norma de mai sus are proprietatea c\u a $B \in \mathcal{L}(\mathbb{N}) \setminus \mathcal{E}(\mathbb{N})$.
+\end{exemple}
+
+{\it \^ Intr-adev\u ar}: Pentru $n \in \mathbb{N}$ avem c\u a $\lvert \lambda_{\{ 2n + 1\}}\rvert_N = \ds\frac{1}{2n + 1}$ \c si deci $\inf\limits_{n \in \mathbb{N}}{{\lvert \lambda_{\{n\}} \rvert}_N}=0$. Rezult\u a c\u a $B \notin \mathcal{L}(\mathbb{N})$. Pe de alt\u a parte, pentru orice $n, k \in \mathbb{N}$ avem c\u a
+$$\lvert \lambda_{\{ n, n + 1, \ldots, n + 2k + 1\}}\rvert_N \geq 1 + \frac{1}{3} + \ldots + \frac{1}{2k + 1}.$$ Deoarece $\ds\sum\limits_{k \geq 0} \ds\frac{1}{2k + 1} = \infty$ rezult\u a c\u a $B \in \mathcal{L}(\mathbb{N})$. Deci $B \in \mathcal{L}(\mathbb{N}) \setminus \mathcal{E}(\mathbb{N})$.
+
+\begin{exemple}
+Fie $\beta_n= \left\{ \begin{array}{lcl} k&,& \hbox{ dac\u a } n= 2^k, k \in \mathbb{N} \\
+1 &,& \hbox{ dac\u a } n \notin \{ 2^k \; : \; k \in \mathbb{N}\} \end{array} \right., \; n \in \mathbb{N},$ \c si norma generalizat\u a
+$$N(s) = \sup\limits_{n \in \mathbb{N}}\, {\beta_n  \lvert s_n \rvert}, \quad s= (s_n)_n \in S.$$
+Atunci $B \in \mathcal{E}(\mathbb{N}) \setminus \mathcal{L}(\mathbb{N})$.
+\end{exemple}
+
+{\it \^ Intr-adev\u ar}: Pentru orice $n \in \mathbb{N}$ avem c\u a
+$${\lvert \lambda_{\{n\}}\rvert}_N = \beta_n= \left\{ \begin{array}{lcl} k&,& \hbox{ dac\u a } n= 2^k, k \in \mathbb{N} \\
+1 &,& \hbox{ dac\u a } n \notin \{ 2^k \; : \; k \in \mathbb{N}\} \end{array} \right.$$
+\c si deci $\inf\limits_{n \in \mathbb{N}}{\lvert \lambda_{\{n\}}\rvert}_N=1$, ceea ce arat\u a c\u a $B \in \mathcal{E}(\mathbb{N})$. \^ In plus
+$$F_B(2^n + 1) = \lvert \lambda_{\{0, 1, \ldots, 2^n \}} \rvert_N \geq  \lvert \lambda_{\{2^n \}} \rvert_N= 0,$$ pentru orice $n \in \mathbb{N}$, ceea ce arat\u a c\u a $\lim\limits_{n \rightarrow \infty} F_B(n)=\infty$. Dar
+$$\lvert \lambda_{\{2^n + 1, 2^n + 2, \ldots, 2^{n + 1} - 1 \}} \rvert_N = 1, $$ deci nu oric\^ at de mare, de\c si $card\{2^n + 1, 2^n + 2, \ldots, 2^{n + 1} - 1 \} = |2^n - 1| \longrightarrow \infty$. Deci $B \notin \mathcal{L}(\mathbb{N})$. A\c sadar $B \in \mathcal{E}(\mathbb{N}) \setminus \mathcal{L}(\mathbb{N})$.
+
+\begin{exemple}
+Dac\u a $p \in [1,\infty)$, atunci $\big(\ell^p(\mathbb{N},\mathbb{C}), \, \lVert \cdot \rVert_p\big) = (B_N, \, \lvert\cdot \rvert_N)$ cu
+$$N(s)={\big(\sum\limits_{n=0}^{\infty}{\lvert s_n \rvert}^p\big)}^{\frac{1}{p}}, \; s = (s_n)_n \in S.$$
+\^ In plus avem c\u a $\ell^p(\mathbb{N},\mathbb{C}) \in \mathcal{E}(\mathbb{N}) \cap \mathcal{L}(\mathbb{N})$.
+\end{exemple}
+
+{\it \^Intr-adev\u ar}: Pentru orice $n \in \mathbb{N}$ avem c\u a ${\lvert \lambda_{\{n\}} \rvert}_p=1$, deci $\ell^p(\mathbb{N},\mathbb{C}) \in \mathcal{E}(\mathbb{N})$, iar  ${\lVert \lambda_{\{j-n_0,...,j\}} \rVert}_p={(n_0+1)}^\frac{1}{p}$, pentru orice $n_0 \in \mathbb{N}$ \c si $j \in \mathbb{N},j \geq n_0.$ Rezult\u a c\u a $\ell^p(\mathbb{N},\mathbb{C}) \in \mathcal{L}(\mathbb{N})$.
+
+\begin{exemple}
+Avem c\u a $\big(\ell^\infty(\mathbb{N},\mathbb{C}), \, \lVert \cdot \rVert_\infty) = (B_N, \, \lvert\cdot \rvert_N)$ cu
+$$N(s)=\sup\limits_{n \in \mathbb{N}}\lvert s_n \rvert, \; s = (s_n)_n \in S.$$
+\^ In plus avem c\u a $\ell^p(\mathbb{N},\mathbb{C}) \notin \mathcal{B}(\mathbb{N})$.
+\end{exemple}
+
+{\it \^ Intr-adev\u ar}: Pentru orice $n \in \mathbb{N}^*$ avem c\u a $F_{\ell^\infty}(n) = \lVert \lambda_{\{ 0, 1, \ldots, n - 1\}}\rVert_\infty = 1$.
+
+\begin{exemple}
+Dac\u a $p \in [1,\infty)$ \c si $\alpha = (\alpha_{n})_n$ este un \c sir de numere reale strict pozitive cu $\sum\limits_{n=0}^{\infty} \alpha_n = \infty$, atunci spa\c tiul $B = l_\alpha^p(\mathbb{N},\mathbb{C})$ al tuturor \c sirurilor $s : \mathbb{N} \rightarrow \mathbb{C}$ cu proprietatea
+$$\sum\limits_{n=0}^{\infty} \alpha_n \cdot \lvert s(n) \rvert^p < \infty,$$ este un spa\c tiu Banach de \c siruri \^in raport cu norma :
+\[ \lvert s \rvert_{l_{\alpha}^{p}} = \Big(\sum\limits_{n=0}^{\infty} \alpha_n \cdot \lvert s(n) \rvert^p\Big)^{\frac{1}{p}}.\]
+Deoarece $F_{l_{\alpha}^{p}}(n) = \Big(\sum\limits_{j=0}^{n-1} \alpha_j\Big)^{\frac{1}{p}} ,$
+rezult\u a c\u a $l_{\alpha}^{p}(\mathbb{N},\mathbb{C}) \in \mathcal{B}(\mathbb{N}).$
+\end{exemple}
+\begin{exemple}
+Dac\u a $p\in [1,\infty)$ \c si $k = (k_n)_n$ este un \c sir de numere naturale cu urm\u atoarele propriet\u a\c ti:
+\begin{enumerate}[(i)]
+\item $k_n \geq n$, pentru orice $n \in \mathbb{N};$
+\item $\overline{\lim\limits_{n \rightarrow \infty}}(k_n - n) = \infty,$
+\end{enumerate} atunci spa\c tiul $E_{k}^{p}(\mathbb{N},\mathbb{C})$ al tuturor \c sirurilor $s : \mathbb{N} \rightarrow \mathbb{C}$ cu proprietatea :
+\[ \lvert s \rvert_{E_{k}^{p}} = \sup\limits_{n \in \mathbb{N}}\Big(\sum\limits_{j=n}^{k_n}\lvert s(j) \rvert^{p}\Big)^{\frac{1}{p}},\] este un spa\c tiu Banach de \c siruri cu $E_{k}^{p}(\mathbb{N},\mathbb{C}) \in \mathcal{B}(\mathbb{N}).$
+\end{exemple}
+\begin{exemple} ({\it Spa\c tiu Orlicz de \c siruri})
+Fie $\varphi : \mathbb{R}_{+} \rightarrow \overline{\mathbb{R}}_{+}$ o func\c tie cresc\u atoare, continu\u a la st\^anga \c si care nu este identic nul\u a sau $\infty$ pe intevalul $(0,\, \infty)$.
+Definim func\c tia:
+$$ Y_\varphi (t) = \int\limits_{0}^{t} \varphi(s) ds,$$ numit\u a {\it func\c tia Young} asociat\u a lui $\varphi$.
+
+Pentru $s : \mathbb{N} \rightarrow \mathbb{C}$ consider\u am
+$$M_N (s)= \sum\limits_{n=0}^{\infty} Y_N(\lvert s(n) \rvert).$$
+Mul\c timea $O_\varphi$ a  tuturor \c sirurilor $s \in S$ cu proprietatea c\u a exist\u a $k > 0$ astfel \^inc\^at $M_\varphi(k \cdot s)< \infty$ este u\c sor de verificat c\u a este un spa\c tiu liniar.
+
+\^In raport cu norma
+$$\lvert s \rvert_\varphi = \inf\left\{ k>0 \; : \; M_\varphi\Big(\frac{1}{k} \cdot s\Big) \right\}$$ este un spa\c tiu Banach de \c siruri , numit spa\c tiu de \c siruri Orlicz.
+Printre exemplele cunoscute de spa\c tii de \c siruri Orlicz amintim spa\c tiile Banach $\ell^{p}(\mathbb{N},\mathbb{C})$, $1 \leq p \leq \infty$, care sunt ob\c tinute pentru
+$$\varphi_p(t) = p \cdot t^{p-1},$$ dac\u a $1 \leq p < \infty$ \c si respectiv $$\varphi_\infty(t) = \left\{ \begin{array}{lcl}
+0&,& \hbox{ dac\u a } 0 \leq t \leq 1\\
+\infty &,& \hbox{ dac\u a } t > 1 \end{array} \right.,$$ dac\u a $p =\infty$.
+\end{exemple}
+
+\medskip
+
+\^In cele ce vor urma vom nota cu $\mathcal{F}$ mul\c timea tuturor func\c tiilor cresc\u atoare
+$$f : \mathbb{R}_{+} \rightarrow \mathbb{R}_{+},$$ cu proprietatea c\u a $f(0) = 0$ \c si  $f(t) > 0$, pentru orice $t > 0$.
+
+\begin{prop}
+Fie $\varphi : \mathbb{R}_{+} \rightarrow \mathbb{R}_{+}$ o func\c tie continu\u a la st\^anga. Dac\u a $\varphi \in \mathcal{F}$, atunci:
+\begin{enumerate}[(i)]
+\item Func\c tia Young $Y_\varphi$ asociat\u a lui $\varphi$ este bijectiv\u a;
+
+\item Func\c tia fundamental\u a $F_{O_{\varphi}}$ poate fi exprimat\u a \^in func\c tie de $Y_\varphi^{-1}$ prin :
+$$F_{O_{\varphi}} (n) = \frac{1}{Y_{\varphi}^{-1}\Big(\ds\frac{1}{n}\Big)},$$ pentru orice $n \in \mathbb{N}^{\ast}$;
+
+\item $O_\varphi \in \mathcal{E}(\mathbb{N}) \cap \mathcal{L}(\mathbb{N})$;
+\end{enumerate}
+\end{prop}
+
+\begin{proof} ($i$)  Avem c\u a $Y_\varphi$ este o func\c tie continu\u a cu $Y_\varphi(0) = 0$. Din $Y_\varphi(t) > 0$, pentru orice $t >0$ rezult\u a c\u a $Y_\varphi$ este strict cresc\u atoare \c si deoarece $\varphi$ este cresc\u atoare, ob\c tinem c\u a :
+$$Y_\varphi(t)  = \int\limits_{0}^{t} \varphi(s) ds \geq \int\limits_{1}^{t} \varphi(s) ds \geq (t-1) \cdot \varphi(1),$$ pentru orice  $t > 1$. A\c sadar $\lim\limits_{t \rightarrow \infty} Y_\varphi(t) = \infty.$ \^In concluzie, ob\c tinem c\u a $Y_\varphi$ este bijectiv\u a .
+
+\smallskip
+
+($ii$) Deoarece $M_\varphi(\lambda_{\{0, \ldots, n-1\}}) = n \cdot Y_\varphi(1)$, pentru orice $ n \in \mathbb{N}^{\ast}$, rezult\u a c\u a pentru orice $n \in \mathbb{N}^{\ast}$,
+$$\lambda_{\{0, \ldots, n-1\}} \in O_\varphi$$ \c si
+\begin{align*}
+F_{O_{\varphi}}(n) = \lvert X_{\{0,\ldots, n-1\}}\rvert_{N} &= \inf\Big\{k >0 : M_g\Big(\frac{1}{k}\Big) \cdot X_{\{0, \ldots, n-1\}}\leq 1 \Big\}\\
+ &= \inf \Big\{ k>0 : n \cdot Y_N\Big(\frac{1}{k}\Big) \leq 1 \Big\}\\
+  &= \frac{1}{Y_\varphi^{-1}\Big(\frac{1}{n}\Big)}.
+\end{align*}
+
+\smallskip
+
+($iii$) Folosind un argument asem\u an\u ator, ca \c si \^in ($ii$), vom ob\c tine c\u a :
+$$\lvert \lambda_{\{ j-n_0, \ldots , j \}} \rvert_{\varphi} =\frac{1}{Y_\varphi^{-1}}\Big(\frac{1}{n_0}\Big),\ \mbox{pentru orice}\  j,n_0 \in \mathbb{N}^{\ast}\ \mbox{\c si}\ j \geq n_0. \hspace{5mm} (\ast)$$
+Av\^and \^in vedere faptul c\u a, $Y_\varphi^{-1}$ este o func\c tie continu\u a cu $Y_\varphi^{-1}(0) = 0$, din rela\c tia $(\ast)$, deducem c\u a $O_\varphi \in \mathcal{L}(\mathbb{N}).$
+
+Observ\^and c\u a $\lvert \lambda_{\{ n \}} \rvert_{\varphi} = \ds\frac{1}{Y_\varphi^{-1}(1)}$, pentru orice $n \in \mathbb{N}$ \c si folosind Remarca. \ref{rer}, ob\c tinem c\u a $O_\varphi \in \mathcal{E}(\mathbb{N}).$
+\end{proof}
+
+\begin{exemple}
+Fie $\varphi \in \mathcal{F}$, o func\c tie continu\u a la st\^anga \c si $(\alpha_n)$, un \c sir de numere reale strict pozitive. Dac\u a $O_\varphi$ este un spa\c tiu Orlicz asociat func\c tiei $\varphi$, atunci not\u am cu $O_\varphi^{\alpha}$ , spa\c tiul tuturor \c sirurilor $s : \mathbb{N} \rightarrow \mathbb{C}$, cu proprietatea c\u a \c sirul $s_{\alpha} : \mathbb{N} \rightarrow \mathbb{C}, s_{\alpha}(n) = \alpha_n \cdot s(n)$, apar\c tine lui $O_\varphi.$\\
+Avem c\u a $O_\varphi$ este un spa\c tiu Banach de \c siruri , \^in raport cu norma:
+\[\lvert s \rvert_{O_{\varphi}}^{\alpha} = \lvert s_{\alpha}\rvert_{O_{\varphi}}.\]
+Not\u am cu $\mathcal{F}_{1}$, mul\c timea tuturor func\c tiilor $f \in \mathcal{F}$, cu proprietatea c\u a exist\u a $\delta > 0$ \c si $c>0$ , astfel \^inc\^at : $f(2t) \leq c \cdot f(t)$, pentru orice $t \in [0,\delta].$
+\end{exemple}
+\begin{prop}
+Dac\u a $\varphi$ este o func\c tie continu\u a la st\^anga, cu $\varphi \in \mathcal{F}_{1}$ \\\c si $(\alpha_n) \subset (0,\infty)$ un \c sir care converge la $0$ cu $\sum\limits_{n=0}^{\infty} \alpha_n \cdot \varphi(\alpha_n) = \infty$,
+ atunci $O_\varphi^{\alpha} \in \mathcal{B}(\mathbb{N}).$
+\end{prop}
+\begin{proof}
+Presupunem prin reducere la absurd c\u a exist\u a $M > 0$, astfel \^inc\^at $F_{O_{\varphi}^{\alpha}}(n) \leq M$, pentru orice $n \in \mathbb{N}^{\ast}$. \^Intruc\^at, pentru orice $n \in \mathbb{N}^{\ast}$ avem: \[F_{O_{\varphi}^{\infty}}(n) = \lvert X_{\{0,\ldots,n-1 \}} \rvert_{O_{\varphi}^{\alpha}} = \inf\Big\{ k>0 : \sum\limits_{j=0}^{n-1} Y_\varphi \Big(\frac{\alpha_j}{k}\Big) \leq 1\Big\},\] rezult\u a c\u a \[\sum\limits_{j=0}^{n-1} Y_\varphi\Big(\frac{\alpha_j}{M}\Big) \leq 1,\ \mbox{pentru orice}\  n \in \mathbb{N}^{\ast},\] ceea ce arat\u a c\u a \[\sum\limits_{n=0}^{\infty}Y_N\Big(\frac{\alpha_n}{M}\Big) \leq 1.\]
+Fie $\delta>0$ \c si $c > 0$ astfel \^inc\^at $N(2t) \leq c \cdot N(t)$, pentru orice $t \in [0,\delta]$. \^Intruc\^at $\alpha_n \longrightarrow 0$  rezult\u a c\u a exist\u a $n_0 \in \mathbb{N}^{\ast},$ astfel \^inc\^at $\alpha_n < \ds\frac{\delta}{2}$, pentru orice $n \geq n_0.$\\
+Fie $k_0 \in \mathbb{N}^{\ast},$ astfel \^inc\^at $2^{k_{0}} \geq M.$ \\
+Pentru $n \geq n_0$, avem :
+\begin{align*}
+Y_N\Big(\frac{\alpha_n}{M}\Big) = \int\limits_0^{\frac{\alpha_n}{M}} N(s)ds&\geq\int\limits_0^{\frac{\alpha_n}{2^{k_{0}}}} N(s) ds \geq\\
+ &\geq \frac{1}{2 \cdot c}\cdot\!\! \int\limits_{0}^{\frac{\alpha_n}{2^{k_{0}-1}}}\!\! N(s)ds\geq \ldots \geq \frac{1}{(2 \cdot c)^{k_{0}+1}} \cdot\!\! \int\limits_{0}^{2 \cdot \alpha_n}\!\! N(s)ds \geq\\
+   &\geq \frac{1}{(2 \cdot c)^{k_{0}+1}} \cdot \int\limits_{\alpha_n}^{2 \cdot \alpha_n}N(s)ds \geq\\
+   &\geq \frac{1}{(2 \cdot c)^{k_{o}+1}} \cdot \alpha_n \cdot N(\alpha_n),
+\end{align*} ceea ce implic\u a  $\sum\limits_{n=n_0}^{\infty} \alpha_n \cdot N(\alpha_n) \leq (2 \cdot c)^{k_{0}+1} \cdot \sum\limits_{n=n_0}^{\infty} Y_N\Big(\ds\frac{\alpha_n}{M}\Big) \leq \infty.$\\
+Prin urmare, $\sum\limits_{n \geq 0} \alpha_n \cdot N(\alpha_n)$ este convergent\u a  fapt ce contrazice ipoteza.
+\end{proof}
+
+
+\section{Spa\c tii Sch\" affer de \c siruri}
+
+$\,$
+
+\vspace{1cm}
+
+\^ In aceast\u a sec\c tiune vom discuta despre o clas\u a particular\u a de spa\c tii Banach de \c siruri scalare \c si anume spa\c tiile Sch\" affer. Prezentarea noastr\u a are la baz\u a lucrarea \cite{coffmanschaffer67}.
+
+ Reamintim c\u a spa\c tiul tuturor \c sirurilor complexe l-am notat prin $S$.
+
+Consider\u am operatorii liniari
+$R,L: S \to S$ defini\c ti prin
+$$ Rf(n)=\begin{cases} f(n-1) &,\ n\in\N^*\\ 0 &,\ n=0 \end{cases}\quad,\quad Lf(n)=f(n+1)$$
+numi\c ti \textit{operatorul shift la dreapta} respectiv, \textit{operatorul shift la st\^ anga}. Este imediat c\u a
+$$LRf=f$$ \c si
+$$RLf(n)= \left\{ \begin{array}{lcl} 0&,& n = 0 \cr f(n) &,& n\in\N^*\end{array}\right.,$$ pentru orice $f\in S$.
+Pentru simplificare, \^\i n continuare vom nota $\delta_k=\lambda_{\{k\}}$ pentru orice $k\in\N$.
+
+\begin{definition}
+Un spa\c tiu Banach de \c siruri $(E,\|\cdot\|_{E})$ se nume\c ste {\it spa\c tiu Sch\"{a}ffer de \c siruri} dac\u a sunt satisf\u acute urm\u atoarele condi\c tii:
+\begin{enumerate}
+\item[$(s_1)$] $\delta_0\in E$,
+\item[$(s_2)$] dac\u a  $f\in E$ atunci $Lf, Rf\in E$ \c si $\|Rf\|_{E}=\|f\|_{E}$,
+\end{enumerate}
+\end{definition}
+
+Reamintim c\u a pentru spa\c tiul Banach de \c siruri $(E,\|\cdot\|_{E})$ este verificat\u a \c si proprietatea:
+
+\smallskip
+
+"\emph{dac\u a $f\in S$ \c si  $g\in E$ astfel \^\i nc\^ at $|f|\leq|g|$, atunci $f\in E$ \c si $\|f\|_{E}\leq \|g\|_{E}$}"
+
+\smallskip
+
+\begin{remarc}
+Proprietatea ($s_2$) se mai nume\c ste \c si \emph{proprietatea de invarian\c t\u a la transla\c tii} a spa\c tiilor Sch\" affer \c si este motivul pentru care aceste spa\c tii sunt cunoscute \c si sub numele de \emph{spa\c tii de \c siruri invariante la transla\c tii}.
+\end{remarc}
+
+
+\begin{remarc}
+Conform propriet\u a\c tilor $(s_1)$ \c si $(s_2)$  rezult\u a c\u a  orice \c sir cu suport finit este con\c tinut \^\i n orice spa\c tiu Sch\"{a}ffer de \c siruri $E$.
+De asemenea, avem c\u a $\|Lf\|_{E}\leq\|f\|_{E}$ pentru orice $f\in E$.
+\end{remarc}
+
+{\it \^ Intr-adev\u ar}: S\u a fix\u am un spa\c tiu Sch\" affer $E$. Din proprietatea ($s_2$), inductiv, rezult\u a c\u a $R^k f \in E$, pentru orice $f \in E$ \c si $k \in \N$. Cum $\delta_0\in E$ \c si $R^k \delta_0 = \delta_k$, pentru orice $k \in \N$, rezult\u a c\u a $\delta_k \in E$, pentru orice $k \in \N$. Orice \c sir cu suport finit este \^\i ns\u a o combina\c tie liniar\u a finit\u a de \c siruri $\delta_k$, iar cum $E$ este un spa\c tiu liniar, rezult\u a c\u a orice \c sir cu suport finit este con\c tinut \^\i n orice spa\c tiu Sch\" affer.
+
+
+\begin{exemple}
+Dintre exemplele des \^\i nt\^ alnite de spa\c tii Sch\"{a}ffer de \c siruri amintim spa\c tiile \c sirurilor complexe absolut $p$-sumabile, cu $p\in[1,\infty)$,
+$$\ell^p_{\N}(\C)=\{f:\N\to\C\,:\,\sum_{k=0}^{\infty}|f(k)|^p<\infty\} \text{ cu norma }
+    \|f\|_p=\left(\sum_{k=0}^{\infty}|f(k)|^p\right)^{1/p} $$
+\c si
+$$\ell^{\infty}_{\N|}(\C)=\{f:\N\to\C\,:\,\sup_{n\in\N}|f(n)|<\infty\} \text{ cu norma }
+    \|f\|_{\infty}=\sup_{n\in\N}|f(n)|.$$
+Subspa\c tiul din $\ell^{\infty}_{\N|}(\C)$,
+$$\ell_0^{\infty}(\C)=\{\,f\in\ell^{\infty}\,:\,\lim_{n\to\infty}f(n)=0\,\}$$
+(notat \c si $c_0(\C)$) cu norma indus\u a, este un alt exemplu de spa\c tiu Sch\"{a}ffer de \c siruri.
+\end{exemple}
+
+\begin{exemple}
+Spa\c tiul \c sirurilor complexe, convergente, $(c, \| \cdot \|_\infty)$, nu este un spa\c tiu Sch\" affer. De fapt el nu este un spa\c tiu Banach de \c siruri c\u aci proprietatea de "ideal" nu este verificat\u a.
+\end{exemple}
+{\it \^ Intr-adev\u ar}: \c Sirul $((- 1)^n)_n$ nu este con\c tinut \^\i n $c$ de\c si este majorat de \c sirul constant egal cu $1$ (convergent, deci din $c$).
+
+\medskip
+
+Dup\u a cum vom vedea mai jos, spa\c tiile $\ell^1_{\N}(\C)$, $\ell^{\infty}_{\N}(\C)$ \c si  $\ell_0^{\infty}(\C)$ ocup\u a o pozi\c tie important\u a \^\i n clasa spa\c tiilor Sch\"{a}ffer de \c siruri.
+
+\medskip
+
+Pentru $E$ un spa\c tiu Sch\"{a}ffer de \c siruri, se definesc \c sirurile $\alpha_{E}, \beta_{E} \in \mathcal{S}$ prin
+\begin{gather*}
+\begin{split}
+\alpha_{E}(n)&=\inf\Big\{\,c>0\,:\, \sum_{k=0}^n|f(k)|\leq c\|f\|_{E}\,,\text{ pentru orice }f\in E\,\Big\}\ ,\\
+\beta_{E}(n)&=\|\chi_{\{0,1,...,n\}}\|_{E}\ ,
+\end{split}
+\end{gather*}
+care sunt cresc\u atoare \c si $\beta_{E}(n)>0$, pentru orice $n\in\N$.
+
+\begin{remarc}
+Dac\u a $E$ este un spa\c tiu Sch\"{a}ffer de \c siruri, atunci
+$$\sum_{k=m}^{n + m}|f(k)|\leq \alpha_{E}(n)\|f\|_{E} $$
+pentru orice $f\in E$ \c si  $m, n\in\N$.
+\end{remarc}
+
+\begin{prop}
+\label{artC:twoinequals}
+Dac\u a $E$ este un spa\c tiu Sch\"{a}ffer de \c siruri, atunci
+$$n+1\leq \alpha_{E}(n)\beta_{E}(n)\leq 2n+1,$$ pentru orice $n\in\N$.
+\end{prop}
+
+\begin{proof} Demonstra\c tia urmeaz\u a ideile din \cite[Prop.~2.1]{PredaPoganDCDIS05}.
+
+Pun\^ and $f = \lambda_{\{0, 1, \ldots, n\}}$ \^\i n inegalitatea
+$$\sum_{k=0}^n|f(k)|\leq \alpha_{E}(n)\|f\|_{E} $$
+ob\c tinem c\u a
+$$n + 1 \leq \alpha_{E}(n)\beta_{E}(n),$$ pentru orice $n \in \mathbb{N}$.
+
+Pentru operatorii shift $R$ \c si $L$ mai sus defini\c ti am v\u azut c\u a
+$$LRf=f$$ \c si
+$$RLf(n)= \left\{ \begin{array}{lcl} 0&,& n = 0 \cr f(n) &,& n\in\N^*\end{array}\right.,$$ pentru orice $f\in S$. Atunci
+$$\|L f\|_{E} = \|R L f\|_E \leq \|f\|_E,$$ pentru orice $f \in E$. Dar
+$$\Big(\sum\limits_{k = 0}^n |f(k)|\Big) \lambda_{\{ 0, 1, \ldots, n\}} = \sum\limits_{k = 0}^n L^k\Big(|f|\lambda_{\{ 0, 1, \ldots, n\}}\Big) + \sum\limits_{j = 1}^n R^j \Big(|f|\lambda_{\{ 0,. 1, \ldots, n - j\}}\Big).$$
+
+Aplic\^ and proprietatea de "ideal" ob\c tinem
+\begin{eqnarray*}
+\sum\limits_{k = 0}^n |f(k)| \beta_E (n) &=& \left\|\Big(\sum\limits_{k = 0}^n |f(k)|\Big) \lambda_{\{ 0, 1, \ldots, n\}}\right\|_E = \\
+&=&\left\|\sum\limits_{k = 0}^n L^k\Big(|f|\lambda_{\{ 0, 1, \ldots, n\}}\Big) + \sum\limits_{j = 1}^n R^j\Big(|f|\lambda_{\{ 0,. 1, \ldots, n - j\}}\Big)\right\|_E \leq \cr
+&\leq&\left\|\sum\limits_{k = 0}^n L^k\Big(|f|\lambda_{\{ 0, 1, \ldots, n\}}\Big)\right\|_E\!\!+ \left\|\sum\limits_{j = 1}^n R^j\Big(|f|\lambda_{\{ 0,. 1, \ldots, n - j\}}\Big)\right\|_E\!\! \leq \\
+&\leq& (2n + 1) \| f\|_E,
+\end{eqnarray*}
+pentru orice $f \in E$.
+
+
+\end{proof}
+
+\begin{exemple}
+Alte exemple remarcabile de spa\c tii Sch\"{a}ffer de \c siruri sunt spa\c tiile Orlicz de \c siruri discutate \^\i n sectiunle anterioare.
+
+Fie $\varphi:\R\to[0,\infty]$  o func\c tie cresc\u atoare, continu\u a la st\^ anga \c si neidentic $0$ sau $\infty$ pe $(0,\infty)$. Func\c tia Young ata\c sat\u a lui $\varphi$ este defint\u a prin
+$$Y_\varphi(t)=\int_{0}^t\varphi(s)ds\ ,\ t\geq0.$$ Spa\c tiul Orlicz generat de $\varphi$ este spa\c tiul:
+\begin{gather*}
+\begin{split}
+& \ell_{\varphi}=\{\,f\in\mathcal{S}\,:\ \text{exist\u a  }c>0\ \text{a. \^\i .} \sum_{k=0}^nY_\varphi(c|f(k)|)<\infty\,\}\ \text{ cu norma }\\
+& \|f\|_{\varphi}=\inf\{\,c>0\ :\ \sum_{k=0}^nY_\varphi(\,c^{-1}|f(k)|\,)\leq 1\,\}\quad \text{(norma Luxemburg )}\ .
+\end{split}
+\end{gather*}
+Reamintim c\u a pentru $1\leq p<\infty$, lu\^ and $\varphi(t)=pt^{p-1}$
+avem c\u a $(\ell_{\varphi},\|\cdot\|_{\varphi}) \equiv (\ell^p_{\N}(\C),\|\cdot\|_{p})$ \c si de asemenea
+$\ell^{\infty}_{\N}(\C)$ este un spa\c tiu Orlicz de \c siruri, ob\c tinut pentru $\varphi(t)=0$ dac\u a $t\in[0,\, 1]$ \c si
+$\varphi(t)=\infty$ dac\u a $t>1$.
+
+
+Pentru spa\c tiul Banach de \c siruri $(\ell_{\varphi},\|\cdot\|_{\varphi})$ condi\c tiile $(s_1)$ \c si $(s_2)$ sunt verificate,
+deci $(\ell_{\varphi},\|\cdot\|_{\varphi})$ este un spa\c tiu Sch\"{a}ffer de \c siruri.
+\end{exemple}
+
+\begin{remarc}
+Conform Propozi\c tiei 3.1.1., pentru orice $1\leq p\leq\infty$ (cu conven\c tia $\ds\frac{1}{\infty}=0$) avem
+\begin{gather*}
+\alpha_{\ell^p}(n)=(n+1)^{1-\frac{1}{p}} \quad,\quad \beta_{\ell^p}(n)=(n+1)^{\frac{1}{p}}
+\end{gather*}
+iar  \^\i n general, pentru spa\c tiile Orlicz de \c siruri,
+\begin{gather*}
+\alpha_{\ell^{\Phi}}(n)=(n+1)\Phi^{-1}\left(\frac{1}{n+1}\right) \quad,\quad
+    \beta_{\ell^{\Phi}}(n)=\frac{1}{\Phi^{-1}\Big(\ds\frac{1}{n+1}\Big)}\ .
+\end{gather*}
+\end{remarc}
+
+\begin{remarc}
+Dac\u a $p\in[1,\infty)$ \c si $(\ell_{\varphi},\|\cdot\|_{\varphi})=(\ell^p_{\N}(\C),\|\cdot\|_p)$, atunci $\lim\limits_{t\to 0}\ds\frac{Y_\varphi(t)}{t^p}=1$.
+
+{\it \^ Intr-adev\u ar}: Dac\u a  $(\ell_{\varphi},\|\cdot\|_{\varphi})=(\ell^p_{\N}(\C),\|\cdot\|_p)$, atunci $$\|\chi_{\{0,1,...,n\}}\|_{\varphi}=\|\chi_{\{0,1,...,n\}}\|_{p},$$ pentru orice $n\in\N$, ceea ce este echivalent cu
+$$\Phi^{-1}\left(\frac{1}{n+1}\right)=\left(\frac{1}{n+1}\right)^{\frac{1}{p}},$$ pentru orice $n\in\N$.
+Fie $x \in (0,\, 1]$ \c si $m=\left[\ds\frac{1}{x}\right]\in\N^*$. Cum $Y_\varphi^{-1}$ este cresc\u atoare, vom avea c\u a
+$$\left(\frac{1}{m+1}\right)^{\frac{1}{p}} = Y_\varphi^{-1}\left(\frac{1}{m+1}\right) \leq
+ Y_\varphi^{-1}(x) \leq Y_\varphi^{-1}\left(\frac{1}{m}\right) = \left(\frac{1}{m} \right)^{\frac{1}{p}} $$
+ceea ce implic\u a
+$$\left[\frac{1}{([1/x]+1)x} \right]^{\frac{1}{p}}\leq \frac{\Phi^{-1}(x)}{x^{\frac{1}{p}}} \leq
+ \left[\frac{1}{x[1/x]} \right]^{\frac{1}{p}} \ ,$$
+pentru orice $x \in (0,\, 1]$. Deci $\lim_{x\to0}\Phi^{-1}(x) x^{-\frac{1}{p}} =1$ \c si
+$$\lim_{u\to0}\frac{\Phi(u)}{u^p} = \lim_{u\to0}\frac{1}{\left[\ds\frac{\Phi^-1(\Phi(u))}{(\Phi(u))^{1/p}} \right]^p}  = 1\ .$$
+\end{remarc}
+
+\begin{exemple}({\it Exemplu de spa\c tiu Orlicz de \c siruri, diferit de orice $\ell^p$})
+\label{exOrlicznotlp}
+Consider\u am func\c tia $\varphi:\R_+\to \R_+$ by $\varphi(t) = \sum_{m=1}^{\infty}\ds\frac{\sqrt[m]{t}}{m^2}$. Atunci,
+$$  \Phi(t) = \int_{0}^t \varphi(s)ds = \sum_{m=1}^{\infty}\frac{t^{1+\frac{1}{m}}}{m(m+1)}\ . $$
+Avem c\u a $\ell_{\varphi}\neq\ell^p$, pentru orice $p\in[1,\, \infty]$.
+\end{exemple}
+
+{\it \^ Intr-adev\u ar}: Avem c\u a
+$$\lim\limits_{t\to0}\frac{\Phi(t)}{t}=0$$ \c si
+$$\lim\limits_{t\to0}\frac{\Phi(t)}{t^p}=\infty,$$ pentru orice $p\in(1,\infty)$. Conform remarcii anterioare ob\c tinem afirma\c tia din enun\c t pentru $p \in [1, \, \infty)$. De asemenea, $\ell^{\varphi}\neq\ell^{\infty}$ deoarece $\lambda_{\N}\in\ell^{\infty}\setminus\ell^{\varphi}$.
+
+\bigskip
+
+Pentru dou\u a spa\c tii Banach $(B_1,\|\cdot\|_1)$ \c si $(B_2,\|\cdot\|_2)$, vom spune c\u a $B_1$ este scufundat continuu
+\^\i n $B_2$ (\c si vom nota $B_1\hookrightarrow B_2$)
+dac\u a $B_1\subset B_2$ \c si exist\u a o constant\u a $c>0$ astfel \^\i nc\^ at
+$$\|f\|_2\leq c\|f\|_1$$ pentru orice $f\in B_1$. Aceasta este echivalent cu a spune c\u a aplica\c tia canonic\u a de incluziune
+$$j_{B_1,B_2} : B_1 \to B_2, \quad j_{B_1,B_2}(x)= x, \; x \in B_1,$$
+este continu\u a.
+
+\bigskip
+
+Are loc urm\u atoarea propozi\c  tie:
+
+\begin{prop}
+\label{prop1:structureofSchaffercl}
+Dac\u a  $(E,\|\cdot\|_{E})$ este un spa\c tiu Sch\"{a}ffer de \c siruri, atunci
+$$\ell^1_{\N}(\C)\hookrightarrow E\hookrightarrow \ell^{\infty}_{\N}(\C)$$ cu
+\begin{itemize}
+\item[(i)] $\|f\|_{E}\leq\beta_{E}(0)\|f\|_1$, pentru orice $f\in\ell^1_{\N}(\C)$;
+
+\item[(ii)] $\beta_{E}(0)\|f\|_{\infty}\leq \|f\|_{E}$, pentru orice $f\in E$.
+\end{itemize}
+\end{prop}
+
+\begin{proof}
+Fie $f \in E$ si $k \in \mathbb{N}$.
+Deoarece $|f(k) \delta_k| \leq |f|$, conform propriet\u a\c tii de "ideal", rezult\u a c\u a $|f(k)| ||\delta_k||_E
+\leq ||f||_E$. Deci
+$$|f(k)| \leq \ds\frac{1}{\beta_E(0)}||f||_E,$$ pentru orice $k \in
+\mathbb{N}$, ceea ce arat\u a c\u a $f \in \ell^\infty_\mathbb{N}(\mathbb{C})$ si
+\begin{eqnarray}\label{primascufundare}
+||f||_\infty \leq \ds\frac{1}{\beta_E(0)}||f||_E,
+\end{eqnarray}
+pentru orice  $f \in E$.
+
+Fie acum $f \in \ell^1_\N (\mathbb{C})$, iar pentru $k \in
+\mathbb{N}$, $f_k = \sum\limits_{j = 0}^k f(j)\delta_j$. Avem c\u a
+$f_k \in E$ (av\^ and suport finit), iar
+$$||f_{k + p} - f_k||_E \leq \sum\limits_{j = k + 1}^{k + p}
+|f(j)| \beta_E(0) = \beta_E(0) ||f_{k + p} - f_k||_1,$$ pentru orice $k, p
+\in \mathbb{N}$. Cum \c sirul $(f_k)_{k \geq 0}$ este convergent \^\i n
+$\ell^1_\N(\mathbb{R})$ rezult\u a c\u a el este fundamental
+(deci \c si convergent) \^\i n $(E, ||\cdot||_E)$. Fie $g \in E$ astfel
+\^\i nc\^ at $\lim\limits_{k \to \infty} ||f_k - g||_E = 0$. Conform
+primei p\u ar\c ti a demonstra\c tiei avem ca $g \in
+\ell^\infty_\N(\mathbb{C})$, iar din relatia
+(\ref{primascufundare}) rezult\u a c\u a $\lim\limits_{k \to \infty}
+||f_k - g||_\infty = 0$. Dar \c sirul $(f_k)_{k \geq 0}$ converge la
+$f$ in $\ell^\infty_\N (\mathbb{C})$ si deci $f = g \in
+E$. \^ In plus, avem c\u a $||f_k||_E \leq \beta_E(0) ||f_k||_1$, pentru
+orice $k \in \mathbb{N}$, \c si f\u ac\^ and $ k \to \infty$ rezult\u a c\u a
+$||f||_E \leq \beta_E(0) ||f||_1$.
+\end{proof}
+
+\begin{prop}
+\label{prop2:continuousinjectionisalginclusion}
+Dac\u a $(E,\|\cdot\|_{E})$ \c si $(F,\|\cdot\|_{F})$ sunt dou\u a spa\c tii Sch\"{a}ffer de \c siruri, atunci
+$E\hookrightarrow F$ dac\u a \c si numai dac\u a $E\subset F$.
+\end{prop}
+
+\begin{prop}
+\label{prop3:charactofboundforalphabeta}
+Fie $(E,\|\cdot\|_{E})$ un spa\c tiu Sch\"{a}ffer de \c siruri. Atunci:
+\begin{enumerate}
+\item[(i)] $\alpha_{E}$ este m\u arginit dac\u a \c si numai dac\u a $E=\ell^1_{\N}(\C)$ \c si $\|\cdot\|_1 \sim \|\cdot\|_{E}$;
+\item[(ii)] $\beta_{E}$ este m\u arginit dac\u a \c si numai dac\u a $\ell_0^{\infty}(\C)\subset E$.
+\end{enumerate}
+\end{prop}
+
+\begin{proof}{\it i)} {\it Necesitatea.}  Dac\u a $\alpha E \in
+\ell^\infty(\mathbb{N}, \mathbb{R})$, fix\^and arbitrar $f \in E$,
+deoarece
+$$\sum\limits_{k = 0}^n |f(k)| \leq ||\alpha_E||_\infty ||f||_E,$$
+pentru orice $n \in \mathbb{N}$, rezult\u a c\u a $E \subset
+\ell^1_\N(\mathbb{C})$ \c si \^ in plus $||f||_1 \leq
+||a_E||_\infty ||f||_E$. Conform \ref{prop1:structureofSchaffercl} de mai sus
+ob\c tinem ca $E = \ell^1_\N (\mathbb{C})$.
+
+{\it Suficien\c ta.} Fie $M \geq 0$ astfel ca $||f||_1 \leq M
+||f||_E$, pentru $f \in E =  \ell^1_\N(\mathbb{C})$.
+Pentru orice $f \in E$ si $n\in \mathbb{N}$ avem
+$$\sum\limits_{k = 0}^n |f(k)| \leq ||f||_1 \leq M ||f||_E, $$
+ceea ce arat\u a c\u a $\alpha_E(n) \leq M$, pentru orice $n \in
+\mathbb{N}$. Rezult\u a c\u a $\alpha_E \in \ell^\infty_\N (\mathbb{C})$.
+
+{\it ii)} {\it Necesitatea.} Avem c\u a $\beta_E \in \ell^\infty_\N
+(\mathbb{C})$ (adic\u a este m\u arginit) \c si s\u a fix\u am arbitrar $f \in
+\ell^\infty_0 (\mathbb{C})$. Deoarece
+$$\lim\limits_{n
+\to \infty} f(n) = 0,$$ rezult\u a c\u a exist\u a un \c sir strict cresc\u ator de
+numere naturale ${(i_n)}_{n \geq 0}$ cu $i_0 = 0$, astfel \^\i nc\^ at,
+pentru $n \in \mathbb{N}$ s\u a avem c\u a
+$$|f(k)| \leq \ds\frac{||f||_\infty}{2^n},$$  pentru orice
+ $k \geq i_n$. Fie
+ $$f_n = \sum\limits_{k = 0}^{i_{n + 1} - 1}
+f(k) \delta_k = \sum\limits_{k = 0}^n \sum\limits_{j = i_k}^{i_{k
++ 1} - 1} f(j) \delta_j.$$ Avem c\u a $f_n \in E$ \c si
+\begin{eqnarray*}
+||f_{n + p} - f_n||_E &=& \left\lVert\sum\limits_{k = n + 1}^{n + p}\sum\limits_{j = i_k}^{i_{k
++ 1} - 1} f(j) \delta_j\right\rVert_E \leq \sum\limits_{k = n + 1}^{n + p}\left\lVert\sum\limits_{j = i_k}^{i_{k
++ 1} - 1} f(j) \delta_j\right\rVert_E \leq \\
+&\leq&||\beta_E||_\infty ||f||_\infty \sum\limits_{k = n + 1}^{n + p}\ds\frac{1}{2^k} \leq \ds\frac{||b_E||_\infty ||f||_\infty}{2^n},
+\end{eqnarray*}
+pentru orice $n, p \in \mathbb{N}$. Aceasta arat\u a c\u a \c sirul
+$(f_n)_{n \geq 0}$ este fundamental deci convergent \^\i n $E$. Fie $g
+\in E$ limita acestui \c sir (\^\i n norma $||\cdot||_E$). Atunci \c sirul
+$(f_n)_{n \geq 0}$ converge la $g$ \c si \^\i n spa\c tiul $\ell^\infty_\N
+(\mathbb{C})$. Dar $f$ fiind din $\ell^\infty_0
+(\mathbb{C})$ avem c\u a $(f_n)_{n \geq 0}$ converge la
+$f$ \^\i n $\ell^\infty_\N (\mathbb{C})$. Rezult\u a c\u a $f = g$
+\c si deci $f\in E$.
+
+{\it Suficien\c ta.} Avem c\u a $\ell^\infty_0(\mathbb{C})
+\hookrightarrow E$ \c si deci exist\u a $M > 0$ astfel ca $||f||_E \leq
+M|f||_\infty$, pentru orice $f \in \ell^\infty_0(\mathbb{C})$. Cum $\varphi_{\{ 0, 1, \ldots , n\}} \in
+\ell^\infty_0(\mathbb{C})$, rezult\u a c\u a
+$$0 \leq b_E(n) = ||\varphi_{\{ 0, 1, \ldots , n\}}||_E \leq M ||\varphi_{\{ 0, 1, \ldots ,
+n\}}||_\infty = M,$$ pentru orice $n \in \mathbb{N}$.
+\end{proof}
+
+\bigskip
+
+Pentru $(E,\|\cdot\|_{E})$ un spa\c tiu Sch\"{a}ffer de \c siruri \c si $\X$ un spa\c tiu Banach
+consider\u am
+$$\mathcal{E}(\X)=\{\,f\in {\X}^{\N}\,:\,\|f\|\in E\,\},$$ unde $\|f\| = (\|f(n)\|)_n$ \c si
+$$\|f\|_{E(\X)} = \|\, \|f\| \,\|_{E}.$$ Se poate ar\u ata c\u a
+$(E(\X),\|\cdot\|_{E(\X)})$ este un spa\c tiu Banach (a se vedea, de exemplu
+\cite[Remark~2.1]{PredaPoganJDE05} sau
+\cite[Lemma~3.8]{coffmanschaffer67}).
+
+Urm\u atoarele propriet\u a\c ti ale acestui spa\c tiu sunt simple verific\u ari.
+
+\begin{prop}
+Spa\c tiul $(E(\X),\|\cdot\|_{E(\X)})$ este un spa\c tiu Banach cu urm\u atoarele propriet\u a\c ti:
+\begin{enumerate}
+\item[(i)] Dac\u a  $f$ este un \c sir de vectori din $X$, cu suport finit, atunci $f\in E(\X)$.
+\item[(ii)] Dac\u a $f\in E(\X)$, atunci $Lf \in E(\X)$, $Rf \in E(\X)$ \c si
+    $\|Lf\|_{E(\X)}\leq \|f\|_{E(\X)}$, $\|Rf\|_{E(\X)}=\|f\|_{E(\X)}$.
+\item[(iii)] Dac\u a $f$ este un \c sir de vectori din $X$, iar $g\in E(\X)$ astfel \^\i nc\^ at $\|f\|\leq\|g\|$, atunci $f\in E(\X)$ \c si
+    $\|f\|_{E(\X)}\leq\|g\|_{E(\X)}$.
+\end{enumerate}
+\end{prop}
+
+
+
+\chapter{APLICA\c TII}
+\section{Familii de evolu\c tie \^in timp discret.\\ Dihotomii exponen\c tiale uniforme}
+
+
+\^In continuare vom nota prin $\Delta$ mul\c timea perechilor $(m, n) \in \mathbb{N}\times \mathbb{N}$ cu $m \leq n$, iar prin $X$ vom nota un spa\c tiu Banach fixat.
+
+\begin{definition}
+O familie $\mathcal{U}:=\{U(m,n)\}_{(m,n)\in\Delta}$ de operatori liniari \c si m\u argini\c ti  pe $X$ o numim
+\defnemph{familie de evolu\c tie (\^in timp discret)} dac\u a
+\begin{enumerate}
+\item[$(e_1)$] $U(n,n)=I$ pentru orice $n\in\N$,
+\item[$(e_2)$] $U(m,n)U(n,n_0)=U(m,n_0)$ pentru orice $m, n, n_0\in\N$, $m\geq n\geq n_0$.
+\end{enumerate}
+Dac\u a, \^in plus, exist\u a $M,\omega\in\R$ astfel \^inc\^at
+\begin{enumerate}
+\item[$(e_3)$] $\|U(m,n)\|\leq Me^{\omega(m-n)}$ pentru orice $(m,n)\in\Delta$,
+\end{enumerate}
+atunci spunem c\u a $\mathcal{U}$ are \defnemph{cre\c stere exponen\c tial\u a uniform\u a}.
+\end{definition}
+
+\begin{remarc}
+Familiile de evolu\c tie \^in timp discret apar ca solutii ale ecua\c tiilor diferen\c tiale abstracte (recursive) de forma
+\begin{equation}
+\label{differenceeq}
+x(n+1) = A(n) x(n)\ ,\ n\in\N\ .
+\end{equation}
+unde $(A(n))_{n\in\N}$ este un \c sir de operatori liniari si m\u argini\c ti pe spa\c tiul Banach $X$.
+Consider\^and
+$$U(m,n)=
+\begin{cases}
+A(m-1)...A(n+1)A(n) &,\ m>n\\
+I &,\ m=n
+\end{cases}
+ $$
+proprieta\c tile $(e_1)$, $(e_2)$ sunt imediate.
+De asemenea, se poate verifica faptul c\u a $(e_3)$ este verificat\u a dac\u a \c si numai dac\u a
+$\sup\limits_{n\in\N}\|A(n)\| <\infty$.
+\end{remarc}
+
+
+\begin{definition}
+\label{expdichot}
+Familia de evolu\c tie $\{U(m,n)\}_{(m,n)\in\Delta}$ are o \defnemph{dihotomie exponen\c tial\u a uniform\u a} dac\u a
+exist\u a o familie de proiectori $\{P(n)\}_{n\in\N}$ \c si dou\u a constante $N,\nu>0$ astfel \^inc\^at
+\begin{enumerate}
+\item[$(d_1)$] $U(m,n)P(n)=P(m)U(m,n)$ pentru orice $(m,n)\in\Delta$;
+\item[$(d_2)$] pentru fiecare $(m,n)\in\Delta$, restric\c tia lui
+    $U(m,n)$ de la $\ker P(n)$ p\^an\u a \^in $\ker P(m)$, notat cu
+    $U(m,n)_{|}$, este inversabil\u a;
+\item[$(d_3)$] pentru orice $(m,n)\in\Delta$ \c si $x\in X$ avem:
+$$\|U(m,n)P(n)x\|\leq Ne^{-\nu(m-n)}\|P(n)x\|$$ \c si $$\|U(m,n)(I-P(n))x\|\geq  \frac{1}{N}e^{\nu(m-n)}\|(I-P(n))x\|.$$
+\end{enumerate}
+\end{definition}
+
+
+\begin{remarc}
+\label{boundedprojectors}
+Dac\u a familia de evolu\c tie $\{U(m,n)\}_{(m,n)\in\Delta}$ are o {dihotomie exponen\c tial\u a uniform\u a}, atunci
+$$\sup_{n\in\N}\|P(n)\| <\infty\ .$$
+Demonstra\c tia, pe care o vom prezenta \^in continuare, urmeaz\u a ca \^in \cite[Lema~4.2]{MinhRabigerSchnaubelt}.
+
+{\it \^ Intr-adev\u ar:} Fie $n_0 \in \mathbb{N}$ fixat, $P_0 = P(n_0)$ \c si $P_1 = I - P(n_0)$. Not\u am
+$$\gamma_{n_0} = \inf \{ ||x_0 + x_1|| \; : \; x_0 \in Im\, P_0, x_1 \in Im\, P_1, ||x_0|| = ||x_1|| = 1\}$$
+(distan\c ta unghiular\u a dintre subspa\c tiile \^\i nchise $Im\, P_0$ \c si $Im\, P_1$). Dac\u a $x\in X$ cu $P_k x \not= 0$, $k = 0, 1$, atunci
+\begin{eqnarray*}
+\gamma_{n_0}&\leq& \left\lVert \frac{P_0x}{||P_0x||} + \frac{P_1x}{||P_1x||} \right\rVert = \frac{1}{||P_0x||}\left\lVert P_0x + \frac{||P_0x||}{||P_1x||} P_1x \right\rVert = \\
+&=& \frac{1}{||P_0x||}\left\lVert x + \frac{||P_0x|| - ||P_1x||}{||P_1x||} P_1x \right\rVert \leq \frac{2||x||}{||P_0x||}.
+\end{eqnarray*}
+
+Rezult\u a deci c\u a
+$$||P_0|| \leq 2\gamma^{- 1}_{n_0}.$$
+R\u am\^ ane s\u a ar\u at\u am c\u a exist\u a o constant\u a $c > 0$ independent\u a de $n_0$ astfel \^\i nc\^ at $\gamma_{n_0} \geq c$.
+
+Fix\u am $x_0 \in Im\, P_0$, $x_1\in Im\, P_1$ cu $||x_0|| = ||x_1|| = 1$. Din proprietatea de m\u arginire uniform\u a rezult\u a c\u a
+
+\begin{eqnarray*}
+||x_0 + x_1|| &\geq& M^{-1} e^{- \omega (n - n_0)}|| U(n, n_0)x_0 + U(n, n_0)x_1|| \geq \\
+&\geq&  M^{-1} e^{- \omega (n - n_0)}\Big(  N^{-1} e^{- \nu (n - n_0)} -  N e^{- \nu (n - n_0)}\Big)= \\
+&=&c_{n - n_0},
+\end{eqnarray*}
+pentru orice $n \geq n_0$, \c si deci $\gamma_{n_0} \geq c_{n - n_0}$. Deoarece, pentru $m$ suficient de mare avem $c_M > 0$ rezult\u a c\u a $0 < c_m < \gamma_{n _0}$.
+
+
+\end{remarc}
+
+Pentru o familie de evolu\c tie
+$\mathcal{U}:=\{U(m,n)\}_{(m,n)\in\Delta}$, subspa\c tiul lui
+$x\in X$ cu traiectoria $(U(n+n_0,n_0)x)_{n\in\N}$
+descresc\u atoare la zero va fi notat cu
+$\mathbb{S}_{\mathcal{U}}(n_0)$ (numit \c si
+\defnemph{subspa\c tiul stabil pentru $\mathcal{U}$ la momentul $n_0$}).
+Este u\c sor de verificat c\u a
+\begin{equation}
+U(n,n_0)\mathbb{S}_{\mathcal{U}}(n_0)\subset \mathbb{S}_{\mathcal{U}}(n)\ ,\quad (n,n_0)\in\Delta\ .
+\end{equation}
+
+
+
+\begin{remarc}
+Dac\u a familia de evolu\c tie $\mathcal{U}$ are o dihotomie exponen\c tial\u a uniform\u a cu $\{P(n)\}_{n\in\N}$ familia de proiectoare,
+atunci $P(n_0)X=\mathbb{S}_{\mathcal{U}}(n_0)$ pentru orice $n_0\in\N$.
+
+\^Intr-adev\u ar, incluziunea $P(n_0)X\subset\mathbb{S}_{\mathcal{U}}(n_0)$ este imediat\u a. Acum, fie \\ $x\in\mathbb{S}_{\mathcal{U}}(n_0)$ %, $x_1\in P(n_0)X$ \c si $x_2\in \ker P(n_0)$ astfel \^inc\^at $x=x_1+x_2$.
+\c si observ\u am c\u a
+$$\|U(n,n_0)(I-P(n_0))x\|\geq \frac{1}{N}e^{\nu(n-n_0)}\|(I-P(n_0))x\|\ .$$
+\^Intruc\^at
+$$\|U(n,n_0)(I-P(n_0))x\|\leq \|U(n,n_0)x\| + Ne^{-\nu(n-n_0)}\|P(n_0)x\| \to 0,$$
+ob\c tinem c\u a $I-P(n_0)x=0$. Prin urmare, $x=P(n_0)x\in P(n_0)X$.
+
+\^In particular, ob\c tinem c\u a $\mathbb{S}_{\mathcal{U}}(n_0)$ este un subspa\c tiu \^inchis a lui $X$, pentru orice $n_0\in\N$.
+\end{remarc}
+
+
+\begin{definition}
+\label{defn:admissibility}
+Fie $E,F\subset X^{\N}$ dou\u a spa\c tii Banach \c si
+$\mathcal{U}:=\{U(m,n)\}_{(m,n)\in\Delta}$ o familie de evolu\c tie.
+Perechea $(E,F)$ spunem c\u a este \defnemph{admisibil\u a} pentru $\mathcal{U}$ dac\u a
+pentru orice $f\in E$, exist\u a $x\in X$ astfel \^inc\^at \c sirul $u(\cdot,f,x)$ definit prin
+$$u(n,f,x)= \begin{cases}
+x &,\ n=0\\
+\displaystyle U(n,0)x + \sum_{k=1}^{n}U(n,k)f(k-1) &,\ n\geq 1
+\end{cases}
+ $$
+apar\c tine lui $F$.
+\end{definition}
+
+\begin{remarc}
+Dac\u a $\mathcal{U}:=\{U(m,n)\}_{(m,n)\in\Delta}$ este determinat de ecua\c tia diferen\c tial\u a \eqref{differenceeq}, atunci
+solu\c tia sistemului
+$$\begin{cases}
+x(n+1)=A(n) x(n) + f(n) &,\ n\in\N\\
+x(0)=x_0\in X &
+\end{cases} $$
+este dat\u a de \c sirul $(u(n;f,x_0))_{n\in\N}$.
+\end{remarc}
+
+
+Fixat $\F(X)\subset X^{\N}$ un \c sir de spa\c tiu Sch\"{a}ffer  \c si
+$n_0\in\N$, definim subspa\c tiul vectorial a lui $X$
+\begin{equation}
+X_{1,\F}(n_0):= \{x\in X\,:\, \left(U(n+n_0,n_0)x\right)_{n\in\N} \in \F(X)\,\}\ .
+\end{equation}
+Datorit\u a proprieta\c tiilor \c sirurilor de spa\c tii Sch\"{a}ffer, avem c\u a
+$$X_{1,\F}(n_0)=\{x\in X\,:\, \exists \ f\in \F(X),\, n_1\in\N\ \text{a.\^i. }
+U(n,n_0)x=f(n)\ \text{, } \forall\ n\geq n_1\}\ .$$
+De aici, putem stabili, de asemenea, c\u a
+\begin{equation}
+U(n,n_0)X_{1,\F}(n_0)\subset X_{1,\F}(n)\ ,\quad (n,n_0)\in\Delta \ .
+\end{equation}
+
+\begin{theorem}
+\label{artC:mainthm}
+Fie $(\E,\F)$ dou\u a \c siruri de spa\c tii Sch\"{a}ffer \c si fie \\ $\mathcal{U}:=\{U(m,n)\}_{(m,n)\in\Delta}$ o familie de evolu\c tie.
+Presupunem c\u a:
+\begin{enumerate}
+\item[$(h_1)$] subspa\c tiul $X_{1,\F}(0)$ este \^inchis \c si admite un completar \^inchis,
+ i.e. exist\u a un subspa\c tiu \^inchis $X_{2,\F}(0)$ a lui $X$ pentru care avem
+ $$X=X_{1,\F}(0)\oplus X_{2,\F}(0)$$
+ (vom nota cu $P_{\F}(0)$ \c si $Q_{\F}(0)$ proiec\c tiile corespunz\u atoare)
+\item[$(h_2)$] perechea $(\E(X),\F(X))$ este admisibil\u a pentru familia de evolu\c tie $\mathcal{U}$
+\item[$(h_3)$] $\alpha_{\E}(n)\beta_{\F}(n) \to\infty$.
+\end{enumerate}
+Atunci, familia de evolu\c tie $\mathcal{U}$ are o dihotomie exponen\c tial\u a uniform\u a. \^In plus,
+pentru orice $n_0\in\N$, subspa\c tiul $X_{1,\F}(n_0)$ coincide cu $\mathbb{S}_{\mathcal{U}}(n_0)$
+\c si admite o completare \^inchis\u a dat\u a de  $X_{2,\F}(n_0):=U(n_0,0)X_{2,\F}(0)$.
+\end{theorem}
+
+
+\begin{theorem}
+\label{artC:conversemainthm}
+Dac\u a familia de evolu\c tie $\mathcal{U}:=\{U(m,n)\}_{(m,n)\in\Delta}$ are o dihotomie exponen\c tial\u a uniform\u a, atunci
+fiecare pereche $(\E(X),\F(X))$ a \c sirurilor de spa\c tii Sch\"{a}ffer cu $\E\subset\F$
+este admisibil\u a pentru $\mathcal{U}$.
+\end{theorem}
+
+\begin{prop}
+\label{artC:unicity}
+Fie $(\E,\F)$ dou\u a \c siruri de spa\c tii Sch\"{a}ffer,
+fie $\mathcal{U}:=\{U(m,n)\}_{(m,n)\in\Delta}$ o familie de evolu\c tie \c si
+presupunem $(h_1)$ \c si $(h_2)$ din Teorema~\ref{artC:mainthm}.
+Apoi, pentru orice $f\in\E(\X)$ exist\u a un unic $y\in\X_{2,\F}(0)$ astfel \^inc\^at
+$u(\cdot,f,y)\in\F(\X)$.
+\end{prop}
+\begin{proof}
+Fie $f\in \E(\X)$ \c si $x\in\X$ date prin defini\c tie \ref{defn:admissibility}.
+Consider\^and $y=x-P_{\F}(0)x=Q_{\F}(0)x$, avem c\u a $y\in\X{2,\F}(0)$ \c si
+$u(n,f,y)=u(n,f,x)- U(n,0)P_{\F}(0)x$, pentru orice $n\in\N$.
+\^Intruc\^at $u(\,\cdot\,,f,x,\theta)\in\F(\X)$ \c si $(U(n,0)P_{\F}(0)x)\in\F(\X)$,
+rezult\u a c\u a $u(\,\cdot\,,f,y)\in\F(\X)$.
+
+Pentru a demonstra unicitatea lui $y$, presupunem c\u a exist\u a $z\in\X_{2,\F}(0)$ cu proprietatea
+$u(\,\cdot\,,f,z)\in\F(\X)$.
+\^Intruc\^at $u(n;f,y)-u(n;f,z)=U(n,0)(y-z)$,
+avem c\u a $y-z\in\X_{1,\F}(0)\cap\X_{2,\F}(0)$ \c si prin urmare $z=y$.
+
+\end{proof}
+
+Pentru orice $f\in\E(\X)$, vectorul unic $y\in\X_{2,\F}(0)$ va fi notat cu $x_{f}$.
+
+
+\begin{prop}
+\label{artC:boundedness}
+Fie $(\E,\F)$ dou\u a \c siruri de spa\c tii Sch\"{a}ffer, \c si $\mathcal{U}:=\{U(m,n)\}_{(m,n)\in\Delta}$ o familie de evolu\c tie, atunci presupunem c\u a $(h_1)$ \c si $(h_2)$ din Teorema~\ref{artC:mainthm}. Atunci, exist\u a o constant\u a $K>0$ astfel \^inc\^at
+$$\|u(\,\cdot\,;f,x_f)\|_{\F(\X)}\leq K\|f\|_{\E(\X)}\ ,\ \text{pentru orice } f\in\E(\X).$$
+\end{prop}
+\begin{proof}
+Definim operatorul
+$$\mathfrak{U}:\E(\X)\to\F(\X)\quad,\quad
+  \mathfrak{U}f=u(\,\cdot\,;f,x_{f}) $$
+(unde $x_f$ este dat de Propozi\c tia~\ref{artC:unicity} pentru orice $f\in\E(\X)$).
+Este u\c sor de verificat c\u a $\mathfrak{U}_{\theta}$ este un operator liniar \c si
+vom demonstra c\u a acesta este de asemenea \^inchis.
+
+Fie $(f_n)_{n\in\N}\subset\E(\X)$ astfel \^inc\^at
+$\|f_n-f\|_{\E(\X)}\to0$ \c si
+$\|\mathfrak{U}f_n-g\|_{\F(\X)}\to0$ cum $n\to\infty$, unde
+$f\in\E(\X)$ \c si $g\in\F(\X)$. Din Propozi\c tia~\ref{prop1:structureofSchaffercl}, avem c\u a
+$\|f_n-f\|_{\ell^{\infty}(\X)}\to0$ \c si
+$\|u(\cdot;f_n,x_{f_n})-g\|_{\ell^{\infty}(\X)}\to0$ cum $n\to\infty$,
+\c si, prin urmare
+%Since $\|(\mathfrak{U}f_n)(0)-g(0)\|\xrightarrow[n\to\infty]{}0$, we get that
+$x_{f_n}\to g(0)$. \^Intruc\^at $\X_{2,\F}(0)$ este un subspa\c tiu \^inchis, de asemenea con\c tine $g(0)$.
+
+Pentru orice $m\in\N^*$, avem c\u a
+\begin{eqnarray*}
+&&\left\|\sum_{k=1}^{m}U(m,k)f_n(k-1) - \sum_{k=1}^{m}U(m,k)f(k-1) \right\| \leq \\
+ &\leq&\sum_{k=1}^{m} \|U(m,k)\|\,\|f_n(k-1)-f(k-1)\| \xrightarrow[n\to\infty]{}0
+ \end{eqnarray*}
+\c si astfel
+$$(\mathfrak{U}f_n)(m) \xrightarrow[n\to\infty]{} U(m,0)g(0) + \sum_{k=1}^{m}U(m,k)f(k-1)= u(m;f,g(0))\ .$$
+Din Propozi\c tia~\ref{artC:unicity}, deducem c\u a $x_f=g(0)$ \c si astfel
+$$(\mathfrak{U}f_n)(m) \xrightarrow[n\to\infty]{} (\mathfrak{U}f)(m)\ ,$$
+pentru orice $m\in\N$.
+
+Prin urmare, $\mathfrak{U}$ este un operator liniar \^inchis \c si din
+Teorema graficului \^inchis  este de asemenea m\u arginit, adic\u a exist\u a
+$K>0$ astfel \^inc\^at
+$$\|u(\,\cdot\,;f,x_{f})\|_{\F(\X)}=
+  \|\mathfrak{U}f\|_{\F(\X)}\leq   K\|f\|_{\E(\X)}$$
+\c si demonstra\c tia este complet\u a.
+\end{proof}
+
+\begin{prop}
+Fie $(\E,\F)$ dou\u a \c siruri de spa\c tii Sch\"{a}ffer, $\mathcal{U}:=\{U(m,n)\}_{(m,n)\in\Delta}$ o familie de evolu\c tie \c si presupunem c\u a avem  $(h_1)$ \c si  $(h_2)$ din Teorema~\ref{artC:mainthm}. Atunci, avem c\u a
+$$\X= \X_{1,\F}(n_0)\oplus \X_{2,\F}(n_0) $$ pentru orice $n_0\in\N$, unde $\X_{2,\F}(n_0):=U(n_0,0)\X_{2,\F}(0)$.
+\end{prop}
+\begin{proof}
+Fie $n_0\in\N^{*}$, $x\in\X$ \c si consider\u am  $f:\N\to\X$ dat de
+$$ f(n)=-\delta_{n_0}(n)U(n+1,n_0)x \ .$$
+Evident, $f\in\E(\X)$ \c si $\|f\|_{\E(\X)}=\beta_{\E}(0)\|U(n_0+1,n_0)x\|$.
+Atunci, exist\u a un unic  $y\in\X_{2,\F}(0)$ astfel \^inc\^at $(u(n;f,y))_{n\in\N}\in\F(\X)$.
+Dar, pentru orice $n\geq n_0$
+$$u(n;f,y)=U(n,0)y - U(n,n_0)x = U(n,n_0)\left( U(n_0,0)y- x\right)\ .$$
+\^Intruc\^at $u(\cdot,f,y)\in\F(\X)$, deducem c\u a $U(n_0,0)y-x \in\X_{1,\F}(n_0)$. Observ\^and c\u a
+$x=(x-U(n_0,0)y) + U(n_0,0)y$ \c si c\u a  $U(n_0,0)y\in X_{2,\F}(n_0)$, concluzion\u am c\u a
+$x$ apar\c tine lui $\X_{1,\F}(n_0) + \X_{2,\F}(n_0)$.
+
+Fie $x\in \X_{1,\F}(n_0) \cap \X_{2,\F}(n_0)$. Atunci, exist\u a  $z\in \X_{2,\F}(0)$ astfel \^inc\^at $x=U(n_0,0)z$. Pe de alt\u a parte, $x\in \X_{1,\F}(n_0)$ \c si prin urmare $(U(n+n_0,n_0)x)_{n\in\N}$ const\u a \^in $\F(\X)$. Dar pentru orice $n\in\N$, $n\geq n_0$, avem c\u a
+$U(n,n_0)x= U(n,0)z$ \c si astfel  $z\in\X_{1,\F}(0)$. Prin urmare $z\in
+\X_{1,\F}(0)\cap \X_{2,\F}(0)$ \c si de aici ob\c tinem c\u a $x=0$.
+
+\end{proof}
+
+
+\begin{remarc}
+\label{artC:rem4mainthm}
+Presupunem $(h_1)$ din Teorema~\ref{artC:mainthm}, avem c\u a
+$$U(n,0)P_{\F}(0)x\in \X_0(n)\quad \mbox{\c si}\quad U(n,0)Q_{\F}(0)x\neq0\ ,$$
+pentru orice $x\in\X\setminus\{0\}$ \c si $n\in\N$.
+
+\^Intr-adev\u ar, fie $x\in \X\setminus\{0\}$, $n\in\N$ \c si $y=U(n,0)P_{\F}(0)x$.
+\^Intruc\^at $P_{\F}(0)x\in\X_{1,\F}(0)$ \c si $U(k,n)y=U(k,0)x$, pentru orice $k\geq n$, rezult\u a c\u a $y\in \X_{1,\F}(n)$.
+
+Pentru a doua parte, presupunem prin reducere la absurd c\u a exist\u a $n>0$ astfel \^inc\^at $U(n,0)Q_{\F}(0))x=0$. Atunci,
+$U(k,0)Q_{\F}(0)x = U(k,n)U(n,0)Q_{\F}(0)x=0$, pentru orice $k\geq n$. Astfel,
+$Q_{\F}(0)x\in\X_{1,\F}(0)\cap X_{2,\F}(0)$, sau echivalent, $x=0$, ceea ce nu este posibil.
+\end{remarc}
+
+Demonstra\c tia pentru urm\u atorul rezultat, poate fi ob\c tinut\u a din \cite[20C, p.39]{MasseraSchaffer}, \^in timp ce pentru al doilea, demonstra\c tia este analoag\u a.
+
+\begin{lema}
+\label{artC:lemma1:stability}
+Dac\u a $h:\N\to\R_+$ este un \c sir, $H>0$, $n_0\in\N^*$ \c si $\eta\in(0,1)$ astfel \^inc\^at
+\begin{enumerate}
+\item[(i)] $h(k)\leq H h(n)$, pentru orice $k\in\{n,n+1,...,n+n_0\}$, $n\in\N$ \c si
+\item[(ii)] $h(n+n_0)\leq\eta\,h(n)$, pentru orice $n\in\N$,
+\end{enumerate}
+atunci exist\u a $N,\nu>0$ (depinz\^and numai de $H,n_0,\eta$) astfel \^inc\^at
+$$h(m)\leq Ne^{-\nu(m-n)}h(n)\ ,\ \text{pentru orice } (m,n)\in\Delta\ .$$
+\end{lema}
+
+\begin{lema}
+\label{artC:lemma2:blowup}
+Dac\u a $h:\N\to\R_+$ este un \c sir, $H>0$, $n_0>0$ \c si $\eta>1$ astfel \^inc\^at
+\begin{enumerate}
+\item[(i)] $h(k)\geq H h(n)$, pentru orice $k\in[n,n+n_0]$, $n\in\N$ \c si
+\item[(ii)] $h(n+n_0)\geq\eta\,h(n)$, pentru orice $n\in\N$,
+\end{enumerate}
+atunci exist\u a $N,\nu>0$ (depinz\^and numai de $H,n_0,\eta$) astfel \^inc\^at
+$$h(m)\geq Ne^{\nu(m-n)}h(n)\ ,\ \text{pentru orice } (m,n)\in\Delta\ .$$
+\end{lema}
+
+
+\noindent
+\textbf{ Demonstra\c tia Teoremei ~\ref{artC:mainthm}.}
+\medskip
+
+Fie $x\in\X_{2,\F}(0)\setminus\{0\}$, $n_0\in\N$ \c si consider\u am \c sirul
+\begin{equation}
+f(n)=\delta_{n_0}(n) \frac{U(n+1,0)x}{\|U(n_0+1,0)x\|}\ ,\quad n\in\N\,.
+\end{equation}
+Evident, $f\in\E(\X)$ cu $\|f\|_{\E(\X)}=\beta_{\E}(0)$.
+Lu\^and
+\begin{equation}
+x_f:= -\ \sum_{k=1}^{\infty}\delta_{n_0}(k-1) \,\frac{x}{\|U(n_0+1,0)x\|} = \frac{-x}{\|U(n_0+1,0)x\|}\in \X_{2,\F}(0)\ ,
+\end{equation}
+observ\u am c\u a
+\begin{gather}
+\begin{split}
+u(n;f,x_f)=&\, U(n,0)x_f +\sum_{k=1}^{n} U(n,k)f(k-1)=\\
+ -&  \sum_{k=n+1}^{\infty}\delta_{n_0}(k-1)\,\frac{U(n,0)x}{\|U(n_0+1,0)x\|} = \\
+ =&\, \begin{cases}
+ 0 &,\ n>n_0\\
+ \ds\frac{-U(n,0)x}{\|U(n_0+1,0)x\|} &,\ 1\leq n\leq n_0
+ \end{cases}
+\end{split}
+\end{gather}
+\c si prin urmare $u(\,\cdot\,;f,x_f)\in \F(\X)$. Din Propozi\c tia ~\ref{artC:boundedness}, ob\c tinem c\u a
+$$ \|u(n;f,x_f)\|\leq K\frac{\beta_{\E}(0)}{\beta_{\F}(0)}$$
+\c si de aici c\u a
+$$ \|U(n,0)x\|\leq K\frac{\beta_{\E}(0)}{\beta_{\F}(0)} \|U(n_0+1,0)x\|\ ,$$
+pentru orice $0\leq n\leq n_0$. Fix\^and $L_2:=\min\{1,{(K\beta_{\E}(0))}^{-1}{\beta_{\F}(0)}\}$, putem scrie
+\begin{equation}
+\|U(m,0)x\|\geq L_2\|U(n,0)x\|,
+\end{equation}
+pentru orice $(m,n)\in\Delta$ \c si $x\in\X_{2,\F}(0)$.
+Am ob\c tinut deasemenea c\u a pentru orice $n_0\in\N$, operatorul
+$U(n_0,0)_{|}:\X_{2,\F}(0)\to\X_{2,\F}(n_0)$ astfel \^inc\^at $\|U(n_0,0)_{|}x\|\geq L_2\|x\|$ pentru orice
+$x\in\X_{2,\F}(0)$, \c si astfel subspa\c tiul $\X_{2,\F}(n_0)$ este \^inchis.
+
+Fie $x\in\X_{2,\F}(0)\setminus\{0\}$, $n_0\in\N^*$, $m\in\N$ \c si consider\u am \c sirul
+\begin{equation}
+g(n)= \chi_{\{n_0,...,n_0+m-1\}}(n) \frac{U(n+1,0)x}{\|U(n_0+m,0)x\|}
+\end{equation}
+pentru care avem c\u a $g\in\E(\X)$ cu $\|g\|_{\E(\X)}\leq \frac{1}{L_2}\beta_{\E}(m-1)$. Lu\u am
+\begin{equation}
+x_g:= -\ \sum_{k=1}^{\infty}\chi_{\{n_0,...,n_0+m-1\}}(k) \, \frac{x}{\|U(n_0+m,0)x\|} = -m \frac{x}{\|U(n_0+m,0)x\|}
+\end{equation}
+\c si avem c\u a
+\begin{gather}
+\begin{split}
+u(n;g,x_g)=&\,-\sum_{k=n+1}^{\infty} \chi_{\{n_0,...,n_0+m-1\}}(k-1) \frac{U(n,0)x}{\|U(n_0+m,0)x\|}\\
+=&\,
+\begin{cases}
+0 &,\ n\geq n_0+m\\
+-(n_0+m - n) \ds\frac{U(n,0)x}{\|U(n_0+m,0)x\|} &,\ n_0\leq n < n_0+m\\
+- m \ds\frac{U(n,0)x}{\|U(n_0+m,0)x\|} &,\ 0 < n <n_0
+\end{cases}
+\end{split}
+\end{gather}
+Este u\c sor de observat c\u a  $u(\,\cdot\,;g,x_g)\in\F(\X)$ \c si din Propozi\c tia ~\ref{artC:boundedness}, avem c\u a
+$$\|u(\,\cdot\,;g,x_g)\|_{\F(\X)}\leq \frac{K}{L_2}\beta_{\E}(m-1)\ .$$
+Pe de alt\u a parte avem c\u a
+\begin{eqnarray*}
+\frac{m(m+1)}{2} \frac{\|U(n_0,0)x\|}{\|U(n_0+m,0)x\|} &\leq& \frac{1}{L_2} \sum_{k=n_0}^{n_0+m-1}\|u(k;g,x_g)\|\leq \\
+ &\leq& \frac{1}{L_2} \alpha_{\F}(m-1) \|u(\,\cdot\,;g,x_g)\|_{\F(\X)}
+\end{eqnarray*}
+Prin urmare, folosind Propozi\c tia ~\ref{artC:twoinequals}, ob\c tinem
+\begin{equation}
+\|U(n_0+m,0)x\|\geq \frac{L_2^2}{2K} \frac{m(m+1)}{(2m-1)^2} \alpha_{\E}(m-1)\beta_{\F}(m-1)\|U(n_0,0)x\|\ ,
+\end{equation}
+Lu\^and $m_0\in\N$ asftel \^inc\^at
+$$\eta_2:= \frac{L_2^2}{2K} \frac{m_0(m_0+1)}{(2m_0-1)^2} \alpha_{\E}(m_0-1)\beta_{\F}(m_0-1) \,>\,1\ ,$$
+\c si folosind Lema~\ref{artC:lemma2:blowup}, ob\c tinem c\u a exist\u a  $N_2,\nu_2>0$ astfel \^inc\^at
+$$\|U(m,0)x\|\geq N_2e^{\nu_2(m-n)}\|U(n,0)x\|\ ,$$
+pentru orice $(m,n)\in\Delta$ \c si $x\in\X_{2,\F}(0)$.
+Dac\u a  $x\in\X_{2,\F}(n)$ pentru orice $n\in\N$, atunci exist\u a  $y\in\X_{2,\F}(0)$ astfel \^inc\^at $x=U(n,0)y$ \c si astfel
+$$\|U(m,n)x\|=\|U(m,0)y\|\geq N_2e^{\nu_2(m-n)}\|U(n,0)y\|= N_2e^{\nu_2(m-n)} \|x\|\ ,$$
+pentru orice $m\in\N$, $m\geq n$.
+
+Apoi, fie $x\in\X_{1,\F}(n_0)$ pentru orice $n_0\in\N^*$, consider\u am secven\c ta
+\begin{equation}
+h(n)=\delta_{n_0}(n+1)x \ ,
+\end{equation}
+\c si observ\u am c\u a $h\in\E(\X)$ cu $\|h\|_{\E(\X)}=\beta_{\E}(0)\|x\|$. Este u\c sor de observat c\u a
+$$u(n;h,0) = \begin{cases}
+U(n,n_0)x &,\ n\geq n_0\\
+0 &,\ 0\leq n< n_0
+\end{cases}
+$$
+apar\c tine lui $\F(\X)$. Atunci, avem c\u a
+\begin{equation}
+\|U(n,n_0)x\|\leq \frac{K}{\beta_{\E}(0)}\|x\|\ ,\ n\geq n_0
+\end{equation}
+Pentru cazul \^in care $n_0=0$, observ\u am c\u a
+$$u(n;\delta_0 U(1,0)x,0)= U(n,0)x\ ,$$
+pentru orice $n\in\N^*$, \c si ca mai sus, avem c\u a
+\begin{equation}
+\|U(n,0)x\|\leq \frac{K}{\beta_{\E}(0)}\|U(1,0)\|\,\|x\|\ .
+\end{equation}
+Lu\^and $L_1:=\max\{1, \ds\frac{K}{\beta_{\E}(0)}, \ds\frac{K}{\beta_{\E}(0)}\|U(1,0)\|\}$, putem scrie
+$$\|U(n,n_0)x\|\leq L_1\|x\|\ ,$$
+pentru orice $(n,n_0)\in\Delta$ \c si $x\in\X_{1,\F}(n_0)$.
+
+Fie $x\in\X_{1,\F}(n_0)$ pentru orice $n_0\in\N$ \c si $m\in\N$. Consider\u am c\u a \c sirul
+\begin{equation}
+k(n)=\chi_{\{n_0,..., n_0+m\}}(n+1)U(n+1,n_0)x
+\end{equation}
+apar\c tine lui $\E(\X)$ cu $\|k\|_{\E(\X)}\leq L_1\beta_{\E}(m)\|x\|$. Deasemenea, avem c\u a
+\begin{equation}
+u(n;k,0) = \begin{cases}
+0 &,\ n<n_0\\
+(n-n_0+1) U(n,n_0)x &,\ n_0\leq n\leq n_0+m\\
+(m+1) U(n,n_0)x &,\ n>n_0+m
+\end{cases}
+\end{equation}
+\c si, prin urmare $u(\,\cdot\,;k,0)\in\F(\X)$. Din Propozi\c tia~\ref{artC:boundedness}, avem c\u a
+$$\|u(\,\cdot\,;k,0)\|_{\F(\X)}\leq KL_1 \beta_{\E}(m)\|x\|\ .$$
+Pe de alt\u a parte,
+\begin{eqnarray*}
+\frac{(m+1)(m+2)}{2}\|U(n_0+m,n_0)x\| &\leq& L_1 \sum_{n=n_0}^{n_0+m} \|u(n;k,0)\| \leq \\
+&\leq&L_1\alpha_{\F}(m) \|u(\,\cdot\,;k,0)\|_{\F(\X)}
+\end{eqnarray*}
+Rezult\u a c\u a
+\begin{equation}
+\|U(n_0+m,n_0)x\|\leq 2KL_1^2 \frac{(2m+1)^2}{(m+1)(m+2)}\frac{1}{\alpha_{\E}(m)\beta_{\E}(m)}\|x\|
+\end{equation}
+\c si alegem $m_0\in\N$ astfel \^inc\^at
+$$\eta_1:= 2KL_1^2 \frac{(2m_0+1)^2}{(m_0+1)(m_0+2)}\frac{1}{\alpha_{\E}(m_0)\beta_{\E}(m_0)} <1 $$
+Prin urmare, pentru orice $n_0\in\N$, avem c\u a
+$$\|U(n+m_0,n_0)x\|\leq \eta_1 \|U(n,n_0)x\|\ ,$$
+pentru orice $n\in\N$ \c si $x\in\X_{1,\F}(n_0)$.
+Aplic\^and Lema~\ref{artC:lemma1:stability}, exist\u a  $N_1,\nu_1>0$ astfel \^inc\^at
+$$\|U(m,n_0)x\|\leq N_1e^{-\nu_1(m-n)}\|U(n,n_0)x\|\ ,$$
+\^In particular, putem scrie
+\begin{equation}
+\|U(m,n)x\|\leq N_1e^{-\nu_1 (m-n)}\|x\|\ ,\ (m,n)\in\Delta\,,\ x\in\X_{1,\F}(n)\ .
+\end{equation}
+De aici, ob\c tinem deasemenea c\u a $\X_{1,\F}(n)$ este un subspa\c tiu \^inchis pentru orice $n\in\N$.
+\^Intr-adev\u ar, dac\u a $y\in\overline{\X_{1,\F}(n)}$ fie $(x_j)_{j\in\N}$ un \c sir astfel \^inc\^at
+$x_j\in\X_{1,\F}(n)$ pentru orice $j\in\N$ \c si $x_j\to y$. Pentru $j\to\infty$ \^in
+$$\|U(m,n)x_j\|\leq N_1e^{-\nu_1 (m-n)}\|x_j\|\ ,$$
+ob\c tinem c\u a  $(U(m+n,n)y)_{m\in\N}\in\ell^1(\X)\subset\F(\X)$.
+
+Pentru a ar\u ata c\u a  $U(n,n_0)_{|}:\X_{2,\F}(n_0)\to\X_{2,\F}(n)$ este inversabil, fie $x\in\X_{2,\F}(n)$ \c si consider\u am \c sirul
+$$r(m) = -\delta_{n}(m+1) U(m+1,n)x\ ,\ m\in\N\ .$$
+Avem c\u a  $r\in\E(\X)$.
+Din Propozi\c tia~\ref{artC:unicity}, rezult\u a ca exist\u a un unic $x_r\in\X_{2,\F}(0)$ astfel \^inc\^at \c sirul
+$$u(m;r,x_r) = U(m,0)x_r +\sum_{k=1}^{m}U(m,k)r(k)\ ,\ m\in\N $$
+apr\c tine lui $\F(\X)$.
+Dar, $u(m;r,x_r) = U(m,n)(U(n,0)x_r-x)$ pentru orice $m\in\N$, $m\geq n$, \c si prin urmare $U(n,0)x_r = x$.
+Exist\u a un  $y=U(n_0,0)x_r\in\X_{2,\F}(n_0)$
+care satisface $U(n,n_0)y=x$.
+Din moment ce restric\c tia  $U(n,n_0)_{|}:\X_{2,\F}(n_0)\to\X_{2,\F}(n)$ a fost deja dovedit\u a
+(vezi Remarca~\ref{artC:rem4mainthm} de mai sus), rezult\u a c\u a este inversabil.
+
+\bigskip
+
+
+\noindent
+\textbf{Demonstra\c tia Teoremei~\ref{artC:conversemainthm}.}
+\medskip
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Fie $\{P(n)\}_{n\in\N}$ o familie de proiectoare dat\u a de Defini\c tia~\ref{expdichot}.
+Din Remarca~\ref{boundedprojectors}, avem c\u a exist\u a $C>0$ astfel \^inc\^at $\sup_{n\in\N}\|P(n)\| \leq C$ \c si $\sup_{n\in\N}\|Q(n)\| \leq C$, unde
+$Q(n):=I-P(n)$ pentru orice $n\in\N$.
+
+Acum, fie $f\in\E(\X)$. \^Intruc\^at $f\in\ell^{\infty}(\X)$ \c si
+$$ \sum_{k=n+1}^{\infty} \|U(k,n)_{|}^{-1}Q(k)f(k-1)\| \leq NC\|f\|_{\infty} \sum_{k=n+1}^{\infty} e^{-\nu(k-n)}=
+ \frac{NCe^{-\nu}}{1-e^{-\nu}}\|f\|_{\infty}\ ,$$
+pentru orice $n\in\N$,
+$$ x:= \sum_{k=1}^{\infty} U(k,0)_{|}^{-1}Q(k)f(k-1)$$
+exist\u a  un element \^in $Q(0)\X$.
+Putem defini deasemenea, $\varphi:\N\to\X$ fix\^and $\varphi(0)=x$ \c si
+\begin{equation}
+\varphi(n)= \sum_{k=1}^{n} U(n,k) P(k)f(k-1) - \sum_{k=n+1}^{\infty} U(k,n)_{|}^{-1}Q(k)f(k-1)
+\end{equation}
+pentru orice $n\geq1$.
+Cum seria de mai sus este absolut convergent\u a, $\varphi$ este corect definit.
+Putem scrie deasemenea,
+\begin{gather*}
+\begin{split}
+\|\varphi(n)\|\leq &\, NC \left(\sum_{k=1}^{n}e^{-\nu(n-k)}\|f(k-1)\|  +
+   \sum_{k=n+1}^{\infty} e^{-\nu(k-n)}\|f(k-1)\| \right)=\\
+   = &\, NC \left(\sum_{k=0}^{n-1}e^{-\nu k}\|R^{k+1} f\|(n)  +
+   \sum_{k=1}^{\infty} e^{-\nu k}\|L^{k-1} f\|(n) \right) \leq \\
+   \leq &\, NC \left(\sum_{k=0}^{\infty} e^{-\nu k}\|R^{k+1} f\|(n)  +
+   \sum_{k=1}^{\infty} e^{-\nu k}\|L^{k-1} f\|(n) \right).
+\end{split}
+\end{gather*}
+Din ipotez\u a, avem c\u a $L^{k-1} f, R^{k+1} f\in\F(\X)$ \c si deasemenea
+$\|L^{k-1}f\|_{\F(\X)}\leq \|f\|_{\F(\X)}$, $\|R^{k+1}f\|_{\F(\X)}= \|f\|_{\F(\X)}$ pentru orice $k\in\N^*$.
+Prin urmare, putem scrie
+$$\sum_{k=0}^{\infty}\left\| e^{-\nu k}\|R^{k+1} f\|\right\|_{\F}  +
+   \sum_{k=1}^{\infty} \left\|e^{-\nu k}\|L^{k-1} f\|\right\|_{\F} \leq \frac{1+e^{-\nu}}{1-e^{-\nu}}\|f\|_{\F(\X)}\ .$$
+Rezult\u a c\u a \c sirul
+$$\phi:= \sum_{k=0}^{\infty} e^{-\nu k}\|R^{k+1} f\| +\sum_{k=1}^{\infty} e^{-\nu k}\|L^{k-1} f\| $$
+exist\u a ca \c si element \^in $\F$ cu $\|\phi\|_{\F}\leq \frac{1+e^{-\nu}}{1-e^{-\nu}}\|f\|_{\F(\X)}$.
+\^In plus, \^intruc\^at
+$\|\varphi(n)\|\leq NC\phi(n)$ pentru orice $n\in\N^*$, ob\c tinem c\u a $\varphi\in\F(\X)$.
+
+Pe de alt\u a parte, se poate verifica faptul c\u a
+$$\varphi(n) = U(n,0)x + \sum_{k=1}^{n}U(n,k)f(k-1)\ ,$$
+pentru orice $n\in\N^*$. Astfel $u(\,\cdot\,;f,x)=\varphi\in\F(\X)$.
+
+
+
+
+\begin{thebibliography}{}
+
+\bibitem{coffmanschaffer67}
+Coffman C.V., Sch\"{a}ffer J.J., \emph{Dichotomies for Linear Difference Equations}, Math. Annalen, 172 (1967), 139-166.
+
+\bibitem{CR}
+Craciunescu A., \emph{Analiz\u a func\c tional\u a. Noti\c te de curs.} Anul III, Semestrul I, 2013.
+
+\bibitem{MasseraSchaffer}
+Massera J.L., Sch\"{a}ffer J.J., \emph{Linear Differential Equations and Function Spaces},
+Academic Press, New York, 1966.
+
+\bibitem{PredaPoganJDE05}
+Preda P., Pogan A., Preda C., \emph{Sch\"{a}ffer spaces and uniform exponential stability of linear skew-product semiflows},
+J. Diff. Eqs., 212 (2005), 191-207.
+
+\bibitem{PredaPoganDCDIS05}
+Preda P., Pogan A., Preda C.,
+\emph{Discrete admissibility and exponential dichotomy for evolution families},
+Dyn. Contin. Discrete Impuls. Syst.  12 (2005), no. 5, 621-�631.
+
+\bibitem{SAL}
+Sasu A. L., \emph{Spa\c tii de func\c tii. Noti\c te de curs.} Master MAGS, Anul I, Semestrul I, 2013.
+
+\bibitem{MSS}
+Megan M., Sasu A. L., Sasu B., \emph{The Asymptotic Behaviour of Evolution Families}, Editura Mirton, Timi\c soara, 2003.
+
+\bibitem{MinhRabigerSchnaubelt}
+Van Minh N., R\"{a}biger F., Schnaubelt R.,
+\emph{Exponential stability, exponential expansiveness and exponential
+dichotomy of evolution equations on the half-line}, Int. Eq. Op. Theory, 32 (1998), 332-353.
+
+
+\end{thebibliography}{}
+
+
+
+
+
+
+
+\end{document}
+
+
+
+
+
+
+
+
+
+%\bibitem{MinhRabigerSchnaubelt}
+Van Minh N., R\"{a}biger F., Schnaubelt R.,
+\emph{Exponential stability, exponential expansiveness and exponential
+dichotomy of evolution equations on the half-line}, Int. Eq. Op. Theory, 32 (1998), 332-353. 

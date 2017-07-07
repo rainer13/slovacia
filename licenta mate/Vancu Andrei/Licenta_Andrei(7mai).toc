@@ -1,0 +1,19 @@
+\select@language {romanian}
+\contentsline {section}{Introducere}{3}
+\contentsline {chapter}{\numberline {1}SPA\c TII NORMATE. SPA\c TII BANACH}{4}
+\contentsline {section}{\numberline {1.1}Spa\c tii normate}{4}
+\contentsline {section}{\numberline {1.2}Spa\c tii Banach. Caracterizare.}{9}
+\contentsline {section}{\numberline {1.3}Operatori liniari \c si continui pe spa\c tii Banach}{13}
+\contentsline {chapter}{\numberline {2}SPA\c TII BANACH DE FUNC\c TII}{23}
+\contentsline {section}{\numberline {2.1}Norm\u a generalizat\u a de func\c tii}{23}
+\contentsline {section}{\numberline {2.2}Clase de spa\c tii de func\c tii}{25}
+\contentsline {section}{\numberline {2.3}Func\c ti Young}{29}
+\contentsline {section}{\numberline {2.4}Spa\c tii Orlicz}{31}
+\contentsline {section}{\numberline {2.5}Propriet\u a\c ti de completitudine ale spa\c tiilor de func\c tii}{37}
+\contentsline {section}{\numberline {2.6}Completitudinea spa\c tiilor Orlicz}{44}
+\contentsline {section}{\numberline {2.7}C\^ ateva propriet\u a\c ti ale spa\c tiilor Orlicz}{49}
+\contentsline {chapter}{\numberline {3}SPA\c TII BANACH DE \c SIRURI}{53}
+\contentsline {section}{\numberline {3.1}Spa\c tii Banach de \c siruri}{53}
+\contentsline {chapter}{\numberline {4}APLICA\c TII}{61}
+\contentsline {section}{\numberline {4.1}\textit {Familii de evolu\c tie \^in timp discret. Dihotomii exponen\c tiale uniforme}}{61}
+\contentsline {section}{\numberline {4.2}Demonstra\c tiile rezultatelor principale}{65}

@@ -1,0 +1,14 @@
+\select@language {romanian}
+\contentsline {section}{Introducere}{3}
+\contentsline {chapter}{\numberline {1}SPA\c TII NORMATE. SPA\c TII BANACH}{4}
+\contentsline {section}{\numberline {1.1}\textit {Spa\c tii normate}}{4}
+\contentsline {section}{\numberline {1.2}\textit {Spa\c tii Banach. Caracterizare}}{9}
+\contentsline {chapter}{\numberline {2}SPA\c TII BANACH DE FUNC\c TII}{20}
+\contentsline {section}{\numberline {2.1}\textit {Norm\u a generalizat\u a de func\c tii}}{20}
+\contentsline {section}{\numberline {2.2}\textit {Clase de spa\c tii de func\c tii}}{22}
+\contentsline {section}{\numberline {2.3}\textit {Func\c tie Young}}{24}
+\contentsline {section}{\numberline {2.4}\textit {Spa\c tii Orliez}}{25}
+\contentsline {section}{\numberline {2.5}\textit {Propriet\u a\c ti de completitudine ale spa\c tiilor de func\c tii}}{29}
+\contentsline {section}{\numberline {2.6}\textit {Completitudinea spa\c tiilor Orliez}}{33}
+\contentsline {section}{\numberline {2.7}\textit {Propriet\u a\c tile spa\c tiilor Orliez}}{35}
+\contentsline {chapter}{\numberline {3}SPA\c TII BANACH DE \c SIRURI}{38}

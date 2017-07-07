@@ -1,0 +1,617 @@
+\documentclass{beamer}
+%\mode<presentation>
+\usetheme{Ilmenau}
+\usepackage{hyperref}
+\usepackage{beamertheme split}
+\usepackage{multimedia}
+\usepackage{pgf}
+\usepackage{amsmath,amssymb}
+%\usepackage{articol}
+%\usepackage[romanian]{babel}
+%\usepackage{romanian}
+
+
+
+
+
+%partea din licenta mea
+\usepackage{eucal,amsfonts,amstext}
+\usepackage{amsthm}
+
+
+
+\usepackage{color}
+\usepackage{mathtools}
+\usepackage{enumerate}
+
+
+
+
+%nu stiu de ce nu mi le  accepta
+\newtheorem{thm}{\bf Teorem\u a}[section]
+
+\newtheorem{defin}{\bf Defini\c tie}[section]
+
+
+
+
+\newtheorem{prop}[theorem]{\bf Propozi\c tie }
+\newtheorem{lema}[theorem]{\bf{Lem\u a}}
+\newtheorem{cor}[theorem]{\bf Corolar}
+\theoremstyle{remark}
+\newtheorem{remarc}{\bf Remarc\u a}[section]
+\newtheorem{obs}{\bf Observa\c tie }[section]
+\newtheorem{exemple}{\bf Exemplu}[section]
+\newtheorem{exercise}{\bf Exerci\c tiu}[section]
+\newtheorem{cons}{\bf Consecin\c t\u a }[section]
+\newtheorem{term}{\bf Terminologie }[section]
+
+\newcommand{\superimpose}[2]{%
+  {\ooalign{$#1\@firstoftwo#2$\cr\hfil$#1\@secondoftwo#2$\hfil\cr}}}
+  
+  \newcommand{\B}{\mathcal{B}}
+  \newcommand{\E}{\mathcal{E}}
+  \newcommand{\F}{\mathcal{F}}
+  \newcommand{\C}{\mathbb{C}}
+  \newcommand{\R}{\mathbb{R}}
+  \newcommand{\N}{\mathbb{N}}
+  \newcommand{\K}{\mathbb{K}}
+  \newcommand{\X}{\mathbb{X}}
+  
+  \newcommand{\defnemph}[1]{\textbf{#1}}
+  \newcommand{\thetat}{\ensuremath{\theta_0}}
+  \newcommand{\Orb}[2]{\ensuremath{\mathcal{O}_{#1}(#2)}}
+  \newcommand{\Ker}{\ensuremath{\mathrm{Ker}\,}}
+  \newcommand{\Imag}{\ensuremath{\mathrm{Im}\,}}
+%partea mea din licenta
+
+
+
+
+
+
+
+ 
+ 
+ \newcommand{\ds}{\displaystyle}
+ 
+ \newenvironment{myBox}[1]%
+  {\def\insertblocktitle{#1}\usebeamertemplate{block example begin}}%
+ {\usebeamertemplate{block example end}}
+
+ \definecolor{galben}{rgb}{0.94,0.92,0.5}
+ \definecolor{violet}{rgb}{0.5,0,0.5}
+ \definecolor{oranj}{rgb}{0.93,0.5,0.01} % sau poti folosi "orange" - am vrut numa sa vad cum se calculeaza
+ \definecolor{mov}{rgb}{0.25,0,0.5}
+ \definecolor{movdeschis}{rgb}{0.88,0.77,1}
+ \definecolor{roz}{rgb}{1,0.5,1}
+
+%%%%%%%%%%%%%%% culoarea mea pentru exemple %%%%%%%%%%%%%%%%%%%%%
+
+\newcommand{\myColor}[2]{\setbeamercolor{block title
+example}{use=example text,fg=white,bg={#1}}\setbeamercolor{block
+body example}{parent=normal text,use=block title example,bg={#2}}} % obs: daca vrei culori amestecate de
+                                                                           %genul "red!30!blue" trebuie
+                                                                           %bagate in setbeamercolor -
+                                                                           %comanda nu mai ia parametri%
+%%%%%%%%%%%%%%%%%%%%%%%%%%% end of duti %%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+%%%%%%%%%%%%%%% culoarea originala pentru exemple %%%%%%%%%%%%%%%%
+
+\newcommand{\herColor}{
+\setbeamercolor{block title example}{use=example
+text,fg=white,bg=example text.fg!75!black}\setbeamercolor{block
+body example}{parent=normal text,use=block title example,bg=block
+title example.bg!10!bg}}
+ \title[] {\textsc{Clase de spa\c tii de \c siruri \c si de spa\c tii de func\c tii \c si aplica\c tii}}
+\author[Vancu Andrei Ioan]{
+Coordonator \c stiin\c tific\\
+Lect. Dr. \textsc{Cr\u aciunescu Aurelian}\\
+Candidat\\
+\textsc{Vancu Andrei Ioan}
+}
+\date{Iulie 2014}
+
+\begin{document}
+
+\frame{\titlepage}
+
+
+%\tableofcontents[allowframebreaks]
+
+\section{Introducere}
+
+\frame {
+
+ \frametitle{Introducere}
+ 
+ \begin{enumerate}
+ \item[$\centerdot$]Lucrarea de fa\c t\u a i\c si propune s\u a prezinte dou\u a clase speciale de spa\c tii normate complete \c si anume spa\c tiile Banach de func\c tii \c si spa\c tiile Banach de \c siruri. Aceste clase generalizeaz\u a  spa\c tiile de tip $L^p(X, \mathcal{A}, \mu)$, ($1 \leq p \leq \infty$).
+ \pause
+ \item[$\centerdot$] Lucrarea este structurat\u a pe patru capitole dup\u a cum urmeaz\u a:
+     \begin{itemize}
+     \item[{\bf Cap 1.}]\emph{Spa\c tii normate. Spa\c tii Banach}
+     \item[{\bf Cap.2.}] \emph{Spa\c tii Banach de func\c tii}
+     \item[{\bf Cap.3.}] \emph{Spa\c tii Banach de \c siruri}
+     \item[{\bf Cap.4.}] \emph{Aplica\c tii}
+     \end{itemize}
+\end{enumerate}
+
+
+}
+
+
+
+\section[Spa\c tii normate. Spa\c tii Banach]{Spa\c tii normate. Spa\c tii Banach}
+\frame{
+\frametitle{{\bf Cap.1. }Spa\c tii normate. Spa\c tii Banach  }
+
+\begin{enumerate}
+\item[$\centerdot$] Scopul acestui capitol este de a \^\i ncadra tema lucr\u arii dar \c si de introducere a no\c tiunilor \c si rezultatelor generale des utilizate. Se bazeaz\u a \^\i n principal pe cursul de Analiz\u a Func\c tional\u a din anul III \c si a fost introdus aici pentru a-i conferii lucr\u arii un caracter auto-inclus.
+\item[$\centerdot$] Este structurat \^\i n trei sec\c tiuni:
+\begin{itemize}
+\item{1.1} Spa\c tii normate.
+\item{1.2} Spa\c tii Banach. Caracterizare.
+\item{1.3} Operatori liniari \c si continui pe spa\c tii Banach.
+\end{itemize}
+\end{enumerate}
+}
+
+
+
+ 
+
+
+ 
+\section[Spa\c tii Banach de func\c tii]{}
+\frame{
+\frametitle{{\bf Cap.2. }Spa\c tii Banach de func\c tii  }
+
+\begin{enumerate}
+\item[$\centerdot$] Scopul acestui capitol este de a introduce \c si de a studia, \^\i ntr-o manier\u a abordabil\u a, o clas\u a de spa\c tii Banach, cunoscute \^\i n Analiza Func\c tional\u a ca spa\c tii de func\c tii.
+
+\pause
+
+\item[$\centerdot$] Este structurat \^\i n \c sapte sec\c tiuni:
+\begin{itemize}
+\item{2.1} Norm\u a generalizat\u a de func\c tii.
+\item{2.2} Clase de spa\c tii de func\c tii.
+\item{2.3} Func\c tii Young.
+\item{2.4} Spa\c tii Orlicz.
+\item{2.5} Propriet\u a\c ti de completitudine ale spa\c tiilor de func\c tii.
+\item{2.6} Completitudinea spa\c tiilor Orlicz.
+\item{2.7} C\^ ateva propriet\u a\c ti  ale spa\c tiilor Orlicz.
+\end{itemize}
+\end{enumerate}
+}
+
+
+
+\subsection[Norm\u a generalizat\u a de func\c tii]{}
+
+\frame  {
+ \frametitle{2.1. Norm\u a generalizat\u a de func\c tii}
+ 
+ \begin{defin}\label{defnormeigen}
+ O aplica\c tie $N:\mathcal{M}\rightarrow[0,\; \infty]$ se nume\c ste \emph{norm\u a generalizat\u a de func\c tii} dac\u a:
+ \begin{enumerate}
+ \item $N(f)=0$ dac\u a \c si numai dac\u a $f=0$ a.p.t;
+ \item dac\u a $ \lvert f(t) \rvert\leqslant \lvert g(t) \rvert$ a.p.t, $t\in \mathbb{R}_+$ atunci $N(f)\leqslant N(g)$;
+ \item $N(\alpha f)=\lvert \alpha \rvert \cdot N(f)$, pentru orice $\alpha\in \mathbb{R}$, $f\in \mathcal{M}$ cu $N(f)<\infty$;
+ \item $N(f+g)\leqslant N(f)+N(g) $, pentru orice $f,g\in \mathcal{M}$;
+ \end{enumerate}
+ \end{defin}
+}
+
+\frame  {
+ \frametitle{2.1. Norm\u a generalizat\u a de func\c tii}
+
+Not\u am
+$$B_N = \{ f \in {\cal M} \; : \; N(f) < \infty \}$$
+\pause
+ \begin{defin}
+ Vom numi {\it spa\c tiu Banach de func\c tii} orice spa\c tiu Banach de forma ($B,\lVert \cdot \rVert_B$) unde $B = B_N$, iar $N$ este o norm\u a generalizat\u a.
+ \end{defin}
+ }
+
+  \frame  {
+  \frametitle{2.1. Norm\u a generalizat\u a de func\c tii}
+ \noindent Not\u am $Q(\mathbb{R}_+)$ clasa spa\c tiilor Banach de func\c tii $B$ cu proprietatea c\u a $\lambda_{[0,t)} \in B$, pentru orice $t>0$ , unde
+ pentru $ A \subset \mathbb{R}_+ $, $\lambda_A$ noteaz\u a func\c tia caracteristic\u a a mul\c timii $A$. 
+
+\pause
+
+ \begin{defin}
+ Dac\u a $B\!\!\in\!\! Q(\!\mathbb{R}_+\!)$, atunci func\c tia
+ $F_B\!\! :\!\! (\!0,\! \infty\!)\! \rightarrow\! (\!0,\! \infty\!)$,$F_B(t)\!\! =\!\! \lVert\! \lambda_ {[0,\, t)}\! \rVert_B$, se nume\c ste {\it func\c tia fundamental\u a} a spa\c tiului $B$.
+ \end{defin}
+
+\pause
+
+ \begin{prop}
+ Pentru orice spa\c tiu Banach de func\c tii $B\in Q(\mathbb{R}_+)$ avem c\u a func\c tia sa fundamental\u a $F_B$ este o func\c tie monoton\u a.
+ \end{prop} 
+}
+ 
+
+ \subsection[Clase de spa\c tii de func\c tii]{}
+ \frame  {
+  \frametitle{2.2. Clase de spa\c tii de func\c tii}
+ Vom nota cu:
+ \begin{itemize}
+ \item $\mathcal{B}(\mathbb{R}_+) =$ clasa spa\c tiilor Banach de func\c tii $B \in Q(\mathbb{R}_+)$ cu proprietatea c\u a
+ $\lim_{t \to \infty} F_B{(t)} = +\infty$.
+ \item $\mathcal{E}(\mathbb{R}_+) = $ clasa spa\c tiilor Banach de func\c tii $B \in \mathcal{B}(\mathbb{R}_+)$ cu proprietatea c\u a $\inf_{n \in \mathbb{N}} \lVert \lambda_{[n,n+1)} \rVert_B >0$.
+ \end{itemize}
+ 
+\pause
+
+ \begin{exemple}
+ Pentru $N(\cdot) = \lVert \cdot \rVert_p$, $B = L^p(\mathbb{R}_+ , \mathbb{R})$, rezult\u a c\u a $B \in \mathcal{B}(\mathbb{R}_+)$ dac\u a \c si numai dac\u a $p \in [1, \infty)$.
+ \end{exemple}
+
+\pause
+
+ \begin{remarc} Evident $\mathcal{E}(\mathbb{R}_+) \subset \mathcal{B}(\mathbb{R}_+)$.
+ \end{remarc}
+  
+  }
+  
+ \subsection[Func\c tii Young]{}
+   \frame  {
+    \frametitle{2.3. Func\c tii Young}
+    S\u a presupunem c\u a am fixat o func\c tie
+    $\varphi : [0,\infty) \rightarrow [0,\infty]$,
+    monoton cresc\u atoare pe $(0, \, \infty)$, continu\u a la st\^ anga pe $(0, \, \infty)$ \c si neidentic nul\u a sau $+\infty$ pe intervalul $(0,\, \infty)$.
+    \begin{defin}
+    Func\c tia
+    $Y_\varphi\!\! :\!\! [0,\infty)\!\! \rightarrow\! [0,\infty]$, $Y_\varphi(t)\!\! =\!\! \ds\int\limits_{0}^{t}\varphi(\tau) d\tau$,
+    se nume\c ste \emph{func\c tia Young} asociat\u a lui $\varphi$.
+    \end{defin}
+    \begin{thm}
+    Func\c tia $Y_\varphi$ este o func\c tie convex\u a pe $[0,\, \infty)$.
+    \end{thm}
+    }
+        
+    
+  \subsection[Spa\c tii Orlicz]{}
+       \frame  {
+        \frametitle{2.4. Spa\c tii Orlicz}
+        
+       
+       S\u a fix\u am o func\c tie $\varphi : [0,\infty) \rightarrow [0,\infty]$, ca \^\i n paragraful anterior \c si fie
+       $Y_\varphi (t)=\ds\int\limits_{0}^{t} \varphi (\tau) d\tau, \; t \geq 0$, func\c tia Young asociat\u a acesteia.
+       
+       Dac\u a $f \in \mathcal{M}$, definim
+       $M_\varphi (f) = \ds\int\limits_{0}^{\infty} Y_\varphi (\lvert f(t) \rvert)dt$ \c si
+       $O_\varphi \!\!=\!\! \{f \!\!\in\!\! \mathcal{M} : \hbox{ exist\u a } c\!>\!0 \hbox{ astfel \^\i nc\^ at } M_\varphi (c\! \cdot\! f)\! <\! \infty\}$.
+       
+\pause
+
+       \begin{thm}
+       $O_\varphi$ este un subspa\c tiu liniar \^in $\mathcal{M}.$
+       \end{thm}
+        }
+       
+    
+    \frame  {
+            \frametitle{2.4. Spa\c tii Orlicz}
+            
+        $$N : \mathcal{M} \rightarrow [0,\, \infty]$$
+$$ N(f) = \begin{cases}
+\inf \left\{ c>0 \; : \; M_\varphi \Big( \frac{1}{c} \cdot f\Big) \leq 1\right\}, \text{ dac\u a } \; A_f \neq \varnothing\\
++\infty, \text{ dac\u a } \; A_f = \varnothing
+\end{cases}$$
+          \begin{thm}
+          $N$ este o norm\u a generalizat\u a de func\c tii.
+          \end{thm}
+          \begin{thm} \^ In nota\c tiile de mai sus avem c\u a:
+          $$O_\varphi =\{ f \in \mathcal{M}: N(f) < \infty\} = B_N.$$
+          \end{thm}
+            }
+           
+
+ 
+ \subsection[Propriet\u a\c ti de completitudine ale spa\c tiilor de func\c tii]{}
+     
+     \frame  {
+             \frametitle{2.5. Propriet\u a\c ti de completitudine ale spa\c tiilor de func\c tii}
+             
+             \begin{defin}
+             Spunem c\u a $N$ satisface:
+             
+             1 - proprietatea ($P_1$), sau proprietatea Beppo-Levi dac\u a pentru orice \c sir cresc\u ator de func\c tii pozitive $(f_n)_n \subset \mathcal{M}$, cu $f_n \nearrow f$ a.p.t., rezult\u a c\u a  $N(f_n) \nearrow N(f)$.
+
+            \pause
+
+             2 - proprietatea ($P_2$), dac\u a pentru orice mul\c time m\u asurabil\u a Lebesque, $A \subset [0, \infty)$, cu $m(A)<\infty$  rezult\u a c\u a $N(\lambda_A)<\infty$ (sau echivalent $\lambda_A \in B$).
+
+             \pause
+
+             3 - proprietatea ($P_3$), dac\u a pentru orice mul\c time m\u asurabil\u a Lebesque $A \subset [0, \infty)$, cu $m(A)<\infty$  exist\u a o constant\u a $K_A \in (0,\infty)$ astfel \^inc\^at:
+             $\ds\int\limits_{A} \lvert f \rvert dm \leq K_A \cdot N(f)$,$\forall f \in \mathcal{M}$.
+             \end{defin}
+             
+             
+             }
+            
+ \frame  {
+              \frametitle{2.5. Propriet\u a\c ti de completitudine ale spa\c tiilor de func\c tii}
+              
+             \begin{thm}[Fatou]\label{Fatou}
+                          Dac\u a norma generalizat\u a $N$ are proprietatea ($P_1$), $(f_n)_n \subset B$, $f_n \rightarrow f$ a.p.t. \c si $\varliminf\limits_{n \rightarrow \infty}\lVert f_n \rVert_B < \infty$, atunci $f \in B$ \c si avem c\u a $\lVert f\rVert_B \leq \varliminf\limits_{n \rightarrow \infty} \lVert f_n \rVert_B$.
+                          \end{thm}
+
+\pause
+
+                          \begin{thm}[Teorema Riesz-Fischer] Fie $N$ o norm\u  a generalizat\u a cu propriet\u a\c tile ($P_1$) \c si ($P_3$). Dac\u a $(f_n)_n \subset B$ astfel \^\i nc\^ at $\sum\limits_{n = 0}^\infty \lVert f_n \rVert_{B} < \infty$ atunci \c sirul $(F_n)_n$, unde $F_n = \sum \limits_{k = 0}^n f_k$, $n \geq 0$, este convergent \^\i n $B$.
+                          \end{thm}
+              }
+ 
+ 
+ 
+  \subsection[Completitudinea spa\c tiilor Orlicz]{}
+         \frame  {
+          \frametitle{2.6. Completitudinea spa\c tiilor Orlicz}
+           \begin{thm}
+        Norma $N = \lVert \cdot \rVert_\varphi$ verific\u a propriet\u a\c tile ($P_1$), ($P_2$) \c si ($P_3$).
+        \end{thm}
+
+\pause
+
+        \begin{cor}
+        Spa\c tiul Orlicz $(O_\varphi,\lVert \cdot \rVert_\varphi)$ este complet.
+        \end{cor}
+
+\pause
+                       
+                       \begin{prop}
+                       $O_\varphi \in \mathcal{Q}(\mathbb{R}_+).$
+                       \end{prop}
+          }
+      
+ \section[Spa\c tii Banach de \c siruri]{Spa\c tii Banach de \c siruri}
+\frame{
+\frametitle{{\bf Cap.3. }Spa\c tii Banach de \c siruri  }
+
+\begin{enumerate}
+\item[$\centerdot$] Scopul acestui capitol este de a prezinta  clasa  spa\c tiilor Banach de \c siruri, clas\u a din care fac parte \c si spa\c tiile de tip $\ell^p$ (spa\c tiul \c sirurilor scalare $p$-absolut sumabile). Sunt prezentate aici \c si spa\c tiile Banach de \c siruri invariante la transla\c tii cunoscute \c si sub denumirea de spa\c tii Sch\" affer. 
+
+\pause
+
+\item[$\centerdot$] Este structurat \^\i n dou\u a sec\c tiuni:
+\begin{itemize}
+\item{3.1} Spa\c tii Banach de \c siruri
+\item{3.2} Spa\c tii Sch\"{a}ffer de \c siruri
+
+\end{itemize}
+\end{enumerate}
+}
+
+
+
+
+
+
+\subsection[Spa\c tii Banach de \c siruri]{}
+   \frame  {
+    \frametitle{3.1. Spa\c tii Banach de \c siruri}
+   
+   \begin{defin}
+   Numim {\it norm\u a generalizat\u a de \c siruri} o func\c tie
+   $$N:S \rightarrow [0,\, \infty]$$ cu urm\u atoarele propriet\u a\c ti:
+   \begin{enumerate}[(i)]
+   \item $N(s)=0$ dac\u a \c si numai dac\u a $s=0$;
+   \item dac\u a $\lvert s \rvert \leq \lvert u \rvert$ atunci $N(s) \leq N(u)$;
+   \item $N(\alpha \cdot s)=\lvert \alpha \rvert \cdot N(s)$, pentru orice $\alpha \in \mathbb{C}$ \c si $s \in S$ cu $N(s)<\infty$;
+   \item $N(s+u) \leq N(s)+N(u)$, pentru orice  $s,u \in S$.
+   \end{enumerate}
+   \end{defin}
+   
+    }
+    
+  
+  \frame  {
+      \frametitle{3.1. Spa\c tii Banach de \c siruri}
+     
+    Consider\u am urm\u atoarele clase de spa\c tii Banach de \c siruri:
+    \begin{enumerate}[(i)]
+    \item $\mathcal{B}(\mathbb{N})$ mul\c timea tuturor spa\c tiilor Banach de \c siruri $B$ cu proprietatea c\u a $\lim\limits_{n \rightarrow \infty} F_B(n)=\infty$;
+    \item $\mathcal{E}(\mathbb{N})$ mul\c timea tuturor spa\c tiilor Banach de \c siruri $B$ cu $B \in \mathcal{B}(\mathbb{N})$ \c si $\inf\limits_{n \in \mathbb{N}}{\lvert \lambda_{\{n\}} \rvert}_N>0$;
+    \item $\mathcal{L}(\mathbb{N})$ mul\c timea tuturor spa\c tiilor Banach de \c siruri cu proprietatea c\u a
+    pentru orice $\varepsilon>0$, exist\u a $n_0 \in \mathbb{N}$ astfel \^inc\^at
+    ${\lvert \lambda_{\{j-n_0,...,j\}} \rvert}_N \geq \varepsilon$, pentru orice $j \in \mathbb{N} , j \geq n_0$.
+    \end{enumerate}
+   
+         \begin{remarc}\label{rer}
+         Este u\c sor de observat c\u a $\mathcal{L}(\mathbb{N})\subset \mathcal{B}(\mathbb{N})$.
+         \end{remarc}  
+      }
+ \frame  {
+       \frametitle{3.1. Spa\c tii Banach de \c siruri}
+      
+      
+      \begin{prop}
+      Fie $\varphi\!\! :\!\! \mathbb{R}_{+}\!\! \rightarrow\!\! \mathbb{R}_{+}$ o func\c tie continu\u a la st\^anga. Dac\u a $\varphi\!\! \in\!\! \mathcal{F}$, atunci:
+      \begin{enumerate}[(i)]
+      \item Func\c tia Young $Y_\varphi$ asociat\u a lui $\varphi$ este bijectiv\u a;
+      
+      \item Func\c tia fundamental\u a $F_{O_{\varphi}}$ poate fi exprimat\u a \^in func\c tie de $Y_\varphi^{-1}$ prin :
+      $F_{O_{\varphi}} (n) = \frac{1}{Y_{\varphi}^{-1}\Big(\ds\frac{1}{n}\Big)}$, pentru orice $n \in \mathbb{N}^{\ast}$;
+      
+      \item $O_\varphi \in \mathcal{E}(\mathbb{N}) \cap \mathcal{L}(\mathbb{N})$;
+      \end{enumerate}
+      \end{prop}
+       }
+
+
+        
+ \subsection[Spa\c tii Sh\"{a}ffer de \c siruri]{}
+   
+      \frame  {
+          \frametitle{3.2. Spa\c tii Sh\"{a}ffer de \c siruri}
+          
+          \begin{defin}
+          Un spa\c tiu Banach de \c siruri $(E,\|\cdot\|_{E})$ se nume\c ste {\it spa\c tiu Sch\"{a}ffer de \c siruri} dac\u a sunt satisf\u acute urm\u atoarele condi\c tii:
+          \begin{enumerate}
+          \item[$(s_1)$] $\delta_0\in E$,
+          \item[$(s_2)$] dac\u a  $f\in E$ atunci $Lf, Rf\in E$ \c si $\|Rf\|_{E}=\|f\|_{E}.$
+          \end{enumerate}
+          \end{defin}
+
+\pause
+
+Pentru $E$ un spa\c tiu Sch\"{a}ffer de \c siruri, se definesc \c sirurile $\alpha_{E}, \beta_{E} \in \mathcal{S}$ prin
+\begin{gather*}
+\begin{split}
+\alpha_{E}(n)&=\inf\Big\{\,c>0\,:\, \sum_{k=0}^n|f(k)|\leq c\|f\|_{E}\,,\text{ pentru orice }f\in E\,\Big\}\ ,\\
+\beta_{E}(n)&=\|\chi_{\{0,1,...,n\}}\|_{E}\ ,
+\end{split}
+\end{gather*}
+
+}
+
+  \frame  {
+          \frametitle{3.2. Spa\c tii Sh\"{a}ffer de \c siruri}
+
+          \begin{prop}
+                \label{prop1:structureofSchaffercl}
+                Dac\u a  $(E,\|\cdot\|_{E})$ este un spa\c tiu Sch\"{a}ffer de \c siruri, atunci
+                $\ell^1_{\N}(\C)\hookrightarrow E\hookrightarrow \ell^{\infty}_{\N}(\C)$ cu:
+                \begin{itemize}
+                \item[(i)] $\|f\|_{E}\leq\beta_{E}(0)\|f\|_1$, pentru orice $f\in\ell^1_{\N}(\C)$;
+                
+                \item[(ii)] $\beta_{E}(0)\|f\|_{\infty}\leq \|f\|_{E}$, pentru orice $f\in E$.
+                \end{itemize}
+                \end{prop}
+          }
+             
+\section[Aplica\c tii]{}
+ \frame  {
+          \frametitle{Aplica\c tii}
+    \begin{enumerate}
+    \item[$\centerdot$] Scopul acestui capitol este de a prezenta o aplica\c tie a spa\c tiilor Banach studiate \^\i n capitolele anterioare. Este astfel studiat\u a proprietatea de dicotomie a unei familii de evolu\c tie discret\u a \^\i n ipoteze de tip "intrare-ie\c sire" \^\i n care at\^ at spa\c tiul func\c tiilor de intrare c\^ at \c si cel de ie\c sire sunt spa\c tii de tip Sch\" affer. 
+    \item[$\centerdot$] Cuprinde o singur\u a sec\c tiune:
+    \begin{itemize}
+    \item{3.1} Familii de evolu\c tie \^in timp discret.Dicotomii exponen\c tiale uniforme
+   
+    
+    \end{itemize}
+    \end{enumerate}      
+          
+          }  
+   
+   
+   \subsection[Familii de ev. \^in timp discret.Dicotomii exponen\c tiale uniforme]{}     
+        \frame  {
+         \frametitle{4.1. Familii de evolu\c tie \^in timp discret. Dicotomii exponen\c tiale uniforme}
+      \^In continuare vom nota prin $\Delta$ mul\c timea perechilor $(m, n) \in \mathbb{N}\times \mathbb{N}$ cu $m \leq n$, iar prin $X$ vom nota un spa\c tiu Banach fixat.
+      
+      \begin{defin}
+      O familie $\mathcal{U}:=\{U(m,n)\}_{(m,n)\in\Delta}$ de operatori liniari \c si m\u argini\c ti  pe $X$ o numim
+      \it{familie de evolu\c tie (\^in timp discret)} dac\u a
+      \begin{enumerate}
+      \item[$(\!e_1\!)$] $U(n,n)=I$ pentru orice $n\in\N$,
+      \item[$(\!e_2\!)$] $U(m\!,\!n)U(n\!,\!n_0)\!\!=\!\!U(m,n_0)$ pentru orice $m,\! n,\! n_0\!\!\in\!\!\N$, $m\!\geq\! n\!\geq\! n_0$.
+      \end{enumerate}
+      Dac\u a, \^in plus, exist\u a $M,\omega\in\R$ astfel \^inc\^at
+      \begin{enumerate}
+      \item[$(e_3)$] $\|U(m,n)\|\leq Me^{\omega(m-n)}$ pentru orice $(m,n)\in\Delta$,
+      \end{enumerate}
+      atunci spunem c\u a $\mathcal{U}$ are \it{cre\c stere exponen\c tial\u a uniform\u a}.
+      \end{defin}
+         
+         }
+         
+      
+      
+        \frame  {
+               \frametitle{4.1. Familii de evolu\c tie \^in timp discret. Dicotomii exponen\c tiale uniforme}
+   \begin{defin}
+   \label{expdichot}
+   Familia de evolu\c tie $\{U(m,n)\}_{(m,n)\in\Delta}$ are o \it{dicotomie exponen\c tial\u a uniform\u a} dac\u a
+   exist\u a o familie de proiectori $\{P(n)\}_{n\in\N}$ \c si dou\u a constante $N,\nu>0$ astfel \^inc\^at
+   \begin{enumerate}
+   \item[$(d_1)$] $U(m,n)P(n)=P(m)U(m,n)$ pentru orice $(m,n)\in\Delta$;
+   \item[$(d_2)$] pentru fiecare $(m,n)\in\Delta$, restric\c tia lui
+       $U(m,n)$ de la $\ker P(n)$ p\^an\u a \^in $\ker P(m)$, notat cu
+       $U(m,n)_{|}$, este inversabil\u a;
+   \item[$(d_3)$] pentru orice $(m,n)\in\Delta$ \c si $x\in X$ avem:
+   $\|U(m,n)P(n)x\|\leq Ne^{-\nu(m-n)}\|P(n)x\|$ \c si $\|U(m,n)(I-P(n))x\|\geq  \frac{1}{N}e^{\nu(m-n)}\|(I-P(n))x\|$.
+   \end{enumerate}
+   \end{defin}
+               
+               }   
+
+
+        \frame  {
+               \frametitle{4.1. Familii de evolu\c tie \^in timp discret. Dicotomii exponen\c tiale uniforme}
+  \begin{defin}
+  \label{defn:admissibility}
+  Fie $E,F\subset X^{\N}$ dou\u a spa\c tii Banach \c si
+  $\mathcal{U}:=\{U(m,n)\}_{(m,n)\in\Delta}$ o familie de evolu\c tie.
+  Perechea $(E,F)$ spunem c\u a este \it{admisibil\u a} pentru $\mathcal{U}$ dac\u a
+  pentru orice $f\in E$, exist\u a $x\in X$ astfel \^inc\^at \c sirul $u(\cdot,f,x)$ definit prin
+  $u(n,f,x)= \begin{cases}
+  x &,\ n=0\\
+  \displaystyle U(n,0)x + \sum_{k=1}^{n}U(n,k)f(k-1) &,\ n\geq 1
+  \end{cases}
+   $
+  apar\c tine lui $F$.
+  \end{defin}
+               
+               }
+               
+   \frame  {
+          \frametitle{4.1. Familii de evolu\c tie \^in timp discret. Dicotomii exponen\c tiale uniforme}
+      \begin{thm}
+      \label{artC:mainthm}
+      Fie $(\E,\F)$ dou\u a \c siruri de spa\c tii Sch\"{a}ffer \c si fie \\ $\mathcal{U}:=\{U(m,n)\}_{(m,n)\in\Delta}$ o familie de evolu\c tie.
+      Presupunem c\u a:
+      \begin{enumerate}
+      \item[$(\!h_1\!)$] subspa\c tiul $X_{1,\F}(0)$ este \^inchis \c si admite un completar \^inchis,
+       
+      \item[$(\!h_2\!)$] perechea $(\!\E(\!X\!)\!,\!\F(\!X\!)\!)$ este admisibil\u a pentru familia de ev. $\mathcal{U}$
+      \item[$(\!h_3\!)$] $\alpha_{\E}(n)\beta_{\F}(n) \to\infty$.
+      \end{enumerate}
+      Atunci, familia de evolu\c tie $\mathcal{U}$ are o dicotomie exponen\c tial\u a uniform\u a. \^In plus,
+      pentru orice $n_0\in\N$, subspa\c tiul $X_{1,\F}(n_0)$ coincide cu $\mathbb{S}_{\mathcal{U}}(n_0)$
+      \c si admite o completare \^inchis\u a dat\u a de  $X_{2,\F}(n_0):=U(n_0,0)X_{2,\F}(0)$.
+ \end{thm}
+            }
+            
+   \frame  {
+             \frametitle{4.1. Familii de evolu\c tie \^in timp discret. Dicotomii exponen\c tiale uniforme}
+   \begin{thm}
+   \label{artC:conversemainthm}
+   Dac\u a familia de evolu\c tie $\mathcal{U}:=\{U(m,n)\}_{(m,n)\in\Delta}$ are o dicotomie exponen\c tial\u a uniform\u a, atunci
+   fiecare pereche $(\E(X),\F(X))$ a \c sirurilor de spa\c tii Sch\"{a}ffer cu $\E\subset\F$
+   este admisibil\u a pentru $\mathcal{U}$.
+   \end{thm}
+  \begin{prop}
+  \label{artC:unicity}
+  Fie $(\E,\F)$ dou\u a \c siruri de spa\c tii Sch\"{a}ffer,
+  fie $\mathcal{U}:=\{U(m,n)\}_{(m,n)\in\Delta}$ o familie de evolu\c tie \c si
+  presupunem $(h_1)$ \c si $(h_2)$ din prima teorem\u a a acestei sec\c tiuni.
+  Apoi, pentru orice $f\in\E(\X)$ exist\u a un unic $y\in\X_{2,\F}(0)$ astfel \^inc\^at
+  $u(\cdot,f,y)\in\F(\X)$.
+  \end{prop}                   
+               }         
+            
+           
+\frame {
+
+ \begin{myBox}{}
+
+  \begin{center}
+
+ \textsc{\textbf{V\u a mul\c tumesc}!}
+
+\end{center}
+
+
+ \end{myBox}
+}
+
+\end{document} 

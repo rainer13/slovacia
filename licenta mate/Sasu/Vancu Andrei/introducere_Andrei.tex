@@ -1,0 +1,45 @@
+\documentclass[12pt,a4paper]{book}
+\usepackage{amssymb}
+\usepackage{eucal}
+\usepackage{amsmath}
+\newcommand{\p}{\partial}
+\newcommand{\ds}{\displaystyle}
+
+
+\newtheorem{thm}{\bf Teorema}[section]
+\newtheorem{prop}{Propozi\c tia}[section]
+\newtheorem{lema}{Lema}[section]
+\newtheorem{de}{\bf Defini\c tia}[section]
+\newtheorem{cons}{\bf Consecin\c ta}[section]
+\newtheorem{rem}{\bf Remarc\u a}[section]
+\newtheorem{ex}{Exerci\c tiul}[chapter]
+\renewcommand{\contentsname}{Cuprins}
+\renewcommand{\chaptername}{Capitolul}
+\renewcommand{\bibname}{Bibliografie}
+
+
+\begin{document}
+
+\makeatletter
+
+\section*{Introducere}
+\vspace{10 mm}
+\addcontentsline{toc}{section}{Introducere}
+%\chapter*{Introducere}
+%\markboth{Introducere}{}%
+%\addcontentsline{toc}{chapter}{Introducere} \indent\indent Se consider\u a c\u a Analiza Func\c tional\u a s-a n\u ascut \^\i n iunie 1920, deoarece atunci St. Banach a depus la Universitatea Jan Kazimierz din Lvov (pe vremea aceea ora\c s \^\i n Polonia, azi \^\i n Ucraina) teza sa de doctorat "\emph{Sur les operations dans les ensembles abstraits et leur applications aux \' equations int\' egral}". \^ In aceast\u a tez\u a, care a fost publicat\u a \^\i n 1922, Banach a introdus, axiomatic, no\c tiunea de spa\c tiu normat complet, o no\c tiune general\u a \^\i n care, pentru prima dat\u a, au fost \^\i njghebate o structur\u a algebric\u a (cea de spa\c tiu liniar) \c si una topologic\u a (cea de spa\c tiu metric). \^ In 1928, Maurice Fr\' echet (1878 - 1973) a propus ca aceste spa\c tii normate complete s\u a se numeasc\u a spa\c tii Banach.
+
+Ast\u azi, putem spune c\u a, studiul completitudinii spa\c tiilor normate, utilizate sau aflate la un moment dat \^\i n studiu, constituie o etap\u a fundamental a fi parcurs\u a \^\i naintea identific\u arii \c si a altor propriet\u a\c ti particulare ale acestor spa\c tii. Pe de o parte acest lucru se datoreaz\u a  \c si faptului c\u a studiul convergen\c tei unui \c sir, \^\i n prezen\c ta propriet\u a\c tii de completitudine, implic\u a numai utilizarea termenilor \c sirului nu \c si identificarea apriorii a "posibilei" limite a acestuia. Un alt argument ar fi faptul c\u a orice serie absolut convergent\u a (de vectori ai unui spa\c tiu normat complet) este \c si convergent\u a, iar studiul absolut convergen\c tei se reduce la cazul scalar. Nu ar fi lipsit de importan\c t\u a faptul c\u a, \^\i n prezen\c ta  propriet\u a\c tii de completitudine, sunt posibil a fi utilizate principiile de categorie ale Analizei Func\c tionale.
+
+Lucrarea de fa\c t\u a se \^\i ncadreaz\u a \^\i n ideeea descris\u a de paragraful anterior, ea propun\^ andu-\c si a prezenta dou\u a clase speciale de spa\c tii normate complete \c si anume spa\c tiile Banach de func\c tii \c si spa\c tiile Banach de \c siruri. Aceste clase generalizeaz\u a  spa\c tiile de tip $L^p(X, \mathcal{A}, \mu)$, ($1 \leq p \leq \infty$) dar nu se reduc numai la acestea. Aceast\u a lucrare este structurat\u a pe patru capitole.
+
+Primul capitol, "\emph{Spa\c tii normate. Spa\c tii Banach.}", are rolul de a \^\i ncadra tema lucr\u arii dar \c si de introducere a no\c tiunilor \c si rezultatelor generale de utilizate. Se bazeaz\u a \^\i n principal pe cursul de Analiz\u a Func\c tional\u a din anul III \c si a fost introdus aici pentru a-i conferii lucr\u arii un caracter auto-inclus. \^ In acest fel, cititorul poate parcurge lucrarea f\u ar\u a a face apel la surse exterioare.
+
+Cel de-al doilea capitol, "\emph{Spa\c tii Banach de func\c tii}" introduce, \^\i ntr-o manier\u a abordabil\u a, \c si studieaz\u a, o clas\u a de spa\c tii Banach, cunoscute \^\i n Analiza Func\c tional\u a ca spa\c tii de func\c tii. Este strcturat\u a pe \c sapte sec\c tiuni (paragrafe) \c si are \^\i n special rolul de a prezenta spa\c tiile Orlicz \c si proprietatea de completitudine a acestora. Aceste spa\c tii Banach generalizeaz\u a spa\c tiile de tip $L^p$ al func\c tiilor absolut $p$-integrabile Lebesgue. Am folosit aici. \^\i n special, noti\c tele de la cursul sus\c tinut de D-na Conf. Dr. Adina Lumini\c ta Sasu la studen\c tii de la Master din anul \^\i nt\^ ai.
+
+Al treilea capitol ala lucr\u arii, "\emph{Spa\c tii Banach de \c siruri}", este structurat pe dou\u a sec\c tiuni \c si prezint\u a  clasa de spa\c tiilor Banach de \c siruri, clas\u a din care fac parte \c si spa\c tiile de tip $\ell^p$ (spa\c tiul \c sirurilor scalare $p$-absolut sumabile). Sunt prezentate aici \c si spa\c tiile Banach de \c siruri invariante la transla\c tii cunoscute \c si sub de numirea de spa\c tii Sch\" affer.
+
+Ultimul capitol al lucr\u arii, "\emph{Familii de evolu\c tie \^\i n timp discret. Dichotomie exponen\c tial uniform\u a}" este dedicat prezent\u arii unei aplica\c tii a spa\c tiilor Banach studiate \^\i n capitolele anterioare. Este astfel studiat\u a proprietatea de dichotomie a unei familii de evolu\c tie discret\u a \^\i n ipoteze de tip "intrare-ie\c sire" \^\i n care at\^ at spa\c tiul func\c tiilor de intrare c\^ at \c si cel de ie\c sire sunt spa\c tii de tip Sch\' affer.
+
+\^ In \^\i ncheiere doresc s\u a mul\c tumesc d-nului Lect. Dr. Aurelian Craciunescu, coordonatorul \c stiin\c tific al acestei lucr\u ari de licen\c t\u a, pentru sprijinul acordat \^\i n elaborarea acesteia.
+\end{document}
