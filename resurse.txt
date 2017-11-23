@@ -7,3 +7,6 @@ http://deeplearning.net/tutorial/DBN.html
 http://www.anosr.ro/documente/pozitii-si-politici/
 http://www.anosr.ro/documente/publicatii/
 https://www.facebook.com/notes/mentorat-bc-comisii-anosr-2017/o-scurt%C4%83-introducere-%C3%AEn-universul-anosr/1419139531512024/
+
+https://en.wikipedia.org/wiki/Linear_discriminant_analysis
+https://en.wikipedia.org/wiki/Multivariate_normal_distribution
